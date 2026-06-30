@@ -1,2 +1,4 @@
 .~lock.*#
 .raildiag_git_backup/
+__pycache__/
+*.pyc

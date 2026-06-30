@@ -1,0 +1,10 @@
+case,true_swell,runs,detection_rate,clean_label_rate,distorted_label_rate,median_window_samples
+clean_swell,True,100,1.0,0.98,0.02,81.0
+gradual_swell,True,100,1.0,1.0,0.0,81.0
+distorted_swell,True,100,0.99,0.0,0.99,81.0
+healthy,False,100,0.0,0.0,0.0,41.0
+offset_step,False,100,0.0,0.0,0.0,41.0
+phase_glitch,False,100,0.0,0.0,0.0,41.0
+sag,False,100,0.0,0.0,0.0,41.0
+impulse_only,False,100,0.0,0.0,0.0,41.0
+short_spike,False,100,0.0,0.0,0.0,41.0

@@ -1,5 +1,2 @@
 .~lock.*#
 .raildiag_git_backup/
-__pycache__/
-.pytest_cache/
-*.py[cod]

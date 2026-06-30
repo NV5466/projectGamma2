@@ -1,0 +1,152 @@
+schema: gamma.seed_registry.v1
+repo: NV5466/projectGamma2
+branch_purpose: sorted main seed-library layout
+status_boundary: synthetic and bench-validation research workspace, no field calibration claim
+
+methodology:
+  - raw_captures
+  - metadata_precheck
+  - wc2_alignment_reference_recovery
+  - residual_feature_extraction
+  - seed_specific_evidence_rules
+  - confidence_scoring
+  - cautious_report_language
+
+seeds:
+  - seed_id: pq_voltage_sag
+    family: power_quality
+    folder: pq_voltage_sag
+    status: scaffolded
+    primary_modules: [sliding_RMS, FFT, THD, STFT]
+
+  - seed_id: pq_voltage_swell
+    family: power_quality
+    folder: pq_voltage_swell
+    status: implemented_synthetic_from_root_readme
+    validation_cases: 900
+    sensitivity: 0.996667
+    specificity: 1.000000
+    precision: 1.000000
+    balanced_accuracy: 0.998333
+    runtime_s: 50.80
+    primary_modules: [sliding_RMS, FFT, THD, STFT, duration_check]
+
+  - seed_id: pq_short_interruption
+    family: power_quality
+    folder: pq_short_interruption
+    status: scaffolded
+    primary_modules: [sliding_RMS, duration_measurement, STFT]
+
+  - seed_id: pq_harmonic_distortion
+    family: power_quality
+    folder: pq_harmonic_distortion
+    status: scaffolded
+    primary_modules: [FFT, harmonic_bins, THD, PSD]
+
+  - seed_id: pq_flicker_am_mod
+    family: power_quality
+    folder: pq_flicker_am_mod
+    status: scaffolded
+    primary_modules: [RMS_trend, sideband_detection, STFT, envelope_analysis]
+
+  - seed_id: pq_commutation_notch
+    family: power_quality
+    folder: pq_commutation_notch
+    status: scaffolded
+    primary_modules: [edge_detection, FFT, wavelet, phase_locked_event_timing]
+
+  - seed_id: pq_impulsive_transient
+    family: power_quality
+    folder: pq_impulsive_transient
+    status: scaffolded
+    primary_modules: [peak_detection, wavelet, STFT]
+
+  - seed_id: pq_oscillatory_transient
+    family: power_quality
+    folder: pq_oscillatory_transient
+    status: scaffolded
+    primary_modules: [STFT, wavelet, ring_frequency_estimation, decay_estimation]
+
+  - seed_id: emi_eft_burst
+    family: emi_switching
+    folder: emi_eft_burst
+    status: scaffolded
+    primary_modules: [edge_counting, STFT, wavelet, event_statistics]
+
+  - seed_id: current_inrush
+    family: emi_switching
+    folder: current_inrush
+    status: scaffolded
+    primary_modules: [cycle_RMS, peak_detection, STFT, current_vs_command_timing]
+
+  - seed_id: switch_relay_contact_bounce
+    family: discrete_input_timing
+    folder: switch_relay_contact_bounce
+    status: scaffolded
+    primary_modules: [edge_detection, pulse_width_statistics, command_contact_timing]
+
+  - seed_id: relay_coil_inductive_kick
+    family: emi_switching
+    folder: relay_coil_inductive_kick
+    status: scaffolded
+    primary_modules: [peak_detection, edge_trigger, source_victim_timing]
+
+  - seed_id: ground_loop_hum
+    family: measurement_artifact
+    folder: ground_loop_hum
+    status: scaffolded
+    primary_modules: [FFT, coherence, differential_compare, RMS]
+
+  - seed_id: common_mode_noise
+    family: measurement_artifact
+    folder: common_mode_noise
+    status: concept_seen_in_initial_import
+    primary_modules: [differential_subtraction, CSD, coherence, cross_spectrum_phase]
+
+  - seed_id: pwm_vfd_edge_coupled_noise
+    family: emi_switching
+    folder: pwm_vfd_edge_coupled_noise
+    status: scaffolded
+    primary_modules: [cross_correlation, coherence, STFT, edge_synchronous_averaging]
+
+  - seed_id: sensor_threshold_chatter
+    family: discrete_input_timing
+    folder: sensor_threshold_chatter
+    status: scaffolded
+    primary_modules: [edge_timing, analog_vs_digital_compare, threshold_crossing_count]
+
+  - seed_id: slow_edge_late_transition
+    family: discrete_input_timing
+    folder: slow_edge_late_transition
+    status: scaffolded
+    primary_modules: [rise_fall_time, timing_histogram, threshold_crossing_analysis]
+
+  - seed_id: missed_short_pulse
+    family: discrete_input_timing
+    folder: missed_short_pulse
+    status: scaffolded
+    primary_modules: [pulse_width_histogram, scope_vs_controller_compare, event_latch_review]
+
+  - seed_id: high_speed_input_bounce
+    family: discrete_input_timing
+    folder: high_speed_input_bounce
+    status: concept_validated_in_projectGamma_synthetic_trial
+    primary_modules: [WC2_alignment, source_victim_compare, threshold_consequence_model]
+
+  - seed_id: bearing_fault_vibration_envelope
+    family: machinery
+    folder: bearing_fault_vibration_envelope
+    status: scaffolded
+    primary_modules: [envelope_FFT, PSD, wavelet, STFT]
+
+  - seed_id: bearing_fault_current_signature
+    family: machinery
+    folder: bearing_fault_current_signature
+    status: scaffolded
+    primary_modules: [FFT, PSD, STFT, coherence]
+
+  - seed_id: broken_rotor_bar_sidebands
+    family: machinery
+    folder: broken_rotor_bar_sidebands
+    status: scaffolded
+    primary_modules: [high_resolution_FFT, order_tracking, trend_vs_load, MCSA]

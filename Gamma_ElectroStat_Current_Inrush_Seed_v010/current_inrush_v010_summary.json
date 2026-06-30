@@ -1,0 +1,56 @@
+{
+  "validation": {
+    "seed_version": "0.1.0",
+    "case_count": 24,
+    "classification_matches": 24,
+    "classification_match_rate": 1.0,
+    "snr_evaluated": false,
+    "status": "current_inrush_and_recovery_modeled",
+    "class_counts": {
+      "inrush_present": 15,
+      "no_inrush": 3,
+      "failed_transition": 3,
+      "uncertain": 3
+    },
+    "scope_warning": "Synthetic validation only. Not bench calibration, field validation, or standards certification."
+  },
+  "result": {
+    "status": "current_inrush_and_recovery_modeled",
+    "snr_evaluated": false,
+    "confidence_status": "final_confidence_unavailable_snr_deferred",
+    "class_counts": {
+      "inrush_present": 15,
+      "no_inrush": 3,
+      "failed_transition": 3,
+      "uncertain": 3
+    },
+    "evidence": {
+      "inrush_population_repeatability": "supported",
+      "resampling_stability": "supported",
+      "no_inrush_reference_support": "supported",
+      "probe_bandwidth_metadata": "available",
+      "provisional_combined_support": "supported"
+    },
+    "population_summary": {
+      "total_captures": 24,
+      "inrush_present_count_A": 15,
+      "no_inrush_count_B": 3,
+      "failed_transition_count_F": 3,
+      "uncertain_count_U": 3,
+      "inrush_observation_rate_A_over_A_plus_B": 0.8333333333333334,
+      "no_inrush_reference_available": true,
+      "inrush_model_available": true,
+      "median_peak_to_post_ratio": 5.018031755654362,
+      "median_inrush_duration_s": 0.9644,
+      "recovery_confirmed_fraction": 0.6
+    },
+    "notes": [
+      "SNR is intentionally not calculated in v0.1.0.",
+      "No-inrush means this seed signature was absent, not that the entire capture was healthy.",
+      "Only validated same-transition no-inrush captures may build the B reference.",
+      "Each inrush capture is measured independently before population modeling.",
+      "The during-inrush and post-inrush envelopes are both preserved.",
+      "Morphology labels are dynamic descriptions, not unique component diagnoses."
+    ]
+  }
+}

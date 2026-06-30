@@ -1,0 +1,215 @@
+{
+  "schema": "electrostat.report.v1",
+  "capture": {
+    "capture_name": "basic_fft_sanity_scope",
+    "source_file": "C:\\Users\\dmaca\\Documents\\JTAStuff\\projectGamma\\FakeScopeData\\basic_fft_sanity_scope.csv",
+    "instrument": "unknown",
+    "system": "unknown",
+    "event": "unknown",
+    "time_column": "time_s",
+    "channels_analyzed": 4,
+    "sample_rate_hz": 50000.00000000204,
+    "sample_interval_s": 1.9999999999999185e-05,
+    "time_jitter_ratio": 4.301153826435519e-13
+  },
+  "warnings": [
+    "Instrument is unknown.",
+    "System under test is unknown.",
+    "Captured event is unknown.",
+    "One or more channels lack known roles; source-victim and causal timeline conclusions are restricted."
+  ],
+  "channel_roles": [
+    {
+      "channel": "CH1_clean_1kHz_V",
+      "line_identity": "not supplied",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "voltage_class": "unknown",
+      "measurement_reference": "unknown",
+      "problem_observed": "unknown"
+    },
+    {
+      "channel": "CH2_1kHz_3kHz_60Hz_noise_V",
+      "line_identity": "not supplied",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "voltage_class": "unknown",
+      "measurement_reference": "unknown",
+      "problem_observed": "unknown"
+    },
+    {
+      "channel": "CH3_square_500Hz_V",
+      "line_identity": "not supplied",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "voltage_class": "unknown",
+      "measurement_reference": "unknown",
+      "problem_observed": "unknown"
+    },
+    {
+      "channel": "CH4_ringing_event_4p2kHz_V",
+      "line_identity": "not supplied",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "voltage_class": "unknown",
+      "measurement_reference": "unknown",
+      "problem_observed": "unknown"
+    }
+  ],
+  "timeline": [],
+  "channels": [
+    {
+      "channel": "CH1_clean_1kHz_V",
+      "line_identity": "CH1_clean_1kHz_V",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "routed_analyses": [
+        "basic_stats",
+        "waveform_plot",
+        "PSD_plot"
+      ],
+      "observations": [
+        "Role is unknown; analysis is limited to generic waveform/statistical evidence."
+      ],
+      "quality_warnings": [
+        "Many samples sit exactly at the channel min/max; check for clipping or quantization."
+      ],
+      "stats": {
+        "count": 10000.0,
+        "mean": -7.673861546209082e-17,
+        "min": -1.9960534568565655,
+        "max": 1.9960534568565675,
+        "std": 1.4142135623730951,
+        "rms": 1.4142135623730951,
+        "rms_ac": 1.4142135623730951,
+        "peak_to_peak": 3.9921069137131333
+      },
+      "dominant_frequencies_hz": [
+        1000.9765625000408,
+        24.414062500000995
+      ],
+      "artifacts": {
+        "waveform": "plots/CH1_clean_1kHz_V_waveform.png",
+        "psd": "plots/CH1_clean_1kHz_V_psd.png"
+      },
+      "event_window": null
+    },
+    {
+      "channel": "CH2_1kHz_3kHz_60Hz_noise_V",
+      "line_identity": "CH2_1kHz_3kHz_60Hz_noise_V",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "routed_analyses": [
+        "basic_stats",
+        "waveform_plot",
+        "PSD_plot"
+      ],
+      "observations": [
+        "Role is unknown; analysis is limited to generic waveform/statistical evidence."
+      ],
+      "quality_warnings": [],
+      "stats": {
+        "count": 10000.0,
+        "mean": -0.0010249875414008102,
+        "min": -2.061578172592999,
+        "max": 2.0966024099318634,
+        "std": 1.1882769738667929,
+        "rms": 1.1882774159351353,
+        "rms_ac": 1.1882769738667929,
+        "peak_to_peak": 4.158180582524862
+      },
+      "dominant_frequencies_hz": [
+        1000.9765625000408,
+        3002.9296875001223,
+        48.82812500000199,
+        12426.757812500506,
+        4809.5703125001955
+      ],
+      "artifacts": {
+        "waveform": "plots/CH2_1kHz_3kHz_60Hz_noise_V_waveform.png",
+        "psd": "plots/CH2_1kHz_3kHz_60Hz_noise_V_psd.png"
+      },
+      "event_window": null
+    },
+    {
+      "channel": "CH3_square_500Hz_V",
+      "line_identity": "CH3_square_500Hz_V",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "routed_analyses": [
+        "basic_stats",
+        "waveform_plot",
+        "PSD_plot"
+      ],
+      "observations": [
+        "Role is unknown; analysis is limited to generic waveform/statistical evidence."
+      ],
+      "quality_warnings": [
+        "Many samples sit exactly at the channel min/max; check for clipping or quantization."
+      ],
+      "stats": {
+        "count": 10000.0,
+        "mean": 0.00125,
+        "min": -2.5,
+        "max": 2.5,
+        "std": 2.499874684359198,
+        "rms": 2.4998749968748437,
+        "rms_ac": 2.499874684359198,
+        "peak_to_peak": 5.0
+      },
+      "dominant_frequencies_hz": [
+        488.2812500000199,
+        1489.2578125000607,
+        2490.2343750001014,
+        3491.2109375001423,
+        4492.187500000183
+      ],
+      "artifacts": {
+        "waveform": "plots/CH3_square_500Hz_V_waveform.png",
+        "psd": "plots/CH3_square_500Hz_V_psd.png"
+      },
+      "event_window": null
+    },
+    {
+      "channel": "CH4_ringing_event_4p2kHz_V",
+      "line_identity": "CH4_ringing_event_4p2kHz_V",
+      "role": "unknown",
+      "signal_type": "unknown",
+      "routed_analyses": [
+        "basic_stats",
+        "waveform_plot",
+        "PSD_plot"
+      ],
+      "observations": [
+        "Role is unknown; analysis is limited to generic waveform/statistical evidence."
+      ],
+      "quality_warnings": [],
+      "stats": {
+        "count": 10000.0,
+        "mean": 0.001757539667871293,
+        "min": -3.970502153909665,
+        "max": 3.992700052546102,
+        "std": 0.5509001222257194,
+        "rms": 0.5509029257627851,
+        "rms_ac": 0.5509001222257194,
+        "peak_to_peak": 7.963202206455767
+      },
+      "dominant_frequencies_hz": [
+        4199.218750000171,
+        3442.38281250014,
+        3369.1406250001373,
+        4931.640625000201,
+        3222.6562500001314
+      ],
+      "artifacts": {
+        "waveform": "plots/CH4_ringing_event_4p2kHz_V_waveform.png",
+        "psd": "plots/CH4_ringing_event_4p2kHz_V_psd.png"
+      },
+      "event_window": null
+    }
+  ],
+  "interpretation_boundary": [
+    "This report is deterministic first-pass analysis. It can identify observed signal behavior, data-quality limits, and timing/spectral clues, but it does not claim root cause.",
+    "The user-supplied metadata defines line identity and role. Waveform shape may support behavior observations, but ElectroStat does not infer physical line identity from shape alone."
+  ]
+}

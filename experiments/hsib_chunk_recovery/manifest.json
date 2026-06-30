@@ -1,0 +1,45 @@
+{
+  "schema": "gamma.experiment_manifest.v1",
+  "experiment": "hsib_chunk_recovery",
+  "class_under_test": "high_speed_input_bounce",
+  "chunks": 131,
+  "waveforms_per_chunk": 100,
+  "total_waveform_pairs": 13100,
+  "hsib_chunks": "1-100",
+  "control_chunks": "101-131",
+  "hsib_delay_ns": "linear: chunk_id, 1 through 100",
+  "control_delay_ns": "linear: chunk_id - 100, 1 through 31",
+  "delay_is_hidden_and_not_a_classification_feature": true,
+  "control_description": {
+    "101-131": [
+      "genuine noisy square-wave output",
+      "genuine noisy sinusoidal output",
+      "genuine noisy triangle-wave output",
+      "genuine sustained correct-response output",
+      "genuine PWM-like correct output"
+    ]
+  },
+  "not_equivalent_to": [
+    "chatter",
+    "dropout",
+    "coherence_only",
+    "source_victim_only",
+    "missed_short_pulse",
+    "nanosecond_offset_measurement",
+    "single_waveform_shape_match"
+  ],
+  "decision_gates": [
+    "repeated_input_event_recovered",
+    "repeatable_CH2_response_after_CH1_alignment",
+    "localized_dangerous_transient",
+    "downstream_interpretation_risk",
+    "reject_sustained_correct_waveforms"
+  ],
+  "expected": {
+    "hsib_recovered": 100,
+    "controls_rejected": 31,
+    "false_pos": 0,
+    "false_neg": 0,
+    "accuracy": 1.0
+  }
+}

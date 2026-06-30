@@ -1,0 +1,10 @@
+Expected,complete pulse non-propagation,late pulse propagation,possible acquisition miss,pulse merging,pulse splitting,pulse stretching,pulse-width collapse,subthreshold pulse suppression,valid pulse propagation
+complete pulse non-propagation,100,0,0,0,0,0,0,0,0
+late pulse propagation,0,100,0,0,0,0,0,0,0
+possible acquisition miss,0,0,100,0,0,0,0,0,0
+pulse merging,0,0,0,100,0,0,0,0,0
+pulse splitting,0,0,0,0,100,0,0,0,0
+pulse stretching,0,0,0,0,0,100,0,0,0
+pulse-width collapse,0,0,0,0,0,0,100,0,0
+subthreshold pulse suppression,0,0,0,0,0,0,0,100,0
+valid pulse propagation,0,0,0,0,0,0,0,0,200

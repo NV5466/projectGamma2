@@ -1,0 +1,2 @@
+overview_pulse_count,burst_count,median_within_burst_interval_s,repetition_frequency_hz,nearest_expected_repetition_hz,expected_repetition_match,repetition_relative_error,interval_mad_s,total_inferred_missing_pulse_count
+90,2,1.0000000000000026e-05,99999.99999999974,100000.0,True,2.6193447411060335e-15,1.4999999999997654e-07,0

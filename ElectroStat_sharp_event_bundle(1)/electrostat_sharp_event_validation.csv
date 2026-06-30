@@ -1,0 +1,2 @@
+estimated_fundamental_hz,injected_notches,classified_notches,matched_notches,injected_singular_impulses,classified_singular_events,matched_singular_impulses,intentional_notch_impulse_overlaps,physical_event_windows,grid_offset_deg_mod_60,grid_concentration
+60.11090300831679,43,42,42,3,3,3,3,45,30.082930110440092,0.9888167115883614

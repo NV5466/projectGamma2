@@ -1,0 +1,73 @@
+capture:
+  capture_name: rail_event_mixed_noise_scope
+  instrument: synthetic
+  system: rail_control_test_fixture
+  event: switch_move_command
+  known_good_available: false
+  notes: "Synthetic data for ElectroStat role-aware routing tests."
+
+channels:
+  CH1_command_5V:
+    line_identity: command signal
+    signal_name: command_signal
+    role: command_or_trigger
+    signal_type: digital_like_voltage
+    probe_class: synthetic
+    attenuation: not_applicable
+    coupling: DC
+    voltage_class: 5V_logic
+    measurement_reference: signal_to_common
+    problem_observed: unknown
+    event_context: switch move command
+
+  CH2_motor_current_A_scaled:
+    line_identity: motor current clamp
+    signal_name: motor_current
+    role: suspected_source
+    signal_type: analog_current
+    probe_class: synthetic
+    attenuation: not_applicable
+    coupling: AC
+    voltage_class: not_applicable
+    measurement_reference: current_clamp
+    problem_observed: noise
+    event_context: motor start
+
+  CH3_common_to_chassis_V:
+    line_identity: local common to chassis
+    signal_name: common_to_chassis
+    role: reference_or_common
+    signal_type: analog_voltage
+    probe_class: synthetic
+    attenuation: not_applicable
+    coupling: DC
+    voltage_class: low_voltage_dc
+    measurement_reference: common_to_chassis
+    problem_observed: noise
+    event_context: switch move command
+
+  CH4_sensor_feedback_24V:
+    line_identity: TB3-14 sensor feedback
+    signal_name: sensor_feedback
+    role: victim_signal
+    signal_type: digital_like_voltage
+    probe_class: synthetic
+    attenuation: not_applicable
+    coupling: DC
+    voltage_class: 24VDC
+    measurement_reference: signal_to_common
+    problem_observed: dropout
+    event_context: switch move command
+
+  CH5_fault_output_5V:
+    line_identity: fault output
+    signal_name: fault_output
+    role: output_or_consequence
+    signal_type: digital_like_voltage
+    probe_class: synthetic
+    attenuation: not_applicable
+    coupling: DC
+    voltage_class: 5V_logic
+    measurement_reference: signal_to_common
+    problem_observed: unknown
+    event_context: fault occurs

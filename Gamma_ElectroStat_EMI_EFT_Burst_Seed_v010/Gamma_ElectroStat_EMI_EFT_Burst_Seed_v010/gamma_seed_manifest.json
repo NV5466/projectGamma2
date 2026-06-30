@@ -1,0 +1,53 @@
+{
+  "seed_id": "emi_eft_burst_v010",
+  "family": "emi_eft_burst",
+  "role": "evidence_worker",
+  "version": "0.1.0",
+  "status": "synthetic_research_prototype",
+  "input_contract": {
+    "detail_time_s": "1D uniformly sampled time array",
+    "detail_captures_v": "2D repeated fast-pulse captures",
+    "overview_time_s": "optional 1D overview time array",
+    "overview_waveform_v": "optional lower-rate pulse-train/burst capture",
+    "acquisition_metadata": [
+      "scope model",
+      "probe model and bandwidth",
+      "analog bandwidth",
+      "bandwidth limit",
+      "ADC bits",
+      "vertical rails",
+      "input impedance",
+      "coupling",
+      "acquisition mode",
+      "averaging count"
+    ]
+  },
+  "outputs": [
+    "acquisition observability",
+    "individual pulse morphology",
+    "explicit aligned pulse template",
+    "pulse residual matrix",
+    "per-pulse matrix-pencil modes",
+    "cross-pulse mode clusters",
+    "pulse-train timing and drift",
+    "burst summaries",
+    "categorical provisional evidence"
+  ],
+  "confidence": {
+    "snr_evaluated": false,
+    "percentages_allowed": false,
+    "labels": [
+      "rejected",
+      "exploratory",
+      "supported",
+      "strongly_supported"
+    ]
+  },
+  "scope_limits": [
+    "No IEC compliance claim",
+    "No field-accuracy claim",
+    "No component-causality claim",
+    "No calibrated probability",
+    "SNR deferred"
+  ]
+}

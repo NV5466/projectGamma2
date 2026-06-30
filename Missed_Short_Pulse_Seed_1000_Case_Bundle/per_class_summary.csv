@@ -1,0 +1,11 @@
+case,trials,passed,accuracy,mean_detection_ratio,mean_expected_pulses,mean_missed_pulses,mean_extra_outputs
+acquisition_limited,100,100,1.0,0.0,1.0,1.0,0.0
+complete_absence,100,100,1.0,0.0,1.0,1.0,0.0
+extra_spurious,100,100,1.0,1.0,1.0,0.0,1.0
+healthy,100,100,1.0,1.0,2.02,0.0,0.0
+late,100,100,1.0,1.0,1.0,0.0,0.0
+merge,100,100,1.0,1.0,2.0,0.0,0.0
+split,100,100,1.0,1.0,1.0,0.0,0.0
+stretched,100,100,1.0,1.0,1.0,0.0,0.0
+subthreshold_rc,100,100,1.0,0.0,1.0,1.0,0.0
+width_collapse,100,100,1.0,1.0,1.0,0.0,0.0

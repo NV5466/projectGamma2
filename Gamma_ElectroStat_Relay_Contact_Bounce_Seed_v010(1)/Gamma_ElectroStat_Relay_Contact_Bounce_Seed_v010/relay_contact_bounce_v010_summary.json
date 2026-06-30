@@ -1,0 +1,62 @@
+{
+  "validation": {
+    "seed_version": "0.1.0",
+    "case_count": 108,
+    "classification_matches": 108,
+    "classification_match_rate": 1.0,
+    "class_counts": {
+      "bounce_present": 48,
+      "clean_single_transition": 24,
+      "non_bounce_transient": 12,
+      "failed_transition": 12,
+      "uncertain": 12
+    },
+    "status": "relay_contact_bounce_and_clean_transition_reference_modeled",
+    "snr_evaluated": false,
+    "scope_warning": "Synthetic validation only. Not bench calibration, field validation, relay qualification, or standards certification."
+  },
+  "result": {
+    "status": "relay_contact_bounce_and_clean_transition_reference_modeled",
+    "snr_evaluated": false,
+    "confidence_status": "final_confidence_unavailable_snr_deferred",
+    "class_counts": {
+      "bounce_present": 48,
+      "clean_single_transition": 24,
+      "non_bounce_transient": 12,
+      "failed_transition": 12,
+      "uncertain": 12
+    },
+    "evidence": {
+      "bounce_population_repeatability": "supported",
+      "resampling_stability": "strongly_supported",
+      "clean_transition_reference_support": "strongly_supported",
+      "state_observability_support": "supported",
+      "provisional_combined_support": "supported"
+    },
+    "population_summary": {
+      "total_captures": 108,
+      "bounce_present_count_A": 48,
+      "clean_single_transition_count_B": 24,
+      "non_bounce_transient_count_T": 12,
+      "failed_transition_count_F": 12,
+      "uncertain_count_U": 12,
+      "bounce_observation_rate_A_over_A_plus_B_plus_T": 0.5714285714285714,
+      "clean_reference_available": true,
+      "bounce_model_available": true,
+      "median_bounce_duration_s": 0.0010349999999999995,
+      "median_extra_edge_count": 4.0,
+      "low_observability_edge_fraction": 0.0,
+      "observability_limited_capture_fraction": 0.1111111111111111
+    },
+    "notes": [
+      "SNR is intentionally not calculated in v0.1.0.",
+      "A clean single transition is negative only for this seed, not proof of whole-system health.",
+      "AC analysis uses half-cycle-local observability and short subwindow derivative median/MAD features.",
+      "Signed derivative averaging is forbidden because opposite bounce edges cancel.",
+      "Full bounce requires unintended contact-state reversals after one intended transition.",
+      "Transient-only activity is separated from full contact bounce.",
+      "Zero-crossing events remain detectable only when the contact state is electrically observable; timing uncertainty is reported.",
+      "Morphology labels describe behavior and do not uniquely identify a failed component."
+    ]
+  }
+}

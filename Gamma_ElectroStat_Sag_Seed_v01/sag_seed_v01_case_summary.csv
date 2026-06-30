@@ -1,0 +1,10 @@
+case,true_sag,runs,detection_rate,median_confidence_when_detected,median_selected_window_samples,median_abs_start_error_ms,median_abs_end_error_ms,clean_label_rate,distorted_label_rate
+clean_sag,True,100,1.0,0.9310242782629863,81.0,12.63124709751956,25.848675274719678,1.0,0.0
+gradual_sag,True,100,1.0,0.9373552616845602,81.0,31.455634604790117,68.47352674372198,1.0,0.0
+distorted_sag,True,100,1.0,0.8019865558578643,81.0,13.349249598608836,34.835060659531905,0.26,0.74
+healthy,False,100,0.0,,41.0,,,0.0,0.0
+offset_step,False,100,0.02,0.6527363552122198,41.0,,,0.02,0.0
+phase_glitch,False,100,0.0,,41.0,,,0.0,0.0
+swell,False,100,0.0,,41.0,,,0.0,0.0
+impulse_only,False,100,0.0,,41.0,,,0.0,0.0
+short_dip,False,100,0.01,0.5761639095915947,41.0,,,0.0,0.01

@@ -1,0 +1,11 @@
+case,observed,count
+acquisition_limited,possible acquisition miss,100
+complete_absence,complete pulse non-propagation,100
+extra_spurious,valid pulse propagation,100
+healthy,valid pulse propagation,100
+late,late pulse propagation,100
+merge,pulse merging,100
+split,pulse splitting,100
+stretched,pulse stretching,100
+subthreshold_rc,subthreshold pulse suppression,100
+width_collapse,pulse-width collapse,100

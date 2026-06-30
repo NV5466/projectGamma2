@@ -1,0 +1,2 @@
+true_positives,false_negatives,false_positives,true_negatives,sensitivity,specificity,precision,balanced_accuracy
+300,0,3,597,1.0,0.995,0.9900990099009901,0.9975

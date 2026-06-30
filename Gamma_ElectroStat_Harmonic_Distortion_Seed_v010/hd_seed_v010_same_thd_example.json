@@ -1,0 +1,116 @@
+{
+  "status": "harmonic_deviation_supported",
+  "expected_f0_hz": 60.000025790070815,
+  "measured_f0_hz": 60.00005283101224,
+  "frequency_shift_hz": 2.7040941425582332e-05,
+  "expected_thd": 0.09999709582347814,
+  "measured_thd": 0.10012330609393255,
+  "delta_thd": 0.00012621027045441047,
+  "magnitude_fingerprint_distance": 0.1413870230434036,
+  "complex_fingerprint_distance": 0.14141767282450562,
+  "active_changed_orders": [
+    2,
+    3,
+    5
+  ],
+  "dominant_changes": [
+    {
+      "order": 3,
+      "frequency_hz": 180.00015849303674,
+      "expected_magnitude": 0.09999689369076448,
+      "measured_magnitude": 0.000121958702483947,
+      "delta_magnitude": -0.09987493498828053,
+      "significance_sigma": 747.2910311850803,
+      "expected_relative_phase_deg": 153.62980579024406,
+      "measured_relative_phase_deg": 147.26813224565427,
+      "relative_phase_change_deg": -6.361673544589792
+    },
+    {
+      "order": 5,
+      "frequency_hz": 300.0002641550612,
+      "expected_magnitude": 2.927866166405915e-05,
+      "measured_magnitude": 0.08019847018584643,
+      "delta_magnitude": 0.08016919152418236,
+      "significance_sigma": 598.3542580360347,
+      "expected_relative_phase_deg": -150.78358525393062,
+      "measured_relative_phase_deg": -22.73282386505023,
+      "relative_phase_change_deg": 128.0507613888804
+    },
+    {
+      "order": 2,
+      "frequency_hz": 120.00010566202448,
+      "expected_magnitude": 3.800829358144074e-05,
+      "measured_magnitude": 0.05993840838905662,
+      "delta_magnitude": 0.059900400095475176,
+      "significance_sigma": 447.6374680663376,
+      "expected_relative_phase_deg": 8.80265121426594,
+      "measured_relative_phase_deg": 41.92099334796517,
+      "relative_phase_change_deg": 33.11834213369923
+    },
+    {
+      "order": 4,
+      "frequency_hz": 240.00021132404896,
+      "expected_magnitude": 4.062697362238514e-05,
+      "measured_magnitude": 0.000235582884533882,
+      "delta_magnitude": 0.00019495591091149686,
+      "significance_sigma": 1.4593696488776495,
+      "expected_relative_phase_deg": -9.620447295007427,
+      "measured_relative_phase_deg": -43.27218799670298,
+      "relative_phase_change_deg": -33.65174070169556
+    },
+    {
+      "order": 7,
+      "frequency_hz": 420.0003698170857,
+      "expected_magnitude": 4.8500609523790835e-05,
+      "measured_magnitude": 0.00019471708953273042,
+      "delta_magnitude": 0.0001462164800089396,
+      "significance_sigma": 1.0945185074311343,
+      "expected_relative_phase_deg": -7.367784779584199,
+      "measured_relative_phase_deg": -63.86607772134645,
+      "relative_phase_change_deg": -56.49829294176225
+    },
+    {
+      "order": 10,
+      "frequency_hz": 600.0005283101224,
+      "expected_magnitude": 5.5106416115625976e-05,
+      "measured_magnitude": 0.00018910244727776045,
+      "delta_magnitude": 0.00013399603116213447,
+      "significance_sigma": 1.0030453887942383,
+      "expected_relative_phase_deg": 160.0956354886161,
+      "measured_relative_phase_deg": -74.94757741725444,
+      "relative_phase_change_deg": 124.95678709412947
+    },
+    {
+      "order": 8,
+      "frequency_hz": 480.0004226480979,
+      "expected_magnitude": 4.2464891842029215e-05,
+      "measured_magnitude": 0.00016919398932569755,
+      "delta_magnitude": 0.00012672909748366834,
+      "significance_sigma": 0.9486463416478089,
+      "expected_relative_phase_deg": -9.942253442701709,
+      "measured_relative_phase_deg": 141.69862754281985,
+      "relative_phase_change_deg": 151.64088098552156
+    },
+    {
+      "order": 6,
+      "frequency_hz": 360.00031698607347,
+      "expected_magnitude": 4.096758810519952e-05,
+      "measured_magnitude": 0.000158068358913487,
+      "delta_magnitude": 0.00011710077080828748,
+      "significance_sigma": 0.876568855641299,
+      "expected_relative_phase_deg": 19.486299469549145,
+      "measured_relative_phase_deg": -129.4995155348114,
+      "relative_phase_change_deg": -148.98581500436055
+    }
+  ],
+  "historical_context_present": true,
+  "historical_context_used_in_fault_score": false,
+  "notes": [
+    "The normalized harmonic magnitude vector h is the primary evidence.",
+    "THD is derived from h and is not used as the sole diagnostic measurement.",
+    "Relative harmonic phase is preserved as supporting evidence but does not drive the v0.1.0 status.",
+    "Historical capture fingerprints are stored but do not participate in the current fault score.",
+    "Frequency shift and non-harmonic residual energy are reported separately from harmonic distortion.",
+    "Synthetic research prototype only; no field-calibration claim."
+  ]
+}

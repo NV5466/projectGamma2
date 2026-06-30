@@ -1,0 +1,2 @@
+total_captures,inrush_present_count_A,no_inrush_count_B,failed_transition_count_F,uncertain_count_U,inrush_observation_rate_A_over_A_plus_B,no_inrush_reference_available,inrush_model_available,median_peak_to_post_ratio,median_inrush_duration_s,recovery_confirmed_fraction
+24,15,3,3,3,0.8333333333333334,True,True,5.018031755654362,0.9644,0.6

@@ -1,0 +1,9 @@
+Metric,Value
+Median consensus RMSE vs hidden truth,0.009175176597909125
+Median collective exponential-fit RMSE,0.009133302517789276
+Median single-capture exponential-fit RMSE,0.03428222168226926
+Median collective boundary MAE (samples),2.6
+Median single boundary MAE (samples),8.4
+Median collective pole log-MAE,0.3927937667706619
+Median single pole log-MAE,1.1948724704387432
+Median alignment lag MAE (samples),0.645

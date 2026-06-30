@@ -1,0 +1,11 @@
+{
+  "seed_version": "0.1.0",
+  "case_count": 24,
+  "family_count": 8,
+  "status_matches": 24,
+  "status_match_rate": 1.0,
+  "median_ring_relative_error": 3.7569510917663576e-05,
+  "median_repetition_relative_error": 2.6193447411060335e-15,
+  "snr_evaluated": false,
+  "scope_warning": "Synthetic research validation only. Not field calibrated, not standards certified, and not a confidence calibration."
+}

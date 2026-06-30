@@ -1,0 +1,175 @@
+ElectroStat Report: basic_fft_sanity_scope
+==========================================
+
+Source file              : C:\Users\dmaca\Documents\JTAStuff\projectGamma\FakeScopeData\basic_fft_sanity_scope.csv
+Instrument               : unknown
+System                   : unknown
+Event                    : unknown
+Time column              : time_s
+Channels analyzed        : 4
+Estimated sample rate    : 50000 Hz
+Estimated sample interval : 2e-05 s
+Time-step jitter ratio   : 0.000%
+
+
+Limitations and Warnings
+------------------------
+- Instrument is unknown.
+- System under test is unknown.
+- Captured event is unknown.
+- One or more channels lack known roles; source-victim and causal timeline conclusions are
+  restricted.
+
+Channel Roles
+-------------
+CH1_clean_1kHz_V
+  Line identity         : not supplied
+  Role                  : unknown
+  Signal type           : unknown
+  Voltage class         : unknown
+  Measurement reference : unknown
+  Problem observed      : unknown
+
+CH2_1kHz_3kHz_60Hz_noise_V
+  Line identity         : not supplied
+  Role                  : unknown
+  Signal type           : unknown
+  Voltage class         : unknown
+  Measurement reference : unknown
+  Problem observed      : unknown
+
+CH3_square_500Hz_V
+  Line identity         : not supplied
+  Role                  : unknown
+  Signal type           : unknown
+  Voltage class         : unknown
+  Measurement reference : unknown
+  Problem observed      : unknown
+
+CH4_ringing_event_4p2kHz_V
+  Line identity         : not supplied
+  Role                  : unknown
+  Signal type           : unknown
+  Voltage class         : unknown
+  Measurement reference : unknown
+  Problem observed      : unknown
+
+
+Event Timeline
+--------------
+- No role-aware timeline events were detected. Add channel roles/signal types to enable routing.
+
+Role-Aware Interpretation
+-------------------------
+CH1_clean_1kHz_V: CH1_clean_1kHz_V
+  Route           : unknown / unknown
+  Routed analyses : basic_stats, waveform_plot, PSD_plot
+
+  - Role is unknown; analysis is limited to generic waveform/statistical evidence.
+
+CH2_1kHz_3kHz_60Hz_noise_V: CH2_1kHz_3kHz_60Hz_noise_V
+  Route           : unknown / unknown
+  Routed analyses : basic_stats, waveform_plot, PSD_plot
+
+  - Role is unknown; analysis is limited to generic waveform/statistical evidence.
+
+CH3_square_500Hz_V: CH3_square_500Hz_V
+  Route           : unknown / unknown
+  Routed analyses : basic_stats, waveform_plot, PSD_plot
+
+  - Role is unknown; analysis is limited to generic waveform/statistical evidence.
+
+CH4_ringing_event_4p2kHz_V: CH4_ringing_event_4p2kHz_V
+  Route           : unknown / unknown
+  Routed analyses : basic_stats, waveform_plot, PSD_plot
+
+  - Role is unknown; analysis is limited to generic waveform/statistical evidence.
+
+
+Channel Measurements
+--------------------
+CH1_clean_1kHz_V: CH1_clean_1kHz_V
+  Role         : unknown
+  Event window : not applied
+
+  - Warning: Many samples sit exactly at the channel min/max; check for clipping or quantization.
+  count        : 10000
+  mean         : -7.67386e-17
+  min          : -1.99605
+  max          : 1.99605
+  std          : 1.41421
+  rms          : 1.41421
+  rms_ac       : 1.41421
+  peak_to_peak : 3.99211
+
+  Dominant PSD peaks : 1000.98 Hz, 24.4141 Hz
+
+  waveform plot : plots/CH1_clean_1kHz_V_waveform.png
+  psd plot      : plots/CH1_clean_1kHz_V_psd.png
+
+
+CH2_1kHz_3kHz_60Hz_noise_V: CH2_1kHz_3kHz_60Hz_noise_V
+  Role         : unknown
+  Event window : not applied
+
+  count        : 10000
+  mean         : -0.00102499
+  min          : -2.06158
+  max          : 2.0966
+  std          : 1.18828
+  rms          : 1.18828
+  rms_ac       : 1.18828
+  peak_to_peak : 4.15818
+
+  Dominant PSD peaks : 1000.98 Hz, 3002.93 Hz, 48.8281 Hz, 12426.8 Hz, 4809.57 Hz
+
+  waveform plot : plots/CH2_1kHz_3kHz_60Hz_noise_V_waveform.png
+  psd plot      : plots/CH2_1kHz_3kHz_60Hz_noise_V_psd.png
+
+
+CH3_square_500Hz_V: CH3_square_500Hz_V
+  Role         : unknown
+  Event window : not applied
+
+  - Warning: Many samples sit exactly at the channel min/max; check for clipping or quantization.
+  count        : 10000
+  mean         : 0.00125
+  min          : -2.5
+  max          : 2.5
+  std          : 2.49987
+  rms          : 2.49987
+  rms_ac       : 2.49987
+  peak_to_peak : 5
+
+  Dominant PSD peaks : 488.281 Hz, 1489.26 Hz, 2490.23 Hz, 3491.21 Hz, 4492.19 Hz
+
+  waveform plot : plots/CH3_square_500Hz_V_waveform.png
+  psd plot      : plots/CH3_square_500Hz_V_psd.png
+
+
+CH4_ringing_event_4p2kHz_V: CH4_ringing_event_4p2kHz_V
+  Role         : unknown
+  Event window : not applied
+
+  count        : 10000
+  mean         : 0.00175754
+  min          : -3.9705
+  max          : 3.9927
+  std          : 0.5509
+  rms          : 0.550903
+  rms_ac       : 0.5509
+  peak_to_peak : 7.9632
+
+  Dominant PSD peaks : 4199.22 Hz, 3442.38 Hz, 3369.14 Hz, 4931.64 Hz, 3222.66 Hz
+
+  waveform plot : plots/CH4_ringing_event_4p2kHz_V_waveform.png
+  psd plot      : plots/CH4_ringing_event_4p2kHz_V_psd.png
+
+
+
+Interpretation Boundary
+-----------------------
+- This report is deterministic first-pass analysis. It can identify observed signal behavior,
+  data-quality limits, and timing/spectral clues, but it does not claim root cause.
+- The user-supplied metadata defines line identity and role. Waveform shape may support behavior
+  observations, but ElectroStat does not infer physical line identity from shape alone.

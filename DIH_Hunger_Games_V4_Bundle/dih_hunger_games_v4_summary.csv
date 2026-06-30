@@ -1,0 +1,4 @@
+Case,Captures generated,Captures analyzed,Dominant sensor source,Relay score,Sensor score,Compound score,Relay coverage,Sensor coverage,Compound coverage,Classification
+Relay bounce,16,16,measured_state,0.806,0.258,,1.0,1.0,0.5,Relay/contact bounce favored
+Sensor chatter,16,16,measured_state,0.437,0.852,,0.75,1.0,0.5,Sensor threshold chatter favored
+Compound chain,16,16,upstream_command,0.868,0.855,0.924,1.0,1.0,1.0,Compound: sensor chatter → coil response → relay/contact bounce

@@ -1,0 +1,2 @@
+channel,harmonic_order,target_frequency_hz,detected_frequency_hz,frequency_error_hz,magnitude,relative_to_fundamental
+CH5,1,949.9999999999728,949.9999999999728,0.0,0.1918459724228776,1.0

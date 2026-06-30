@@ -1,0 +1,33 @@
+capture:
+  capture_name: switch_sensor_noise_test_001
+  instrument: GDS-3504
+  system: switch_machine
+  event: switch_move_command
+  known_good_available: false
+
+channels:
+  CH1:
+    line_identity: TB3-14 sensor feedback
+    signal_name: sensor_feedback
+    role: victim_signal
+    signal_type: digital_like_voltage
+    probe_class: differential
+    attenuation: unknown
+    coupling: DC
+    voltage_class: 24VDC
+    measurement_reference: signal_to_common
+    problem_observed: noise
+    event_context: switch_move_command
+
+  CH2:
+    line_identity: local common to chassis
+    signal_name: local_common_to_chassis
+    role: reference_or_common
+    signal_type: analog_voltage
+    probe_class: differential
+    attenuation: unknown
+    coupling: DC
+    voltage_class: low_voltage_dc
+    measurement_reference: common_to_chassis
+    problem_observed: noise
+    event_context: switch_move_command

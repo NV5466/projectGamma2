@@ -1,0 +1,18 @@
+{
+  "total_positive_scenarios": 200,
+  "accepted_damping_values": 39,
+  "accepted_fraction": 0.195,
+  "median_relative_error": 0.06163647072566912,
+  "p90_relative_error": 0.21026829386841192,
+  "p95_relative_error": 0.3033204506999769,
+  "max_relative_error": 0.4095545461320777,
+  "within_10_percent": 0.6666666666666666,
+  "within_20_percent": 0.8717948717948718,
+  "within_30_percent": 0.9487179487179487,
+  "reported_interval_coverage": 1.0,
+  "median_frequency_relative_error": 0.004985452850054313,
+  "classification_unchanged": true,
+  "classification_accuracy_from_prior_frozen_holdout": 0.997,
+  "damping_acceptance_rule_frozen_before_this_confirmation": true,
+  "final_confirmatory_seed": 2026070301
+}

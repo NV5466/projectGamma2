@@ -1,0 +1,50 @@
+{
+  "seed_id": "switch_relay_contact_bounce",
+  "version": "0.1.0",
+  "human_label": "Switch / relay contact bounce",
+  "engine": "Gamma / ElectroStat",
+  "supported_signal_types": [
+    "AC",
+    "DC"
+  ],
+  "primary_measurement": "contact or load signal",
+  "recommended_companion_channels": [
+    "source/reference voltage for AC",
+    "command or relay-coil signal"
+  ],
+  "population_classes": {
+    "A": "bounce_present",
+    "B": "clean_single_transition",
+    "T": "non_bounce_transient",
+    "F": "failed_transition",
+    "U": "uncertain"
+  },
+  "core_features": [
+    "half-cycle-local short-window median absolute state derivative",
+    "half-cycle-local derivative MAD",
+    "command-to-first-contact latency",
+    "bounce duration",
+    "extra edge count",
+    "false-state dwell statistics",
+    "runt excursions",
+    "zero-crossing observability limits"
+  ],
+  "snr_evaluated": false,
+  "confidence_policy": "categorical provisional support only",
+  "validation": {
+    "synthetic_capture_cases": 108,
+    "pytest_cases": 114,
+    "classification_families": 9,
+    "sample_rates_hz_tested": [
+      100000,
+      200000,
+      500000
+    ],
+    "line_frequencies_hz_tested": [
+      50,
+      60
+    ],
+    "snr_evaluated": false,
+    "scope": "synthetic implementation validation only"
+  }
+}

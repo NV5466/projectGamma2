@@ -1,0 +1,11 @@
+case,expected,observed,expected_pulses,matched_pulses,missed_pulses,split_pulses,merged_groups,extra_output_pulses,detection_ratio,acquisition_limited_events,pass
+healthy,valid pulse propagation,valid pulse propagation,2,2,0,0,0,0,1.0,0,True
+complete_absence,complete pulse non-propagation,complete pulse non-propagation,1,0,1,0,0,0,0.0,0,True
+subthreshold_rc,subthreshold pulse suppression,subthreshold pulse suppression,1,0,1,0,0,0,0.0,0,True
+width_collapse,pulse-width collapse,pulse-width collapse,1,1,0,0,0,0,1.0,0,True
+late,late pulse propagation,late pulse propagation,1,1,0,0,0,0,1.0,0,True
+merge,pulse merging,pulse stretching,2,1,1,0,0,0,0.5,0,False
+split,pulse splitting,pulse splitting,1,1,0,1,0,0,1.0,0,True
+stretched,pulse stretching,pulse stretching,1,1,0,0,0,0,1.0,0,True
+extra_spurious,valid pulse propagation,valid pulse propagation,1,1,0,0,0,1,1.0,0,True
+acquisition_limited,possible acquisition miss,possible acquisition miss,1,0,1,0,0,0,0.0,1,True

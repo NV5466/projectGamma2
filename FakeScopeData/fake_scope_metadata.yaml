@@ -1,0 +1,60 @@
+capture_set: fake_oscilloscope_training_data
+description: >
+  Synthetic oscilloscope CSV files for testing FFT, PSD, event-window analysis,
+  transient detection, digital-like thresholding, and basic source-victim comparison.
+  These are fake data files, not real measurements.
+
+files:
+  basic_fft_sanity_scope.csv:
+    sample_rate_hz: 50000
+    duration_s: 0.20
+    purpose: "FFT sanity check with known 1 kHz, 3 kHz, 60 Hz, 500 Hz square-wave harmonics, and 4.2 kHz ringing event."
+    expected_findings:
+      - "CH1 dominant peak near 1 kHz."
+      - "CH2 peaks near 60 Hz, 1 kHz, and 3 kHz."
+      - "CH3 square wave fundamental near 500 Hz with odd harmonics."
+      - "CH4 event-window peak near 4.2 kHz after 0.080 s."
+
+  rail_event_mixed_noise_scope.csv:
+    sample_rate_hz: 100000
+    duration_s: 0.50
+    purpose: "Rail/control-style event with command, motor activity, common/reference movement, sensor chatter/dropout, and fault consequence."
+    event_windows:
+      command_active: [0.100, 0.380]
+      sensor_chatter: [0.145, 0.158]
+      sensor_dropout: [0.245, 0.251]
+      fault_after_dropout: [0.265, 0.500]
+    channel_roles:
+      CH1_command_5V: command_or_trigger
+      CH2_motor_current_A_scaled: suspected_source
+      CH3_common_to_chassis_V: reference_or_common
+      CH4_sensor_feedback_24V: victim_signal
+      CH5_fault_output_5V: output_or_consequence
+    expected_findings:
+      - "Motor current activates at about 0.100 s."
+      - "Common/reference line shows event-aligned 18 kHz content."
+      - "Sensor feedback chatters around 0.145-0.158 s."
+      - "Sensor feedback has a dropout around 0.245-0.251 s."
+      - "Fault output rises at about 0.265 s."
+      - "PSD/coherence style tests should see shared 18 kHz behavior between motor/common/sensor during command-active window."
+
+  power_quality_scope.csv:
+    sample_rate_hz: 20000
+    duration_s: 0.50
+    purpose: "Power-quality style signals: clean 60 Hz, harmonic distortion, voltage sag, and switching transient."
+    event_windows:
+      sag: [0.180, 0.300]
+      transient_1: [0.125, 0.145]
+      transient_2: [0.320, 0.340]
+    expected_findings:
+      - "CH1 dominant 60 Hz."
+      - "CH2 has 60 Hz plus 3rd and 5th harmonic content."
+      - "CH3 RMS drops during 0.180-0.300 s."
+      - "CH4 has short ringing transients near 2.5 kHz after switching events."
+
+metadata_notes:
+  instrument: synthetic
+  probe_class: synthetic
+  voltage_class: synthetic
+  coupling: synthetic
+  warning: "Do not use these amplitudes as real safety or equipment guidance."

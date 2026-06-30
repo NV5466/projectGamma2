@@ -1,0 +1,2 @@
+seed_version,case_count,family_count,status_matches,status_match_rate,median_ring_relative_error,median_repetition_relative_error,snr_evaluated,scope_warning
+0.1.0,24,8,24,1.0,3.7569510917663576e-05,2.6193447411060335e-15,False,"Synthetic research validation only. Not field calibrated, not standards certified, and not a confidence calibration."

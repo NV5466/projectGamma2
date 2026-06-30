@@ -1,0 +1,13 @@
+HSIB chunk recovery synthetic trial
+Chunks 1-100 are HSIB. Chunks 101-131 are genuine waveform controls.
+Hidden nuisance delay increases linearly and is not measured or used as a classifier target.
+
+Expected summary:
+
+hsib_recovered=100/100
+controls_rejected=31/31
+false_pos=0
+false_neg=0
+accuracy=1.000
+
+The script prints all 131 chunk rows when run without JSON mode.

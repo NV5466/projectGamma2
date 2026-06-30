@@ -1,0 +1,10 @@
+Mode,Injected fault,Expected,Observed,Pass
+1,Slow edge,Large transition-time deviation,z=2733.5,True
+1,Chatter,Repeated state reversals,mean=4.0,True
+2,Late chain,High latency z with normal edge z,"latency=178.9, edge=0.2",True
+2,Slow output edge,High edge-time z,z=2320.6,True
+3,Threshold drift,Shifted ON and OFF positions,"ON=100.4, OFF=188.8",True
+3,Wide hysteresis,High hysteresis z,z=140.5,True
+4,Actuation delay,Actuation segment isolated,z=180.4,True
+4,Mechanical travel delay,Travel segment isolated,z=1159.9,True
+4,Sensor decision delay,Decision segment isolated,z=184.4,True

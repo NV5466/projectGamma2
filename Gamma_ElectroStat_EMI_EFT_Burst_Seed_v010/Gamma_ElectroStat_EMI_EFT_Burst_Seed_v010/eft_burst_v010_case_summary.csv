@@ -1,0 +1,9 @@
+case_family,cases,status_matches,status_match_rate,median_ring_relative_error,median_repetition_relative_error,snr_ever_evaluated
+amplitude_drift_burst,3,3,1.0,3.173073603908221e-05,2.6193447411060335e-15,False
+broad_step_negative,3,3,1.0,,2.6193447411060335e-15,False
+missing_pulses,3,3,1.0,8.829688749966168e-05,0.004975124378108158,False
+no_event_negative,3,3,1.0,,,False
+nominal_100khz,3,3,1.0,2.1754554098968706e-05,2.6193447411060335e-15,False
+nominal_5khz,3,3,1.0,0.0001240650975949624,0.0037359900373576237,False
+nonoscillatory_burst,3,3,1.0,,2.6193447411060335e-15,False
+single_fast_pulse_no_overview,3,3,1.0,0.4936874391058132,,False

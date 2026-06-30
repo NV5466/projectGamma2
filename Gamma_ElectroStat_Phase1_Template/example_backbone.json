@@ -1,0 +1,20 @@
+{
+  "description": "Illustrative neighborhood-map backbone only; no component inventory is implied.",
+  "nodes": [
+    {"node_id": "SOURCE", "label": "Known feed", "kind": "source"},
+    {"node_id": "J1", "label": "Main junction", "kind": "junction"},
+    {"node_id": "J2", "label": "Branch junction", "kind": "junction"},
+    {"node_id": "P1", "label": "Probe point 1", "kind": "measurement"},
+    {"node_id": "P2", "label": "Probe point 2", "kind": "measurement"},
+    {"node_id": "END_A", "label": "Unknown neighborhood A", "kind": "boundary"},
+    {"node_id": "END_B", "label": "Unknown neighborhood B", "kind": "boundary"}
+  ],
+  "edges": [
+    {"edge_id": "W1", "node_a": "SOURCE", "node_b": "J1", "label": "Main feed"},
+    {"edge_id": "W2", "node_a": "J1", "node_b": "P1", "label": "Probe branch"},
+    {"edge_id": "W3", "node_a": "J1", "node_b": "J2", "label": "Downstream trunk"},
+    {"edge_id": "W4", "node_a": "J2", "node_b": "P2", "label": "Second probe branch"},
+    {"edge_id": "W5", "node_a": "J2", "node_b": "END_A", "label": "Unknown branch A"},
+    {"edge_id": "W6", "node_a": "J2", "node_b": "END_B", "label": "Unknown branch B"}
+  ]
+}

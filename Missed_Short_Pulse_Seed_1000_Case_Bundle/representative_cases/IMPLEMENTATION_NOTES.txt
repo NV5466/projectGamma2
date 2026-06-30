@@ -1,0 +1,38 @@
+Missed Short Pulse Analyzer
+==========================
+
+Classification layers
+---------------------
+1. Measurement confidence
+   - strong
+   - usable
+   - limited
+   - inadequate
+
+2. Observed failure morphology
+   - valid pulse propagation
+   - complete pulse non-propagation
+   - subthreshold pulse suppression
+   - pulse-width collapse
+   - pulse stretching
+   - late pulse propagation
+   - pulse merging
+   - pulse splitting
+   - possible acquisition miss
+   - unresolved pulse miss
+
+3. Candidate mechanism
+   Mechanisms are reported as compatibility statements, never as confirmed root causes.
+
+4. System consequence
+   The current test configuration labels failed downstream events as logically missed.
+
+Important behavior
+------------------
+- Missing measurements do not become negative evidence.
+- A hardware miss is not confirmed when the source pulse is under-sampled.
+- Q is estimated only when a decaying oscillatory response is actually observed.
+- RC time constant and cutoff estimates are compatibility estimates used only for
+  subthreshold analog responses.
+- Pulse matching is performed source-to-output within configured latency windows.
+- Merging, splitting, and extra output pulses are handled separately.

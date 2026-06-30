@@ -1,0 +1,14 @@
+Case,transition_ms,settling_ms,chatter_reversals,transition_z,Mode,latency_ms,latency_z,on_position,off_position,hysteresis_position,on_z,off_z,hysteresis_z,actuation_delay_ms,mechanical_travel_time_ms,sensor_decision_delay_ms,total_chain_latency_ms,actuation_z,travel_z,decision_z
+Chatter,0.1883,2.6128,4.0,-285.6136,1 - Output quality,,,,,,,,,,,,,,,
+Healthy baseline,0.7967,0.1459,0.0,0.3048,1 - Output quality,,,,,,,,,,,,,,,
+Slow edge,6.6122,1.1513,0.0,2733.4789,1 - Output quality,,,,,,,,,,,,,,,
+Healthy baseline,0.7965,,,-0.0767,2 - Command to sensor,13.9769,0.0228,,,,,,,,,,,,,
+Late chain,0.797,,,0.1509,2 - Command to sensor,35.0339,178.8958,,,,,,,,,,,,,
+Slow output edge,6.6087,,,2320.5524,2 - Command to sensor,14.0002,0.2209,,,,,,,,,,,,,
+Healthy baseline,,,,,3 - Position to sensor,,,0.6004,0.5395,0.061,-0.0929,0.1044,-0.0492,,,,,,,
+Threshold drift,,,,,3 - Position to sensor,,,0.7207,0.6594,0.0613,100.3519,188.7577,0.2024,,,,,,,
+Wide hysteresis,,,,,3 - Position to sensor,,,0.7003,0.419,0.2812,83.2811,-189.4821,140.5152,,,,,,,
+Actuation delay,,,,,4 - Full chain,,,,,,,,,11.495,12.9327,0.7051,25.1328,180.4207,0.3158,1.0501
+Healthy baseline,,,,,4 - Full chain,,,,,,,,,3.4792,12.9295,0.6783,17.0869,0.2062,0.1232,0.3739
+Mechanical travel delay,,,,,4 - Full chain,,,,,,,,,3.8866,32.3331,0.7028,36.9225,9.3676,1159.8742,0.9904
+Sensor decision delay,,,,,4 - Full chain,,,,,,,,,3.4783,12.9316,7.9964,24.4063,0.1872,0.2491,184.4206

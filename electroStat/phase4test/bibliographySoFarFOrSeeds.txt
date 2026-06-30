@@ -1,0 +1,195 @@
+# Sources for the ElectroStat Seed-Library Development Report
+
+## A. Power-quality standards
+
+[1] IEEE, *IEEE Recommended Practice for Monitoring Electric Power Quality*, IEEE Std 1159-2019, 2019.
+
+Use for:
+
+* RMS voltage disturbances
+* interruptions
+* voltage fluctuations
+* waveform distortion
+* notching
+* impulsive transients
+* oscillatory transients
+* general power-quality terminology and event classification
+
+[2] IEEE, *IEEE Standard for Harmonic Control in Electric Power Systems*, IEEE Std 519-2022, 2022.
+
+Use for:
+
+* harmonic distortion
+* total harmonic distortion
+* nonlinear loads
+* point-of-common-coupling interpretation
+* steady-state voltage and current distortion
+
+[3] IEEE, *IEEE Standard for Measurement and Limits of Voltage Fluctuations and Associated Light Flicker on AC Power Systems*, IEEE Std 1453-2022, 2022.
+
+Use for:
+
+* voltage fluctuation
+* flicker
+* short-term flicker severity
+* long-term flicker severity
+* limitations of the experimental ElectroStat amplitude-modulation flicker seed
+
+[4] International Electrotechnical Commission, *Electromagnetic Compatibility, Part 4-15: Testing and Measurement Techniques, Flickermeter, Functional and Design Specifications*, IEC 61000-4-15:2010, 2010.
+
+Use for:
+
+* standardized flickermeter architecture
+* perceptual weighting
+* flicker-severity measurement
+* explaining why a modulation detector is not equivalent to a standards-compliant flickermeter
+
+[5] International Electrotechnical Commission, *Electromagnetic Compatibility, Part 4-30: Testing and Measurement Techniques, Power Quality Measurement Methods*, IEC 61000-4-30:2025, 2025.
+
+Use for:
+
+* repeatable power-quality measurement procedures
+* sampling and measurement interpretation
+* measurement-class limitations
+* future field-validation requirements
+
+## B. Fourier and spectral-analysis foundations
+
+[6] J. W. Cooley and J. W. Tukey, “An Algorithm for the Machine Calculation of Complex Fourier Series,” *Mathematics of Computation*, vol. 19, no. 90, pp. 297-301, 1965. doi: 10.1090/S0025-5718-1965-0178586-1.
+
+Use for:
+
+* FFT computation
+* fundamental-frequency estimation
+* harmonic search
+* spectral feature extraction
+
+[7] P. D. Welch, “The Use of Fast Fourier Transform for the Estimation of Power Spectra: A Method Based on Time Averaging Over Short, Modified Periodograms,” *IEEE Transactions on Audio and Electroacoustics*, vol. 15, no. 2, pp. 70-73, 1967. doi: 10.1109/TAU.1967.1161901.
+
+Use for:
+
+* power spectral density
+* averaged periodograms
+* noise-spectrum estimation
+* spectral stability across windows
+
+## C. Filtering and robust statistics
+
+[8] A. Savitzky and M. J. E. Golay, “Smoothing and Differentiation of Data by Simplified Least Squares Procedures,” *Analytical Chemistry*, vol. 36, no. 8, pp. 1627-1639, 1964. doi: 10.1021/ac60214a047.
+
+Use for:
+
+* local polynomial smoothing
+* derivative estimation
+* sharp-event preprocessing
+* explaining the risk of smoothing or distorting narrow events
+
+[9] F. R. Hampel, “The Influence Curve and Its Role in Robust Estimation,” *Journal of the American Statistical Association*, vol. 69, no. 346, pp. 383-393, 1974.
+
+Use for:
+
+* robust estimation
+* median absolute deviation
+* outlier-resistant event thresholds
+* resistance to impulsive contamination
+
+[10] P. J. Rousseeuw and C. Croux, “Alternatives to the Median Absolute Deviation,” *Journal of the American Statistical Association*, vol. 88, no. 424, pp. 1273-1283, 1993. doi: 10.1080/01621459.1993.10476408.
+
+Use for:
+
+* robust scale estimation
+* limitations and efficiency of MAD
+* possible future replacement of fixed MAD thresholds
+
+## D. Exponential and modal identification
+
+[11] Y. Hua and T. K. Sarkar, “Matrix Pencil Method for Estimating Parameters of Exponentially Damped/Undamped Sinusoids in Noise,” *IEEE Transactions on Acoustics, Speech, and Signal Processing*, vol. 38, no. 5, pp. 814-824, 1990. doi: 10.1109/29.56027.
+
+Use for:
+
+* Hankel matrices
+* matrix-pencil pole extraction
+* damped sinusoidal parameter estimation
+* complex-conjugate poles
+* decay-rate and ringing-frequency estimation
+* ensemble transient analysis
+
+[12] J. F. Hauer, C. J. Demeure, and L. L. Scharf, “Initial Results in Prony Analysis of Power System Response Signals,” *IEEE Transactions on Power Systems*, vol. 5, no. 1, pp. 80-89, 1990. doi: 10.1109/59.49090.
+
+Use for:
+
+* applying exponential modal identification to power-system measurements
+* estimating damping, frequency, amplitude, and phase
+* comparison between Fourier and pole-based representations
+
+## E. Segmentation and optimization
+
+[13] R. Bellman, “The Theory of Dynamic Programming,” *Bulletin of the American Mathematical Society*, vol. 60, pp. 503-515, 1954.
+
+Use for:
+
+* optimal regional segmentation
+* WaveCompare 2 boundary selection
+* minimizing total regional fitting error rather than choosing boundaries greedily
+
+## F. Internal ElectroStat evidence
+
+[14] *ElectroStat WaveCompare 2 Mathematical Development Report*, project report, 23 June 2026.
+
+Use for:
+
+* original regional exponential concept
+* failed source-classification detour
+* corrected collective-waveform objective
+* 100-family synthetic validation
+* comparison of collective and single-capture fitting
+* documented limitations and next steps
+
+[15] *ElectroStat WaveCompare 2 Mathematical and Statistical Foundations*, project report, 24 June 2026.
+
+Use for:
+
+* derivations of alignment, normalization, MAD clipping, averaging, regional fitting, dynamic programming, and validation statistics
+* separation of estimation, fitting, and diagnosis
+* explanation of model-matched versus field validation
+
+[16] `gamma_harmonic_distortion_seed_v010.py`, ElectroStat project artifact, June 2026.
+
+Use for:
+
+* harmonic-summed frequency search
+* harmonic least-squares fitting
+* normalized harmonic-vector comparison
+* THD as a summary rather than the sole diagnostic feature
+
+[17] `Gamma_ElectroStat_Flicker_AM_Mod_Seed_v010.zip`, ElectroStat project artifact, June 2026.
+
+Use for:
+
+* amplitude-envelope extraction
+* modulation-frequency analysis
+* autocorrelation and phase folding
+* paired sideband confirmation
+* synthetic flicker validation
+* documenting the boundary between modulation detection and standards-compliant flicker measurement
+
+[18] `electrostat_sharp_event_detector.py` and `ElectroStat_sharp_event_bundle.zip`, ElectroStat project artifacts, June 2026.
+
+Use for:
+
+* shared sharp-event segmentation
+* physical-event counting
+* commutation-notch phase-grid classification
+* singular-event retention
+* missing-voltage area and inward-deviation features
+
+[19] `electrostat_ensemble_hankel.py` and `ElectroStat_ensemble_hankel_bundle.zip`, ElectroStat project artifacts, June 2026.
+
+Use for:
+
+* independent Hankel analysis of every measurement
+* matrix-pencil extraction of real and complex poles
+* pole clustering across captures
+* occurrence-rate calculation
+* stacked-Hankel refinement
+* synthetic validation of oscillatory and real-decay transient families

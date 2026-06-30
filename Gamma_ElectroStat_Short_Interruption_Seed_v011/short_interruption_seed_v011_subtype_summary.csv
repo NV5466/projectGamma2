@@ -1,0 +1,5 @@
+case,expected_subtype,subtype_accuracy
+instantaneous_interruption,instantaneous_interruption,1.0
+momentary_interruption,momentary_interruption,1.0
+temporary_interruption,temporary_interruption,1.0
+distorted_temporary_interruption,temporary_interruption,1.0

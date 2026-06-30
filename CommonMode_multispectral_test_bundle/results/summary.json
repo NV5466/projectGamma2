@@ -1,0 +1,47 @@
+{
+  "capture_count": 64,
+  "sample_rate_hz": 4096.0,
+  "known_injections": {
+    "60_hz": "same-polarity proportional common-mode",
+    "180_hz": "opposite-polarity differential",
+    "310_hz": "channel 1 local"
+  },
+  "results": [
+    {
+      "frequency_hz": 60.0,
+      "mean_amplitude_ch1": 0.07582862845151289,
+      "mean_amplitude_ch2": 0.05447333914291354,
+      "median_gain_ch2_over_ch1": 0.7195362201175158,
+      "gain_relative_mad": 0.016635193468733375,
+      "coherence": 0.9981882026870833,
+      "phase_difference_deg": -0.2698689370797689,
+      "occupancy_ch1": 1.0,
+      "occupancy_ch2": 1.0,
+      "classification": "common-mode"
+    },
+    {
+      "frequency_hz": 180.0,
+      "mean_amplitude_ch1": 0.049615200629706716,
+      "mean_amplitude_ch2": 0.04471124258029549,
+      "median_gain_ch2_over_ch1": 0.9007620120271385,
+      "gain_relative_mad": 0.009030460019511228,
+      "coherence": 0.9988318699195491,
+      "phase_difference_deg": 179.78942984145365,
+      "occupancy_ch1": 1.0,
+      "occupancy_ch2": 1.0,
+      "classification": "differential / opposite-polarity"
+    },
+    {
+      "frequency_hz": 310.0,
+      "mean_amplitude_ch1": 0.059995672738773605,
+      "mean_amplitude_ch2": 0.0005202509425403412,
+      "median_gain_ch2_over_ch1": 0.007802764179312606,
+      "gain_relative_mad": 0.3662282328820098,
+      "coherence": 0.010709648079109532,
+      "phase_difference_deg": 159.394999691972,
+      "occupancy_ch1": 1.0,
+      "occupancy_ch2": 0.0,
+      "classification": "channel 1 local"
+    }
+  ]
+}

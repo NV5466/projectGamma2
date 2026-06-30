@@ -1,0 +1,31 @@
+{
+  "classification": {
+    "field": "classification",
+    "value_when_detected": "PWM/VFD edge-coupled ringing",
+    "unchanged": true
+  },
+  "damping_candidate": {
+    "decay_rate_per_s": "Internal consensus estimate from deconvolved nonlinear fit, logarithmic decrement, and Cadzow-ESPRIT.",
+    "dominant_frequency_hz": "Dominant damped ringing frequency.",
+    "damping_ratio": "alpha / sqrt(alpha^2 + omega_d^2)",
+    "quality_factor": "sqrt(alpha^2 + omega_d^2) / (2 alpha)"
+  },
+  "accepted_damping": {
+    "accepted_decay_rate_per_s": "Published only for a stationary single-mode response.",
+    "accepted_damping_ratio": "Derived from accepted alpha and dominant frequency.",
+    "accepted_quality_factor": "Derived from accepted alpha and dominant frequency.",
+    "accepted_lower_bound_per_s": "alpha multiplied by 0.50.",
+    "accepted_upper_bound_per_s": "alpha multiplied by 1.50."
+  },
+  "status_values": [
+    "accepted_stationary_single_mode",
+    "candidate_only_nonstationary",
+    "unresolved"
+  ],
+  "acceptance_gate": {
+    "max_event_frequency_mad_fraction": 0.01,
+    "max_event_shift_mad_samples": 0.5,
+    "max_secondary_peak_ratio": 0.1,
+    "reported_uncertainty_fraction": 0.5
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "status": "clean_sag_supported",
+  "selected_window": 81,
+  "alignment_lag_samples": 6,
+  "alignment_correlation": 0.9942364559489324,
+  "event_count": 1,
+  "events": [
+    {
+      "start_index": 787,
+      "end_index": 1100,
+      "start_time": 0.787,
+      "end_time": 1.1,
+      "duration_s": 0.314,
+      "open_ended": false,
+      "refined_entry_index": 792,
+      "refined_recovery_index": 1062,
+      "max_depth": 0.29258844690570274,
+      "median_depth": 0.28059093443379995,
+      "deficit_area_s": 0.07901877861881965,
+      "equivalent_rectangular_duration_s": 0.27006800663009883,
+      "entry_slope_per_s": -13.701684959284144,
+      "recovery_slope_per_s": 10.280244314276487,
+      "entry_timescale_s": 0.021354194593862206,
+      "recovery_timescale_s": 0.028461234765686943,
+      "median_correlation": 0.998568850187727,
+      "median_rms_ratio": 0.7123286639321396,
+      "rms_gain_disagreement": 0.007965860880106368,
+      "unknown_residual_energy": 0.5969148519023121,
+      "known_noise_energy": 0.0097012672152006,
+      "classification": "clean_sag_supported",
+      "confidence": 0.9283747033998968
+    }
+  ],
+  "window_scores": {
+    "41": 12.61229319890457,
+    "81": 13.763333441444068,
+    "161": 13.319663243931458,
+    "241": 9.443183936744488
+  },
+  "notes": [
+    "RMS and local-gain reduction are jointly required for event entry.",
+    "Amplitude-over-slope is reported as a transition timescale, not event area.",
+    "Synthetic prototype only; thresholds are not field calibrated."
+  ]
+}

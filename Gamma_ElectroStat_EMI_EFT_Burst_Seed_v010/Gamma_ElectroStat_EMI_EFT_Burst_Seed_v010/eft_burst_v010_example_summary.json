@@ -1,0 +1,49 @@
+{
+  "status": "eft_like_burst_supported",
+  "snr_evaluated": false,
+  "confidence_status": "final_confidence_unavailable_snr_deferred",
+  "acquisition": {
+    "sample_interval_s": 2.4999999999999893e-10,
+    "sample_rate_hz": 4000000000.000017,
+    "effective_bandwidth_hz": 500000000.0,
+    "estimated_instrument_rise_time_s": 7e-10,
+    "samples_across_nominal_rise": 20.000000000000085,
+    "bandwidth_to_nominal_edge_ratio": 7.142857142857143,
+    "clipping_detected": false,
+    "uniformly_sampled": true,
+    "real_time_acquisition": true,
+    "observability_status": "strongly_supported",
+    "flags": []
+  },
+  "pulse_count": 8,
+  "mode_count": 19,
+  "mode_cluster_count": 4,
+  "evidence": {
+    "acquisition_observability": "strongly_supported",
+    "repeatability": "strongly_supported",
+    "resampling_stability": "strongly_supported",
+    "method_agreement": "strongly_supported",
+    "provisional_combined_support": "strongly_supported"
+  },
+  "train_summary": {
+    "overview_pulse_count": 90,
+    "burst_count": 2,
+    "median_within_burst_interval_s": 1.0000000000000026e-05,
+    "repetition_frequency_hz": 99999.99999999974,
+    "nearest_expected_repetition_hz": 100000.0,
+    "expected_repetition_match": true,
+    "repetition_relative_error": 2.6193447411060335e-15,
+    "interval_mad_s": 1.4999999999997654e-07,
+    "total_inferred_missing_pulse_count": 0
+  },
+  "burst_count": 2,
+  "notes": [
+    "SNR is intentionally not calculated in v0.1.0.",
+    "All support labels are provisional and categorical.",
+    "The worker reports EFT-like measured behavior, not IEC compliance.",
+    "The explicit pulse waveform and residuals are preserved.",
+    "Matrix-pencil modes describe post-pulse dynamics, not a unique physical component.",
+    "Equivalent-time acquisition is not trusted for pulse-to-pulse variation.",
+    "Synthetic validation is not field calibration."
+  ]
+}

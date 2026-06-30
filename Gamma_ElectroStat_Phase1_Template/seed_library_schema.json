@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gamma location-agnostic physical seed",
+  "type": "object",
+  "required": [
+    "seed_id",
+    "family",
+    "description",
+    "order",
+    "complexity",
+    "parameters",
+    "provenance",
+    "validation_status"
+  ],
+  "properties": {
+    "seed_id": {"type": "string", "minLength": 1},
+    "family": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "order": {"type": "integer", "minimum": 0},
+    "complexity": {"type": "number", "minimum": 0},
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "lower", "upper", "unit", "log_scale"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "lower": {"type": "number"},
+          "upper": {"type": "number"},
+          "unit": {"type": "string"},
+          "nominal": {"type": ["number", "null"]},
+          "log_scale": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "ports": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "known_failure_cases": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "type"],
+        "properties": {
+          "source": {"type": "string"},
+          "type": {
+            "type": "string",
+            "enum": ["standard", "datasheet", "textbook", "paper", "bench", "internal"]
+          },
+          "notes": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": ["demonstration", "researched", "bench_validated", "field_validated"]
+    }
+  },
+  "additionalProperties": false
+}

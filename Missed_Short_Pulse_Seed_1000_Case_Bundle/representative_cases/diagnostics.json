@@ -1,0 +1,319 @@
+{
+  "healthy": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005301,
+        "width_s": 0.0003000000000000008,
+        "peak": 24.04061586644548,
+        "area": 0.007176115338225466,
+        "rise_index": 5001,
+        "fall_index": 5301
+      },
+      {
+        "rise_s": 0.015000999999999999,
+        "fall_s": 0.015501,
+        "width_s": 0.0005000000000000004,
+        "peak": 24.058125555591,
+        "area": 0.011975737806674318,
+        "rise_index": 15001,
+        "fall_index": 15501
+      }
+    ],
+    "output_pulses": [
+      {
+        "rise_s": 0.0056099999999999995,
+        "fall_s": 0.0059099999999999995,
+        "width_s": 0.0002999999999999999,
+        "peak": 24.073026198505268,
+        "area": 0.006988631589930768,
+        "rise_index": 5610,
+        "fall_index": 5910
+      },
+      {
+        "rise_s": 0.015609999999999999,
+        "fall_s": 0.01611,
+        "width_s": 0.0005000000000000004,
+        "peak": 24.07950678783175,
+        "area": 0.01178919654219528,
+        "rise_index": 15610,
+        "fall_index": 16110
+      }
+    ],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 24.06417748959909,
+    "output_baseline": -0.06512569858836452,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "complete_absence": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005252,
+        "width_s": 0.00025100000000000035,
+        "peak": 24.043290404747367,
+        "area": 0.006000519054881858,
+        "rise_index": 5001,
+        "fall_index": 5252
+      }
+    ],
+    "output_pulses": [],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 0.1301010397576597,
+    "output_baseline": -0.06509254131487772,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "subthreshold_rc": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005122,
+        "width_s": 0.00012100000000000045,
+        "peak": 24.044849518470386,
+        "area": 0.002879926648282173,
+        "rise_index": 5001,
+        "fall_index": 5122
+      }
+    ],
+    "output_pulses": [],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 0.12134840412666734,
+    "output_baseline": -0.06315032985654023,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "width_collapse": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005402,
+        "width_s": 0.0004010000000000003,
+        "peak": 24.04774437022165,
+        "area": 0.009600178548926041,
+        "rise_index": 5001,
+        "fall_index": 5402
+      }
+    ],
+    "output_pulses": [
+      {
+        "rise_s": 0.005702,
+        "fall_s": 0.005791,
+        "width_s": 8.900000000000054e-05,
+        "peak": 24.055742853195085,
+        "area": 0.002111765817423822,
+        "rise_index": 5702,
+        "fall_index": 5791
+      }
+    ],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 24.041605071572565,
+    "output_baseline": -0.06611908761549729,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "late": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005301,
+        "width_s": 0.0003000000000000008,
+        "peak": 24.05442337576055,
+        "area": 0.00717705666046988,
+        "rise_index": 5001,
+        "fall_index": 5301
+      }
+    ],
+    "output_pulses": [
+      {
+        "rise_s": 0.013000999999999999,
+        "fall_s": 0.013300999999999999,
+        "width_s": 0.0002999999999999999,
+        "peak": 24.079760204961786,
+        "area": 0.007176528088682268,
+        "rise_index": 13001,
+        "fall_index": 13301
+      }
+    ],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 0.3937446943079763,
+    "output_baseline": -0.06562263168104623,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "merge": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005252,
+        "width_s": 0.00025100000000000035,
+        "peak": 24.0586514939148,
+        "area": 0.006000297284702404,
+        "rise_index": 5001,
+        "fall_index": 5252
+      },
+      {
+        "rise_s": 0.005552,
+        "fall_s": 0.005802,
+        "width_s": 0.0002500000000000002,
+        "peak": 24.04804422588702,
+        "area": 0.005976003406105316,
+        "rise_index": 5552,
+        "fall_index": 5802
+      }
+    ],
+    "output_pulses": [
+      {
+        "rise_s": 0.005651,
+        "fall_s": 0.006501,
+        "width_s": 0.0008500000000000001,
+        "peak": 24.092120262115415,
+        "area": 0.020375937401968743,
+        "rise_index": 5651,
+        "fall_index": 6501
+      }
+    ],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 24.051347141483863,
+    "output_baseline": -0.0650606116144946,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "split": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005501,
+        "width_s": 0.0005000000000000004,
+        "peak": 24.05048262464627,
+        "area": 0.011976169658792472,
+        "rise_index": 5001,
+        "fall_index": 5501
+      }
+    ],
+    "output_pulses": [
+      {
+        "rise_s": 0.005601,
+        "fall_s": 0.005722,
+        "width_s": 0.00012099999999999958,
+        "peak": 24.067317197579797,
+        "area": 0.0028801092797722297,
+        "rise_index": 5601,
+        "fall_index": 5722
+      },
+      {
+        "rise_s": 0.005901,
+        "fall_s": 0.006051,
+        "width_s": 0.00014999999999999996,
+        "peak": 24.054747973851512,
+        "area": 0.0035760449881714227,
+        "rise_index": 5901,
+        "fall_index": 6051
+      }
+    ],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 24.05376679983573,
+    "output_baseline": -0.06523956216139705,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "stretched": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005252,
+        "width_s": 0.00025100000000000035,
+        "peak": 24.065045071492754,
+        "area": 0.006000538875605596,
+        "rise_index": 5001,
+        "fall_index": 5252
+      }
+    ],
+    "output_pulses": [
+      {
+        "rise_s": 0.005601,
+        "fall_s": 0.006501,
+        "width_s": 0.0008999999999999998,
+        "peak": 24.087113432848003,
+        "area": 0.021576501007727074,
+        "rise_index": 5601,
+        "fall_index": 6501
+      }
+    ],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 0.13001924167191012,
+    "output_baseline": -0.06484882179771144,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "extra_spurious": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005000999999999999,
+        "fall_s": 0.005301,
+        "width_s": 0.0003000000000000008,
+        "peak": 24.060614098390513,
+        "area": 0.007175853264231073,
+        "rise_index": 5001,
+        "fall_index": 5301
+      }
+    ],
+    "output_pulses": [
+      {
+        "rise_s": 0.005601,
+        "fall_s": 0.005901,
+        "width_s": 0.0002999999999999999,
+        "peak": 24.077504981062923,
+        "area": 0.007175961908575216,
+        "rise_index": 5601,
+        "fall_index": 5901
+      },
+      {
+        "rise_s": 0.020000999999999998,
+        "fall_s": 0.020250999999999998,
+        "width_s": 0.0002500000000000002,
+        "peak": 24.086473574132924,
+        "area": 0.005975093357287617,
+        "rise_index": 20001,
+        "fall_index": 20251
+      }
+    ],
+    "merge_groups": [],
+    "extra_output_indices": [
+      1
+    ],
+    "source_amplitude": 0.40075381967944257,
+    "output_baseline": -0.06546195768768114,
+    "minimum_valid_output_width_s": 0.00015,
+    "sample_rate_hz": 999999.9999998673
+  },
+  "acquisition_limited": {
+    "source_pulses": [
+      {
+        "rise_s": 0.005,
+        "fall_s": 0.00502,
+        "width_s": 2.0000000000000052e-05,
+        "peak": 23.999381167418324,
+        "area": 0.0002399537991381639,
+        "rise_index": 250,
+        "fall_index": 251
+      }
+    ],
+    "output_pulses": [],
+    "merge_groups": [],
+    "extra_output_indices": [],
+    "source_amplitude": 0.08798425339760998,
+    "output_baseline": -0.04921016580417514,
+    "minimum_valid_output_width_s": 1e-05,
+    "sample_rate_hz": 49999.99999999987
+  }
+}

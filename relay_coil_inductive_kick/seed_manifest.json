@@ -1,0 +1,11 @@
+﻿{
+    "seed_id":  "relay_coil_inductive_kick",
+    "primary_modules":  [
+
+                        ],
+    "family":  "emi_switching",
+    "notes":  "No files were confidently assigned during the repository sort.",
+    "validation_status":  "none",
+    "folder":  "relay_coil_inductive_kick",
+    "status":  "scaffolded"
+}

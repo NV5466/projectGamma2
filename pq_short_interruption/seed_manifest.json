@@ -1,0 +1,13 @@
+﻿{
+    "seed_id":  "pq_short_interruption",
+    "family":  "power_quality",
+    "folder":  "pq_short_interruption",
+    "status":  "implemented_synthetic",
+    "validation_status":  "330 synthetic cases; sensitivity/specificity/precision/balanced accuracy 1.000000",
+    "primary_modules":  [
+                            "sliding_RMS",
+                            "duration_measurement",
+                            "sag_core_reuse"
+                        ],
+    "field_calibration_claim":  false
+}

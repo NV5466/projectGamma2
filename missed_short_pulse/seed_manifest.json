@@ -1,0 +1,13 @@
+﻿{
+    "seed_id":  "missed_short_pulse",
+    "family":  "discrete_input_timing",
+    "folder":  "missed_short_pulse",
+    "status":  "implemented_synthetic",
+    "validation_status":  "1000/1000 randomized synthetic trials reported",
+    "primary_modules":  [
+                            "pulse_width_histogram",
+                            "propagation_compare",
+                            "event_latch_review"
+                        ],
+    "field_calibration_claim":  false
+}

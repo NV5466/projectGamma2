@@ -1,0 +1,11 @@
+﻿{
+    "seed_id":  "pq_flicker_am_mod",
+    "primary_modules":  [
+
+                        ],
+    "family":  "power_quality",
+    "notes":  "No files were confidently assigned during the repository sort.",
+    "validation_status":  "none",
+    "folder":  "pq_flicker_am_mod",
+    "status":  "scaffolded"
+}

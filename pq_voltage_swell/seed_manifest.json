@@ -1,0 +1,15 @@
+﻿{
+    "seed_id":  "pq_voltage_swell",
+    "family":  "power_quality",
+    "folder":  "pq_voltage_swell",
+    "status":  "implemented_synthetic",
+    "validation_status":  "900 cases; sensitivity 0.996667; specificity 1.000000; precision 1.000000; balanced accuracy 0.998333; runtime 50.80 s; synthetic research prototype only",
+    "primary_modules":  [
+                            "sliding_RMS",
+                            "FFT",
+                            "THD",
+                            "STFT",
+                            "duration_check"
+                        ],
+    "field_calibration_claim":  false
+}

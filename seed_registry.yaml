@@ -1,0 +1,175 @@
+schema: gamma.seed_registry.v1
+repo: NV5466/projectGamma2
+branch: sort/codex-seed-library-layout
+status_boundary: synthetic and bench-validation research workspace, no field calibration claim
+
+methodology:
+  - raw_captures
+  - metadata_precheck
+  - wc2_alignment_reference_recovery
+  - residual_feature_extraction
+  - seed_specific_evidence_rules
+  - confidence_scoring
+  - cautious_report_language
+
+seeds:
+  - seed_id: pq_voltage_sag
+    family: power_quality
+    folder: pq_voltage_sag
+    status: implemented_synthetic
+    primary_modules: [WC2_alignment, sliding_RMS, affine_gain, residual_analysis]
+    validation_status: "900 synthetic validation runs reported in README"
+
+  - seed_id: pq_voltage_swell
+    family: power_quality
+    folder: pq_voltage_swell
+    status: implemented_synthetic
+    primary_modules: [sliding_RMS, FFT, THD, STFT, duration_check]
+    validation_status: "900 cases; sensitivity 0.996667; specificity 1.000000; precision 1.000000; balanced accuracy 0.998333; runtime 50.80 s; synthetic research prototype only"
+    validation_cases: 900
+    sensitivity: 0.996667
+    specificity: 1.000000
+    precision: 1.000000
+    balanced_accuracy: 0.998333
+    runtime_s: 50.80
+    boundary: synthetic research prototype only, no field calibration claim
+
+  - seed_id: pq_short_interruption
+    family: power_quality
+    folder: pq_short_interruption
+    status: implemented_synthetic
+    primary_modules: [sliding_RMS, duration_measurement, sag_core_reuse]
+    validation_status: "330 synthetic cases; sensitivity/specificity/precision/balanced accuracy 1.000000"
+
+  - seed_id: pq_harmonic_distortion
+    family: power_quality
+    folder: pq_harmonic_distortion
+    status: implemented_synthetic
+    primary_modules: [WC2_reference, harmonic_bins, THD, FFT, sinusoidal_regression]
+    validation_status: "270 synthetic cases; sensitivity/specificity/precision/balanced accuracy 1.000000"
+
+  - seed_id: pq_flicker_am_mod
+    family: power_quality
+    folder: pq_flicker_am_mod
+    status: scaffolded
+    primary_modules: [RMS_trend, sideband_detection, STFT, envelope_analysis]
+    validation_status: "none"
+
+  - seed_id: pq_commutation_notch
+    family: power_quality
+    folder: pq_commutation_notch
+    status: implemented_synthetic
+    primary_modules: [edge_detection, sharp_event_detector, phase_locked_event_timing]
+    validation_status: "needs_review; sharp-event bundle assigned by commutation notch evidence"
+
+  - seed_id: pq_impulsive_transient
+    family: power_quality
+    folder: pq_impulsive_transient
+    status: scaffolded
+    primary_modules: [peak_detection, wavelet, STFT]
+    validation_status: "none"
+
+  - seed_id: pq_oscillatory_transient
+    family: power_quality
+    folder: pq_oscillatory_transient
+    status: implemented_synthetic
+    primary_modules: [matrix_pencil, pole_clustering, WC2_reference, STFT]
+    validation_status: "needs_review; ensemble hankel bundle assigned by oscillatory/pole evidence"
+
+  - seed_id: emi_eft_burst
+    family: emi_switching
+    folder: emi_eft_burst
+    status: implemented_synthetic
+    primary_modules: [edge_counting, pulse_template, matrix_pencil_modes, burst_grouping]
+    validation_status: "24/24 synthetic outcomes, 6/6 tests reported"
+
+  - seed_id: current_inrush
+    family: emi_switching
+    folder: current_inrush
+    status: implemented_synthetic
+    primary_modules: [cycle_RMS, envelope_template, population_summary, current_vs_command_timing]
+    validation_status: "synthetic families reported; SNR deferred"
+
+  - seed_id: switch_relay_contact_bounce
+    family: discrete_input_timing
+    folder: switch_relay_contact_bounce
+    status: implemented_synthetic
+    primary_modules: [edge_detection, contact_state_reconstruction, pulse_width_statistics, command_contact_timing]
+    validation_status: "108/108 population captures and 114 pytest cases reported"
+
+  - seed_id: relay_coil_inductive_kick
+    family: emi_switching
+    folder: relay_coil_inductive_kick
+    status: scaffolded
+    primary_modules: [peak_detection, edge_trigger, source_victim_timing]
+    validation_status: "none"
+
+  - seed_id: ground_loop_hum
+    family: measurement_artifact
+    folder: ground_loop_hum
+    status: scaffolded
+    primary_modules: [FFT, coherence, differential_compare, RMS]
+    validation_status: "none"
+
+  - seed_id: common_mode_noise
+    family: measurement_artifact
+    folder: common_mode_noise
+    status: implemented_synthetic
+    primary_modules: [WC2_residuals, differential_subtraction, CSD, coherence, cross_spectrum_phase]
+    validation_status: "controlled synthetic multi-spectral validation documented"
+
+  - seed_id: pwm_vfd_edge_coupled_noise
+    family: emi_switching
+    folder: pwm_vfd_edge_coupled_noise
+    status: implemented_synthetic
+    primary_modules: [cross_correlation, coherence, damping_estimation, edge_synchronous_analysis]
+    validation_status: "needs_review; PWM/VFD damping bundle assigned by filename and README"
+
+  - seed_id: sensor_threshold_chatter
+    family: discrete_input_timing
+    folder: sensor_threshold_chatter
+    status: needs_review
+    primary_modules: [edge_timing, analog_vs_digital_compare, threshold_crossing_count]
+    validation_status: "sensor analyzer bundle kept in _unsorted_review because it spans multiple sensor seeds"
+
+  - seed_id: slow_edge_late_transition
+    family: discrete_input_timing
+    folder: slow_edge_late_transition
+    status: needs_review
+    primary_modules: [rise_fall_time, timing_histogram, threshold_crossing_analysis]
+    validation_status: "sensor analyzer bundle kept in _unsorted_review because it spans multiple sensor seeds"
+
+  - seed_id: missed_short_pulse
+    family: discrete_input_timing
+    folder: missed_short_pulse
+    status: implemented_synthetic
+    primary_modules: [pulse_width_histogram, propagation_compare, event_latch_review]
+    validation_status: "1000/1000 randomized synthetic trials reported"
+
+  - seed_id: high_speed_input_bounce
+    family: discrete_input_timing
+    folder: high_speed_input_bounce
+    status: concept_validated_elsewhere
+    primary_modules: [WC2_alignment, source_victim_compare, threshold_consequence_model]
+    validation_status: "HSIB chunk recovery experiment reports 100/100 recovered and 31/31 controls rejected"
+
+  - seed_id: bearing_fault_vibration_envelope
+    family: machinery
+    folder: bearing_fault_vibration_envelope
+    status: scaffolded
+    primary_modules: [envelope_FFT, PSD, wavelet, STFT]
+    validation_status: "none"
+
+  - seed_id: bearing_fault_current_signature
+    family: machinery
+    folder: bearing_fault_current_signature
+    status: scaffolded
+    primary_modules: [FFT, PSD, STFT, coherence]
+    validation_status: "none"
+
+  - seed_id: broken_rotor_bar_sidebands
+    family: machinery
+    folder: broken_rotor_bar_sidebands
+    status: scaffolded
+    primary_modules: [high_resolution_FFT, order_tracking, trend_vs_load, MCSA]
+    validation_status: "none"

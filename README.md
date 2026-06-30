@@ -108,13 +108,18 @@ This definitely proves the field system failed because of <seed>.
 - `seed_registry.yaml`: canonical first-release seed list and maturity notes.
 - `<seed_id>/README.md`: per-seed folder guide.
 
-## Next required cleanup
+## Physical layout
 
-A local clone should still run a physical file inventory:
+The sorted branch now uses:
 
-```bash
-git checkout sort/main-seed-layout
-find . -maxdepth 3 -type f | sort
+```text
+<seed_id>/    seed-owned implementations, validation outputs, and archives
+modules/      shared analyzers, reusable methods, and legacy packages
+datasets/     shared captures and generated reports
+docs/         program-level references
+templates/    seed templates
+experiments/  exploratory work
+sandbox/      scratch/learning material
 ```
 
-Then compare actual files against `seed_registry.yaml`.
+The canonical seed names remain defined by `seed_registry.yaml`.

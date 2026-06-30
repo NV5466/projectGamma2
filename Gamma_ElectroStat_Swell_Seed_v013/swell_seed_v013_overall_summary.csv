@@ -1,2 +1,0 @@
-true_positives,false_negatives,false_positives,true_negatives,sensitivity,specificity,precision,balanced_accuracy,runtime_s
-299,1,0,600,0.9966666666666667,1.0,1.0,0.9983333333333333,50.798563940999884

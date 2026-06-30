@@ -16,18 +16,23 @@ This branch starts from `main` and turns the repo into a clearer seed-library la
 2. Preserved the original swell-worker README content inside `pq_voltage_swell/README.md`.
 3. Added `seed_registry.yaml` as the canonical first-release seed list and maturity map.
 
-## Why this is not a full physical sort yet
+## Physical sort status
 
-The GitHub connector still did not expose a clean recursive tree listing. Because of that, this branch avoids blind file moves. It creates the sorted structure and metadata safely, but does not relocate unknown implementation files.
+The local inventory pass has now been run on this branch. Files with clear seed ownership were moved into canonical `seed_registry.yaml` folders, and cross-seed assets were moved into support buckets.
 
-The next local step is:
+Top-level layout is now:
 
-```bash
-git checkout sort/main-seed-layout
-find . -maxdepth 3 -type f | sort
+```text
+<seed_id>/                 canonical seed folders from seed_registry.yaml
+datasets/                  shared fake-scope captures and generated reports
+docs/                      program-level PDFs and reports
+experiments/               exploratory work that is not yet one canonical seed
+modules/                   shared analyzers, legacy packages, and reusable methods
+sandbox/                   learning/scratch material
+templates/                 seed and inference templates
 ```
 
-Then compare the physical inventory against `seed_registry.yaml`.
+Per-seed ZIPs were kept with their owning seed under `archive/`. Shared ZIPs were kept with the matching module, template, or experiment.
 
 ## Sorting principle
 
@@ -47,3 +52,5 @@ Every seed should eventually own this shape:
 ```
 
 Do not move files by vibes. Move them only after inventory confirms what they are.
+
+The remaining deliberately unsorted work is scaffold creation for registry entries that do not yet have confirmed implementation files in this checkout.

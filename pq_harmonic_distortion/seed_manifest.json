@@ -1,0 +1,15 @@
+﻿{
+    "seed_id":  "pq_harmonic_distortion",
+    "family":  "power_quality",
+    "folder":  "pq_harmonic_distortion",
+    "status":  "implemented_synthetic",
+    "validation_status":  "270 synthetic cases; sensitivity/specificity/precision/balanced accuracy 1.000000",
+    "primary_modules":  [
+                            "WC2_reference",
+                            "harmonic_bins",
+                            "THD",
+                            "FFT",
+                            "sinusoidal_regression"
+                        ],
+    "field_calibration_claim":  false
+}

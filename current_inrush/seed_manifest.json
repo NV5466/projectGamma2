@@ -1,0 +1,14 @@
+﻿{
+    "seed_id":  "current_inrush",
+    "family":  "emi_switching",
+    "folder":  "current_inrush",
+    "status":  "implemented_synthetic",
+    "validation_status":  "synthetic families reported; SNR deferred",
+    "primary_modules":  [
+                            "cycle_RMS",
+                            "envelope_template",
+                            "population_summary",
+                            "current_vs_command_timing"
+                        ],
+    "field_calibration_claim":  false
+}

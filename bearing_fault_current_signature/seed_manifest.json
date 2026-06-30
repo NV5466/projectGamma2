@@ -1,0 +1,11 @@
+﻿{
+    "seed_id":  "bearing_fault_current_signature",
+    "primary_modules":  [
+
+                        ],
+    "family":  "machinery",
+    "notes":  "No files were confidently assigned during the repository sort.",
+    "validation_status":  "none",
+    "folder":  "bearing_fault_current_signature",
+    "status":  "scaffolded"
+}

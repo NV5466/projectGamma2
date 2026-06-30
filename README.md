@@ -1,22 +1,50 @@
-# Gamma / ElectroStat Swell Seed v0.1.3
+﻿# Gamma / ElectroStat Seed Library
 
-This is the fully integrated end-to-end swell worker.
+Gamma is the overall diagnostic project.
 
-Changes from v0.1.2:
-- residual energy classifies clean versus distorted behavior;
-- residual energy does not erase supported swell evidence;
-- a candidate must have an equivalent rectangular excess duration of
-  at least 2.0 selected
-  analysis windows.
+ElectroStat is the signal-processing and evidence engine.
 
-That last rule prevents moving-window smearing from promoting a short
-spike or one offset-edge artifact into a sustained swell.
+WC2 is the waveform reference, alignment, and residual layer.
 
-Validation cases: 900
-Sensitivity: 0.996667
-Specificity: 1.000000
-Precision: 1.000000
-Balanced accuracy: 0.998333
-Runtime: 50.80 s
+DIH is only an informal nickname. It is not the official project name for this repository.
 
-Synthetic research prototype only; no field calibration claim.
+## Methodology
+
+```text
+raw captures
+  -> metadata / precheck
+  -> WC2 alignment and reference recovery
+  -> residual / feature extraction
+  -> seed-specific evidence rules
+  -> confidence scoring
+  -> cautious report language
+```
+
+## Repository Shape
+
+This branch organizes confirmed seed-owned files into canonical seed folders. Files that could not be assigned without guessing are preserved under `_unsorted_review/` and documented in `UNSORTED_REVIEW.md`.
+
+Each seed folder moves toward:
+
+```text
+<seed_id>/
+  README.md
+  seed_manifest.json
+  src/
+  tests/
+  fixtures/
+  expected_outputs/
+  plots/
+  notes.md
+```
+
+Read first:
+
+- `PROGRAM_CONCEPT_REPORT.md`
+- `REPO_ANALYSIS_REPORT.md`
+- `REPO_FILE_INVENTORY.md`
+- `SEED_IMPLEMENTATION_MATRIX.md`
+- `seed_registry.yaml`
+- `UNSORTED_REVIEW.md`
+
+The old root swell-worker README content is preserved in `pq_voltage_swell/README.md`.

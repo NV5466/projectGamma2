@@ -1,0 +1,15 @@
+﻿{
+    "seed_id":  "common_mode_noise",
+    "family":  "measurement_artifact",
+    "folder":  "common_mode_noise",
+    "status":  "implemented_synthetic",
+    "validation_status":  "controlled synthetic multi-spectral validation documented",
+    "primary_modules":  [
+                            "WC2_residuals",
+                            "differential_subtraction",
+                            "CSD",
+                            "coherence",
+                            "cross_spectrum_phase"
+                        ],
+    "field_calibration_claim":  false
+}

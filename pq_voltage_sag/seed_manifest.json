@@ -1,0 +1,14 @@
+﻿{
+    "seed_id":  "pq_voltage_sag",
+    "family":  "power_quality",
+    "folder":  "pq_voltage_sag",
+    "status":  "implemented_synthetic",
+    "validation_status":  "900 synthetic validation runs reported in README",
+    "primary_modules":  [
+                            "WC2_alignment",
+                            "sliding_RMS",
+                            "affine_gain",
+                            "residual_analysis"
+                        ],
+    "field_calibration_claim":  false
+}

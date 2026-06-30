@@ -1,0 +1,13 @@
+﻿{
+    "seed_id":  "pq_commutation_notch",
+    "family":  "power_quality",
+    "folder":  "pq_commutation_notch",
+    "status":  "implemented_synthetic",
+    "validation_status":  "needs_review; sharp-event bundle assigned by commutation notch evidence",
+    "primary_modules":  [
+                            "edge_detection",
+                            "sharp_event_detector",
+                            "phase_locked_event_timing"
+                        ],
+    "field_calibration_claim":  false
+}

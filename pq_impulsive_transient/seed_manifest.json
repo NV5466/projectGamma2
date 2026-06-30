@@ -1,0 +1,11 @@
+﻿{
+    "seed_id":  "pq_impulsive_transient",
+    "primary_modules":  [
+
+                        ],
+    "family":  "power_quality",
+    "notes":  "No files were confidently assigned during the repository sort.",
+    "validation_status":  "none",
+    "folder":  "pq_impulsive_transient",
+    "status":  "scaffolded"
+}

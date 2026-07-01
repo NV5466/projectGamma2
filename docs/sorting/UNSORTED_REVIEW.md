@@ -1,6 +1,8 @@
 # Unsorted Review
 
-Files here were preserved instead of forced into a seed folder.
+Historical review log for material that was originally preserved instead of forced into a seed folder.
+
+Current status: `_unsorted_review/` has been emptied on `sort/unsorted-review-domain-cleanup`. Useful material was moved to explicit ownership domains; confirmed duplicates and committed bytecode were deleted.
 
 | original/current area | why unclear | possible destination | evidence needed |
 |---|---|---|---|

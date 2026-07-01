@@ -1,6 +1,6 @@
 schema: gamma.seed_registry.v1
 repo: NV5466/projectGamma2
-branch: sort/codex-seed-library-layout
+branch: sort/unsorted-review-domain-cleanup
 status_boundary: synthetic and bench-validation research workspace, no field calibration claim
 
 methodology:
@@ -130,14 +130,14 @@ seeds:
     folder: sensor_threshold_chatter
     status: needs_review
     primary_modules: [edge_timing, analog_vs_digital_compare, threshold_crossing_count]
-    validation_status: "sensor analyzer bundle kept in _unsorted_review because it spans multiple sensor seeds"
+    validation_status: "sensor analyzer bundle kept in cross_seed/discrete_input_timing/sensor_signal_analyzer because it spans multiple sensor seeds"
 
   - seed_id: slow_edge_late_transition
     family: discrete_input_timing
     folder: slow_edge_late_transition
     status: needs_review
     primary_modules: [rise_fall_time, timing_histogram, threshold_crossing_analysis]
-    validation_status: "sensor analyzer bundle kept in _unsorted_review because it spans multiple sensor seeds"
+    validation_status: "sensor analyzer bundle kept in cross_seed/discrete_input_timing/sensor_signal_analyzer because it spans multiple sensor seeds"
 
   - seed_id: missed_short_pulse
     family: discrete_input_timing

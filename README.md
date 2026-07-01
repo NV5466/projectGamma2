@@ -22,7 +22,7 @@ raw captures
 
 ## Repository Shape
 
-This branch organizes confirmed seed-owned files into canonical seed folders. Files that could not be assigned without guessing are preserved under `_unsorted_review/` and documented in `UNSORTED_REVIEW.md`.
+This branch organizes confirmed seed-owned files into canonical seed folders and shared ownership domains. Former `_unsorted_review/` material has been sorted into `docs/`, `shared/`, `electrostat/`, `legacy/`, `templates/`, `cross_seed/`, and `_archive/` areas where seed ownership was not the right boundary.
 
 Each seed folder moves toward:
 
@@ -41,10 +41,10 @@ Each seed folder moves toward:
 Read first:
 
 - `PROGRAM_CONCEPT_REPORT.md`
-- `REPO_ANALYSIS_REPORT.md`
-- `REPO_FILE_INVENTORY.md`
+- `docs/sorting/REPO_ANALYSIS_REPORT.md`
+- `docs/sorting/REPO_FILE_INVENTORY.md`
 - `SEED_IMPLEMENTATION_MATRIX.md`
 - `seed_registry.yaml`
-- `UNSORTED_REVIEW.md`
+- `docs/sorting/UNSORTED_REVIEW.md`
 
 The old root swell-worker README content is preserved in `pq_voltage_swell/README.md`.

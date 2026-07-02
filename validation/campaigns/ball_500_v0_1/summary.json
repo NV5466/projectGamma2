@@ -1,0 +1,296 @@
+{
+  "accuracy": 0.762,
+  "campaign": "ball_500_v0_1",
+  "campaign_id": "ball_500_v0_1",
+  "case_count_requested": 500,
+  "correct_cases": 381,
+  "failed_cases": 0,
+  "highest_confidence_wrong_classifications": [
+    {
+      "capture_id": "ball500_relay_036_clean",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_039_timing_shifted",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_078_clean",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_099_timing_shifted",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_120_clean",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_123_timing_shifted",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_129_timing_shifted",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_135_timing_shifted",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_relay_141_timing_shifted",
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 1.0
+    },
+    {
+      "capture_id": "ball500_missed_042_clean",
+      "truth_label": "missed_short_pulse",
+      "winner": "relay_coil_inductive_kick",
+      "winner_confidence": 0.9605391424228182
+    }
+  ],
+  "lowest_confidence_correct_classifications": [
+    {
+      "capture_id": "ball500_missed_067_noisy",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.6142857142857143
+    },
+    {
+      "capture_id": "ball500_missed_153_timing_shifted",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.6142857142857143
+    },
+    {
+      "capture_id": "ball500_missed_158_amplitude_shifted",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.6142857142857143
+    },
+    {
+      "capture_id": "ball500_missed_165_timing_shifted",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.6142857142857143
+    },
+    {
+      "capture_id": "ball500_missed_027_timing_shifted",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.625
+    },
+    {
+      "capture_id": "ball500_missed_036_clean",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.625
+    },
+    {
+      "capture_id": "ball500_missed_040_degraded_reference",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.625
+    },
+    {
+      "capture_id": "ball500_missed_041_near_miss_ambiguous",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.625
+    },
+    {
+      "capture_id": "ball500_missed_046_degraded_reference",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.625
+    },
+    {
+      "capture_id": "ball500_missed_049_noisy",
+      "truth_label": "missed_short_pulse",
+      "winner": "missed_short_pulse",
+      "winner_confidence": 0.625
+    }
+  ],
+  "outputs": [
+    "confusion_matrix.csv",
+    "per_case_results.csv",
+    "reference_comparison.csv",
+    "summary.json",
+    "failure_examples/"
+  ],
+  "per_signature_accuracy": {
+    "high_speed_input_bounce": {
+      "accuracy": 0.9101796407185628,
+      "correct": 152,
+      "failed": 0,
+      "total": 167
+    },
+    "missed_short_pulse": {
+      "accuracy": 0.6626506024096386,
+      "correct": 110,
+      "failed": 0,
+      "total": 166
+    },
+    "relay_coil_inductive_kick": {
+      "accuracy": 0.7125748502994012,
+      "correct": 119,
+      "failed": 0,
+      "total": 167
+    }
+  },
+  "provenance": {
+    "campaign_harness_commit": "8765d6a01f8d5b4dc01384acd694352e63962e83",
+    "campaign_id": "ball_500_v0_1",
+    "command": "python scripts/ball_500_v0_1_campaign.py",
+    "cwd": "C:\\Users\\dmaca\\Documents\\JTAStuff\\projectGamma2",
+    "generated_at": "2026-07-02T19:20:33.981538+00:00",
+    "intended_base_branch": "Gammav0.1",
+    "intended_base_commit": "ee8b1f8",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "producing_branch": "gamma/v0.1-integrated",
+    "producing_commit": "8765d6a01f8d5b4dc01384acd694352e63962e83",
+    "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "random_seed": 546601,
+    "source_main_commit": "068deea"
+  },
+  "random_seed": 546601,
+  "registry_failures": [
+    {
+      "error": "ValueError(\"bearing_fault_current_signature\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "bearing_fault_current_signature\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"bearing_fault_vibration_envelope\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "bearing_fault_vibration_envelope\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"broken_rotor_bar_sidebands\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "broken_rotor_bar_sidebands\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"common_mode_noise\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "common_mode_noise\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"current_inrush\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "current_inrush\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"emi_eft_burst\\\\seed_manifest.json missing required manifest keys: ['validation_status', 'entrypoint']\")",
+      "manifest": "emi_eft_burst\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"ground_loop_hum\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "ground_loop_hum\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_commutation_notch\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_commutation_notch\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_flicker_am_mod\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_flicker_am_mod\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_harmonic_distortion\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_harmonic_distortion\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_impulsive_transient\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_impulsive_transient\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_oscillatory_transient\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_oscillatory_transient\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_short_interruption\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_short_interruption\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_voltage_sag\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_voltage_sag\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_voltage_swell\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_voltage_swell\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pwm_vfd_edge_coupled_noise\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pwm_vfd_edge_coupled_noise\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"sensor_threshold_chatter\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "sensor_threshold_chatter\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"slow_edge_late_transition\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "slow_edge_late_transition\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"switch_relay_contact_bounce\\\\seed_manifest.json missing required manifest keys: ['family', 'status', 'validation_status', 'entrypoint']\")",
+      "manifest": "switch_relay_contact_bounce\\seed_manifest.json"
+    }
+  ],
+  "signature_error_counts": {},
+  "signature_ids": [
+    "relay_coil_inductive_kick",
+    "high_speed_input_bounce",
+    "missed_short_pulse"
+  ],
+  "top_confusion_pairs": [
+    {
+      "count": 41,
+      "truth_label": "missed_short_pulse",
+      "winner": "pred_none"
+    },
+    {
+      "count": 39,
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "pred_none"
+    },
+    {
+      "count": 15,
+      "truth_label": "high_speed_input_bounce",
+      "winner": "pred_none"
+    },
+    {
+      "count": 15,
+      "truth_label": "missed_short_pulse",
+      "winner": "relay_coil_inductive_kick"
+    },
+    {
+      "count": 9,
+      "truth_label": "relay_coil_inductive_kick",
+      "winner": "missed_short_pulse"
+    }
+  ],
+  "total_cases": 500,
+  "variant_counts": {
+    "amplitude_shifted": 84,
+    "clean": 84,
+    "degraded_reference": 83,
+    "near_miss_ambiguous": 81,
+    "noisy": 84,
+    "timing_shifted": 84
+  },
+  "wrong_cases": 119
+}

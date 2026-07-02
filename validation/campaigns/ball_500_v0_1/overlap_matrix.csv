@@ -1,0 +1,4 @@
+signature_a,signature_b,total_cases,both_matched,a_only,b_only,neither,overlap_rate,jaccard_overlap,mean_confidence_a_when_both,mean_confidence_b_when_both
+high_speed_input_bounce,missed_short_pulse,500,0,157,133,210,0.0,0.0,,
+high_speed_input_bounce,relay_coil_inductive_kick,500,5,152,150,193,0.01,0.016286644951140065,0.7050000000000002,0.8920799182915371
+missed_short_pulse,relay_coil_inductive_kick,500,35,98,120,247,0.07,0.1383399209486166,0.8777500000000001,0.9085375712066478

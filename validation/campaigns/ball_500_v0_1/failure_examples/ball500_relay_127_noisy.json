@@ -1,0 +1,94 @@
+{
+  "capture_id": "ball500_relay_127_noisy",
+  "decision": "no_match",
+  "errors": [],
+  "ranked": [
+    {
+      "best_reference": "relay_source",
+      "confidence": 0.47968642664823147,
+      "errors": [],
+      "evidence": [
+        "best_reference=relay_source"
+      ],
+      "features": {
+        "fit_gain_k": -0.00016789519357262472,
+        "fit_r2": 0.32171813465714627,
+        "lag_s": 3.7500000000001074e-05,
+        "lag_us": 37.50000000000107,
+        "polarity": -1,
+        "residual_rms": 0.13781219657537924,
+        "ring_decay_alpha_per_s": 252.82984517201447,
+        "ring_frequency_hz": 661.1570247933696,
+        "ring_q_estimate": 8.215351516538623,
+        "ring_score": 0.13292778779837336,
+        "source_event_count": 0,
+        "source_feature_rms": 441.48835555964905,
+        "source_peak_z": 3.817135126095691,
+        "victim_peak_z": 23.995351183904205,
+        "victim_rms": 0.15013206026913625,
+        "wc2_score": 0.32179203801498457
+      },
+      "matched": false,
+      "rejections": [
+        "reject: fit R2=0.322 below 0.550; WC2/correlation 0.322 below 0.450"
+      ],
+      "signature_id": "relay_coil_inductive_kick"
+    },
+    {
+      "best_reference": "edge_decoy",
+      "confidence": 0.21048698270426755,
+      "errors": [],
+      "evidence": [
+        "best_reference=edge_decoy"
+      ],
+      "features": {
+        "event_time_s": 0.00878125,
+        "localization_ratio": 0.2515187474366452,
+        "off_event_rms_v": 0.0733296941284661,
+        "recovered_peak_v": 0.027569420273706624,
+        "recovered_rms_v": 0.018443792817355628,
+        "threshold_segments": 2,
+        "zero_crossings": 3
+      },
+      "matched": false,
+      "rejections": [
+        "single-capture HSIB evidence below conservative v0.1 gate"
+      ],
+      "signature_id": "high_speed_input_bounce"
+    },
+    {
+      "best_reference": "edge_decoy",
+      "confidence": 0.0,
+      "errors": [],
+      "evidence": [
+        "best_reference=edge_decoy"
+      ],
+      "features": {
+        "acquisition_limited_events": 0,
+        "detection_ratio": 0.0,
+        "expected_pulses": 0,
+        "extra_output_pulses": 5,
+        "matched_pulses": 0,
+        "max_expected_pulses": 10,
+        "merged_groups": 0,
+        "miss_ratio": 0.0,
+        "missed_pulses": 0,
+        "sparse_logic_reference": true,
+        "split_pulses": 0
+      },
+      "matched": false,
+      "rejections": [
+        "missed pulse gate not met: expected=0, missed=0, sparse_logic_reference=True"
+      ],
+      "signature_id": "missed_short_pulse"
+    }
+  ],
+  "ranked_signature_ids": [
+    "relay_coil_inductive_kick",
+    "high_speed_input_bounce",
+    "missed_short_pulse"
+  ],
+  "truth_label": "relay_coil_inductive_kick",
+  "winner": null,
+  "winner_confidence": 0.47968642664823147
+}

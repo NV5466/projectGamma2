@@ -1,0 +1,94 @@
+{
+  "capture_id": "ball500_hsib_129_timing_shifted",
+  "decision": "no_match",
+  "errors": [],
+  "ranked": [
+    {
+      "best_reference": "input_event",
+      "confidence": 0.5811482045072922,
+      "errors": [],
+      "evidence": [
+        "best_reference=input_event"
+      ],
+      "features": {
+        "fit_gain_k": 3.791873428182463e-07,
+        "fit_r2": 0.32525961466356845,
+        "lag_s": 1.6000000000000387e-06,
+        "lag_us": 1.6000000000000387,
+        "polarity": 1,
+        "residual_rms": 0.13402425182587074,
+        "ring_decay_alpha_per_s": 0.0,
+        "ring_frequency_hz": 319244.604316539,
+        "ring_q_estimate": 0.0,
+        "ring_score": 0.02462593383209652,
+        "source_event_count": 1,
+        "source_feature_rms": 169556.19969243597,
+        "source_peak_z": 3.369259302697824e+18,
+        "victim_peak_z": 158.83351254731392,
+        "victim_rms": 0.11273726707132921,
+        "wc2_score": 0.3252596192130666
+      },
+      "matched": false,
+      "rejections": [
+        "reject: fit R2=0.325 below 0.550; WC2/correlation 0.325 below 0.450"
+      ],
+      "signature_id": "relay_coil_inductive_kick"
+    },
+    {
+      "best_reference": "input_event",
+      "confidence": 0.2877010712457667,
+      "errors": [],
+      "evidence": [
+        "best_reference=input_event"
+      ],
+      "features": {
+        "event_time_s": 0.0001278,
+        "localization_ratio": 0.10577185683846642,
+        "off_event_rms_v": 0.11289142197834721,
+        "recovered_peak_v": 0.02033125926449687,
+        "recovered_rms_v": 0.011940735323890415,
+        "threshold_segments": 3,
+        "zero_crossings": 4
+      },
+      "matched": false,
+      "rejections": [
+        "single-capture HSIB evidence below conservative v0.1 gate"
+      ],
+      "signature_id": "high_speed_input_bounce"
+    },
+    {
+      "best_reference": "input_event",
+      "confidence": 0.0,
+      "errors": [],
+      "evidence": [
+        "best_reference=input_event"
+      ],
+      "features": {
+        "acquisition_limited_events": 0,
+        "detection_ratio": 0.0,
+        "expected_pulses": 0,
+        "extra_output_pulses": 119,
+        "matched_pulses": 0,
+        "max_expected_pulses": 10,
+        "merged_groups": 0,
+        "miss_ratio": 0.0,
+        "missed_pulses": 0,
+        "sparse_logic_reference": true,
+        "split_pulses": 0
+      },
+      "matched": false,
+      "rejections": [
+        "missed pulse gate not met: expected=0, missed=0, sparse_logic_reference=True"
+      ],
+      "signature_id": "missed_short_pulse"
+    }
+  ],
+  "ranked_signature_ids": [
+    "relay_coil_inductive_kick",
+    "high_speed_input_bounce",
+    "missed_short_pulse"
+  ],
+  "truth_label": "high_speed_input_bounce",
+  "winner": null,
+  "winner_confidence": 0.5811482045072922
+}

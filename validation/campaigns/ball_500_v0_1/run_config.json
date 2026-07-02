@@ -1,0 +1,19 @@
+{
+  "campaign": "ball_500_v0_1",
+  "case_count": 500,
+  "notes": "Synthetic stress campaign for Gamma Core v0.1 tournament ranking.",
+  "random_seed": 546601,
+  "signature_ids": [
+    "relay_coil_inductive_kick",
+    "high_speed_input_bounce",
+    "missed_short_pulse"
+  ],
+  "variants": [
+    "clean",
+    "noisy",
+    "amplitude_shifted",
+    "timing_shifted",
+    "degraded_reference",
+    "near_miss_ambiguous"
+  ]
+}

@@ -248,6 +248,14 @@ Future experiment-output policy should require:
 - harness code and generated output artifacts are committed separately
 - `__pycache__/`, `.pyc`, and other local build artifacts are never committed
 
+This branch adds a local hygiene check:
+
+```powershell
+python scripts\check_repo_hygiene.py
+```
+
+The check fails if tracked files include `__pycache__/`, `.pyc`, `.pyo`, `.pyd`, or `.pytest_cache/` artifacts.
+
 ## Final Statement
 
 This repair creates a provenance-clean integrated branch without rewriting public history. It clarifies that `main` already contained relay coil inductive kick seed v2, `Gammav0.1` added Gamma Core tournament integration, and `Gammatest1branch` added a stress campaign from the wrong base. The new `gamma/v0.1-integrated` line preserves the intended historical order and reruns the campaign from the integrated branch.

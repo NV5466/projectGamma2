@@ -2,10 +2,13 @@ from __future__ import annotations
 
 from collections import Counter, defaultdict
 from dataclasses import asdict
+from datetime import datetime, timezone
 from pathlib import Path
 import csv
 import json
+import platform
 import shutil
+import subprocess
 import sys
 from typing import Any
 
@@ -37,6 +40,38 @@ VARIANTS = [
     "degraded_reference",
     "near_miss_ambiguous",
 ]
+
+
+def _git_value(args: list[str]) -> str:
+    try:
+        result = subprocess.run(
+            ["git", *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except Exception:
+        return "unknown"
+    return result.stdout.strip() or "unknown"
+
+
+def _provenance() -> dict[str, Any]:
+    commit = _git_value(["rev-parse", "HEAD"])
+    return {
+        "campaign_id": "ball_500_v0_1",
+        "producing_branch": _git_value(["branch", "--show-current"]),
+        "producing_commit": commit,
+        "intended_base_branch": "Gammav0.1",
+        "intended_base_commit": "ee8b1f8",
+        "source_main_commit": "068deea",
+        "campaign_harness_commit": commit,
+        "random_seed": RANDOM_SEED,
+        "python_version": sys.version.replace("\n", " "),
+        "platform": platform.platform(),
+        "command": "python scripts/ball_500_v0_1_campaign.py",
+        "cwd": str(Path.cwd()),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    }
 
 
 def _shift(x: np.ndarray, samples: int) -> np.ndarray:
@@ -361,6 +396,7 @@ def _write_summary(
     per_case: pd.DataFrame,
     out_dir: Path,
     signatures_failed_to_load: list[dict[str, str]],
+    provenance: dict[str, Any],
 ) -> None:
     total = int(len(per_case))
     correct = int(per_case["correct"].astype(bool).sum())
@@ -388,6 +424,8 @@ def _write_summary(
     )
     summary = {
         "campaign": "ball_500_v0_1",
+        "campaign_id": "ball_500_v0_1",
+        "provenance": provenance,
         "random_seed": RANDOM_SEED,
         "total_cases": total,
         "case_count_requested": CASE_COUNT,
@@ -428,11 +466,14 @@ def main() -> int:
 
     cases = generate_cases()
     case_results = run_campaign(cases, signatures)
+    provenance = _provenance()
     write_evidence_outputs(
         case_results,
         OUT_DIR,
         run_config={
             "campaign": "ball_500_v0_1",
+            "campaign_id": "ball_500_v0_1",
+            "provenance": provenance,
             "random_seed": RANDOM_SEED,
             "case_count": CASE_COUNT,
             "signature_ids": SIGNATURE_IDS,
@@ -443,7 +484,7 @@ def main() -> int:
     )
     per_case = _write_per_case_results(case_results, OUT_DIR)
     _write_failure_examples(case_results, OUT_DIR)
-    _write_summary(case_results, per_case, OUT_DIR, registry_failures)
+    _write_summary(case_results, per_case, OUT_DIR, registry_failures, provenance)
 
     with (OUT_DIR / "stress_campaign_stdout_summary.txt").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)

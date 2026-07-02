@@ -1,0 +1,4 @@
+truth,pred_high_speed_input_bounce,pred_missed_short_pulse,pred_relay_coil_inductive_kick
+high_speed_input_bounce,1,0,0
+missed_short_pulse,0,1,0
+relay_coil_inductive_kick,0,0,1

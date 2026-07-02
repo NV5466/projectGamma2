@@ -1,0 +1,11 @@
+{
+  "capture": null,
+  "capture_dir": "validation\\fixtures\\three_signature_smoke",
+  "include_status": [
+    "implemented",
+    "implemented_synthetic",
+    "validated"
+  ],
+  "max_cases": null,
+  "registry_root": "."
+}

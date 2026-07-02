@@ -1,0 +1,104 @@
+{
+  "output_files": [
+    "confusion_matrix.csv",
+    "feature_stats_by_signature.csv",
+    "overlap_matrix.csv",
+    "per_case_signature_scores.csv",
+    "ranked_results.jsonl",
+    "reference_comparison.csv",
+    "reference_summary.csv",
+    "signature_summary.csv"
+  ],
+  "signature_error_counts": {},
+  "signatures_failed_to_load": [
+    {
+      "error": "ValueError(\"bearing_fault_current_signature\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "bearing_fault_current_signature\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"bearing_fault_vibration_envelope\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "bearing_fault_vibration_envelope\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"broken_rotor_bar_sidebands\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "broken_rotor_bar_sidebands\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"common_mode_noise\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "common_mode_noise\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"current_inrush\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "current_inrush\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"emi_eft_burst\\\\seed_manifest.json missing required manifest keys: ['validation_status', 'entrypoint']\")",
+      "manifest": "emi_eft_burst\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"ground_loop_hum\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "ground_loop_hum\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_commutation_notch\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_commutation_notch\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_flicker_am_mod\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_flicker_am_mod\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_harmonic_distortion\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_harmonic_distortion\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_impulsive_transient\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_impulsive_transient\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_oscillatory_transient\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_oscillatory_transient\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_short_interruption\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_short_interruption\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_voltage_sag\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_voltage_sag\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pq_voltage_swell\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pq_voltage_swell\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"pwm_vfd_edge_coupled_noise\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "pwm_vfd_edge_coupled_noise\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"sensor_threshold_chatter\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "sensor_threshold_chatter\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"slow_edge_late_transition\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
+      "manifest": "slow_edge_late_transition\\seed_manifest.json"
+    },
+    {
+      "error": "ValueError(\"switch_relay_contact_bounce\\\\seed_manifest.json missing required manifest keys: ['family', 'status', 'validation_status', 'entrypoint']\")",
+      "manifest": "switch_relay_contact_bounce\\seed_manifest.json"
+    }
+  ],
+  "signatures_loaded": [
+    "high_speed_input_bounce",
+    "missed_short_pulse",
+    "relay_coil_inductive_kick"
+  ],
+  "total_captures": 3,
+  "total_signatures": 3,
+  "truth_labels_present": true,
+  "winner_counts": {
+    "high_speed_input_bounce": 1,
+    "missed_short_pulse": 1,
+    "relay_coil_inductive_kick": 1
+  }
+}

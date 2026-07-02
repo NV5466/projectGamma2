@@ -1,0 +1,4 @@
+signature_id,total_cases,matched_count,top1_count,mean_confidence,median_confidence,p05_confidence,p95_confidence,mean_rank,error_count,truth_cases,tp,fp,tn,fn,recall,precision,false_positive_rate,specificity,accuracy
+high_speed_input_bounce,3,1,1,0.39420336071005174,0.18261008213015523,0.018261008213015524,0.9182610082130155,2.0,0,1,1,0,2,0,1.0,1.0,0.0,1.0,1.0
+missed_short_pulse,3,1,1,0.23333333333333336,0.0,0.0,0.63,2.3333333333333335,0,1,1,0,2,0,1.0,1.0,0.0,1.0,1.0
+relay_coil_inductive_kick,3,2,1,0.7641011011066942,0.8714240235152916,0.5140489541758406,0.9390272023515291,1.6666666666666667,0,1,1,1,1,0,1.0,0.5,0.5,0.5,0.6666666666666666

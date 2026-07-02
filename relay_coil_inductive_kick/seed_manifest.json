@@ -3,6 +3,10 @@
   "family": "emi_switching",
   "version": "0.2.0",
   "status": "implemented_synthetic",
+  "entrypoint": "relay_coil_inductive_kick.adapter:analyze",
+  "validation_status": "v0.2.0 synthetic boundary harness; Gamma Core v0.1 adapter added",
+  "supports_multi_reference": true,
+  "supports_tertiary": false,
   "source_layout": "python_package",
   "primary_modules": [
     "relay_coil_inductive_kick.classifier",
@@ -14,5 +18,9 @@
     "boundary_results": "boundary_results/",
     "tests": "tests/test_relay_coil_inductive_kick.py"
   },
-  "boundary": "synthetic experiment-ready seed only; no field calibration claim"
+  "boundary": "synthetic experiment-ready seed only; no field calibration claim",
+  "primary_reference_semantics": {
+    "primary": "anchor waveform where suspected kickback/victim disturbance is visible",
+    "references": "same-timebase candidate source/support waveforms"
+  }
 }

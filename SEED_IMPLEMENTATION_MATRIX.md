@@ -13,7 +13,7 @@
 | emi_eft_burst | True | True | 3 | 1 | 6 | 4 | 3 | 24/24 synthetic outcomes, 6/6 tests reported | notes.md: True |
 | current_inrush | True | True | 2 | 1 | 4 | 4 | 1 | synthetic families reported; SNR deferred | notes.md: True |
 | switch_relay_contact_bounce | True | True | 2 | 1 | 2 | 5 | 4 | 108/108 population captures and 114 pytest cases reported | notes.md: True |
-| relay_coil_inductive_kick | True | True | 0 | 0 | 0 | 0 | 0 | none | notes.md: True |
+| relay_coil_inductive_kick | True | True | 4 package files | 1 | examples: 1 | boundary_results: 3 | 0 | v0.2.0 synthetic boundary harness; direct test-function execution passed locally because pytest is not installed | notes.md: True |
 | ground_loop_hum | True | True | 0 | 0 | 0 | 0 | 0 | none | notes.md: True |
 | common_mode_noise | True | True | 0 | 1 | 1 | 3 | 5 | controlled synthetic multi-spectral validation documented | notes.md: True |
 | pwm_vfd_edge_coupled_noise | True | True | 1 | 0 | 1 | 4 | 3 | needs_review; PWM/VFD damping bundle assigned by filename and README | notes.md: True |

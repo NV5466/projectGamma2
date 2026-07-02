@@ -100,9 +100,9 @@ seeds:
   - seed_id: relay_coil_inductive_kick
     family: emi_switching
     folder: relay_coil_inductive_kick
-    status: scaffolded
-    primary_modules: [peak_detection, edge_trigger, source_victim_timing]
-    validation_status: "none"
+    status: implemented_synthetic
+    primary_modules: [classifier, features, generator, boundary_harness]
+    validation_status: "v0.2.0 synthetic boundary harness; direct test-function execution passed locally because pytest is not installed"
 
   - seed_id: ground_loop_hum
     family: measurement_artifact

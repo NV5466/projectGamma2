@@ -1,0 +1,10 @@
+{
+  "by_truth": {
+    "relay_coil_inductive_kick": {
+      "count": 250,
+      "positive": 249,
+      "negative": 1,
+      "recall": 0.996
+    }
+  }
+}

@@ -1,11 +1,18 @@
-﻿{
-    "seed_id":  "relay_coil_inductive_kick",
-    "primary_modules":  [
-
-                        ],
-    "family":  "emi_switching",
-    "notes":  "No files were confidently assigned during the repository sort.",
-    "validation_status":  "none",
-    "folder":  "relay_coil_inductive_kick",
-    "status":  "scaffolded"
+{
+  "seed_id": "relay_coil_inductive_kick",
+  "family": "emi_switching",
+  "version": "0.2.0",
+  "status": "implemented_synthetic",
+  "source_layout": "python_package",
+  "primary_modules": [
+    "relay_coil_inductive_kick.classifier",
+    "relay_coil_inductive_kick.features",
+    "relay_coil_inductive_kick.generator"
+  ],
+  "validation": {
+    "type": "synthetic_boundary_harness",
+    "boundary_results": "boundary_results/",
+    "tests": "tests/test_relay_coil_inductive_kick.py"
+  },
+  "boundary": "synthetic experiment-ready seed only; no field calibration claim"
 }

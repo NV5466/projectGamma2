@@ -1,0 +1,35 @@
+{
+  "seed_name": "relay_coil_inductive_kick",
+  "version": "0.2.0",
+  "status": "synthetic-experiment-ready",
+  "class_scope": "Class A only. Existing Class B/C/D signatures remain separate and are used only as negative controls through adapters.",
+  "primary_evidence": [
+    "one dominant source coil event",
+    "victim waveform explained by unknown-gain dI/dt or coil-voltage coupling",
+    "small source-to-victim lag",
+    "polarity/gain consistency across repeated events"
+  ],
+  "secondary_evidence": [
+    "optional damped ringdown tail",
+    "stable estimated ring frequency/Q under same wiring condition",
+    "coupling gain k changes with wire geometry / distance / clamp path"
+  ],
+  "rejection_evidence": [
+    "repeated clustered source edges, contact-bounce-like impulse train",
+    "no source-victim proportional fit after lag compensation",
+    "ringing exists but is not locked to a single coil collapse event",
+    "missed-pulse behavior where threshold logic misses a pulse without coil-source coupling"
+  ],
+  "models": {
+    "source_current": "v_victim(t) ~= k * dI_coil/dt",
+    "source_voltage": "v_victim(t) ~= k * v_coil(t)",
+    "ringdown_optional": "tail(t) ~= A * exp(-alpha*t) * cos(omega_d*t + phi)"
+  },
+  "recommended_thresholds_initial": {
+    "source_event_count_max": 3,
+    "fit_r2_min": 0.55,
+    "abs_lag_us_max": 150.0,
+    "wc2_min": 0.45,
+    "confidence_min": 0.7
+  }
+}

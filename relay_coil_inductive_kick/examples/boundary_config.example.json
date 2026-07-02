@@ -1,0 +1,10 @@
+{
+  "positive_n": 250,
+  "source_mode": "current",
+  "negative_adapters": {
+    "high_speed_input_bounce": "/path/to/existing_bounce_export.npz",
+    "missed_short_pulse": "/path/to/existing_missed_short_pulse_export.npz",
+    "noise": "/path/to/existing_noise_export.npz"
+  },
+  "note": "Do not copy B/C/D generators into this seed. Export/call them through adapters."
+}

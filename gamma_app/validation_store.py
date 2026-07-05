@@ -63,6 +63,10 @@ class ValidationStore:
               threshold_pass integer not null,
               pass_fail text,
               fp_fn_marking text,
+              candidate_role text,
+              primary_diagnosis text,
+              multi_match_ambiguity integer not null default 0,
+              conflict_warning text,
               analyzer_outputs_json text,
               threshold_profile text,
               created_at real not null,
@@ -70,7 +74,16 @@ class ValidationStore:
             );
             """
         )
+        self._ensure_column("analyzer_runs", "candidate_role", "text")
+        self._ensure_column("analyzer_runs", "primary_diagnosis", "text")
+        self._ensure_column("analyzer_runs", "multi_match_ambiguity", "integer not null default 0")
+        self._ensure_column("analyzer_runs", "conflict_warning", "text")
         self.conn.commit()
+
+    def _ensure_column(self, table: str, column: str, definition: str) -> None:
+        existing = {row["name"] for row in self.conn.execute(f"pragma table_info({table})")}
+        if column not in existing:
+            self.conn.execute(f"alter table {table} add column {column} {definition}")
 
     def add_capture(self, case: ValidationCase) -> None:
         self.conn.execute(
@@ -119,9 +132,10 @@ class ValidationStore:
                 """
                 insert into analyzer_runs (
                   session_id, capture_id, signature_id, family, confidence, threshold,
-                  raw_matched, threshold_pass, pass_fail, fp_fn_marking, analyzer_outputs_json,
+                  raw_matched, threshold_pass, pass_fail, fp_fn_marking, candidate_role,
+                  primary_diagnosis, multi_match_ambiguity, conflict_warning, analyzer_outputs_json,
                   threshold_profile, created_at
-                ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     session_id,
@@ -134,6 +148,10 @@ class ValidationStore:
                     int(prediction_positive),
                     "pass" if fp_fn in {"TP", "TN"} else "fail",
                     fp_fn,
+                    row.get("candidate_role"),
+                    row.get("primary_diagnosis"),
+                    int(bool(row.get("multi_match_ambiguity"))),
+                    row.get("conflict_warning"),
                     json.dumps(row, sort_keys=True),
                     row.get("threshold_profile"),
                     now,
@@ -150,7 +168,7 @@ class ValidationStore:
 
     def summarize_session(self, session_id: str) -> list[dict[str, Any]]:
         rows = self.conn.execute(
-            "select signature_id, family, fp_fn_marking from analyzer_runs where session_id = ?",
+            "select signature_id, family, fp_fn_marking, multi_match_ambiguity from analyzer_runs where session_id = ?",
             (session_id,),
         ).fetchall()
         buckets: dict[tuple[str, str], dict[str, Any]] = {}
@@ -163,6 +181,8 @@ class ValidationStore:
             mark = str(row["fp_fn_marking"])
             if mark in {"TP", "FP", "TN", "FN"}:
                 bucket[mark] += 1
+            if int(row["multi_match_ambiguity"] or 0):
+                bucket["multi_match_ambiguity_cases"] = int(bucket.get("multi_match_ambiguity_cases", 0)) + 1
         return [self._metrics(bucket) for bucket in buckets.values()]
 
     def export_summary(self, out_prefix: str | Path, *, session_id: str | None = None) -> tuple[Path, Path]:
@@ -185,6 +205,7 @@ class ValidationStore:
         precision = _safe_div(tp, tp + fp)
         recall = _safe_div(tp, tp + fn)
         specificity = _safe_div(tn, tn + fp)
+        row.setdefault("multi_match_ambiguity_cases", 0)
         row.update(
             {
                 "total_cases": tp + fp + tn + fn,

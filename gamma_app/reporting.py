@@ -69,21 +69,54 @@ def render_markdown_report(
     threshold_profile: ThresholdProfile,
 ) -> str:
     selected = [row for row in rows if row["is_selected"]]
+    secondary = [row for row in rows if row["candidate_role"] == "secondary_candidate"]
+    conflict_warnings = sorted({row["conflict_warning"] for row in rows if row["conflict_warning"]})
     lines = [
         f"# Gamma Diagnostic Report: {capture_id}",
         "",
         f"- Threshold profile: `{threshold_profile.name}`",
         f"- Candidate signatures evaluated: {len(rows)}",
-        f"- Selected detections: {len(selected)}",
-        "",
-        "## Ranked Results",
-        "",
-        "| rank | signature_id | family | confidence | threshold | decision |",
-        "|---:|---|---|---:|---:|---|",
+        f"- Primary diagnosis: `{selected[0]['signature_id']}`" if selected else "- Primary diagnosis: `none`",
+        f"- Secondary candidates: {', '.join(row['signature_id'] for row in secondary) if secondary else 'none'}",
+        f"- Multi-match ambiguity: {'yes' if any(row['multi_match_ambiguity'] for row in rows) else 'no'}",
     ]
+    if conflict_warnings:
+        lines.extend([f"- Warning: {warning}" for warning in conflict_warnings])
+    lines.extend(
+        [
+            "",
+            "## Top Detection Summary",
+            "",
+        ]
+    )
+    if selected:
+        row = selected[0]
+        lines.extend(
+            [
+                f"- Signature: `{row['signature_id']}`",
+                f"- Family: `{row['family']}`",
+                f"- Confidence: {row['confidence']:.3f}",
+                f"- Diagnostic score: {row['diagnostic_score']:.3f}",
+                f"- Required/reference channel status: {row['required_reference_status']}",
+                f"- Recommended next check: {row['recommended_next_check']}",
+            ]
+        )
+    else:
+        lines.append("- No primary diagnosis met threshold and reference-evidence requirements.")
+    lines.extend(
+        [
+            "",
+            "## Ranked Results",
+            "",
+            "| rank | role | signature_id | family | confidence | diagnostic_score | threshold | reference_status | decision |",
+            "|---:|---|---|---|---:|---:|---:|---|---|",
+        ]
+    )
     for row in sorted(rows, key=lambda item: item["rank"]):
         lines.append(
-            "| {rank} | {signature_id} | {family} | {confidence:.3f} | {threshold:.3f} | {decision} |".format(**row)
+            "| {rank} | {candidate_role} | {signature_id} | {family} | {confidence:.3f} | {diagnostic_score:.3f} | {threshold:.3f} | {required_reference_status} | {decision} |".format(
+                **row
+            )
         )
     lines.extend(["", "## Evidence And Next Checks", ""])
     for row in sorted(rows, key=lambda item: item["rank"]):

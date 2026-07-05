@@ -38,6 +38,10 @@ def test_validation_store_adds_capture_and_summarizes_metrics(tmp_path: Path):
                     "raw_matched": False,
                     "threshold_pass": False,
                     "threshold_profile": "default",
+                    "candidate_role": "rejected_or_below_threshold",
+                    "primary_diagnosis": "relay_coil_inductive_kick",
+                    "multi_match_ambiguity": True,
+                    "conflict_warning": "multiple_high_confidence_signatures_match",
                 },
             ],
             session_id="session_a",
@@ -49,6 +53,9 @@ def test_validation_store_adds_capture_and_summarizes_metrics(tmp_path: Path):
     relay = next(row for row in summary if row["signature_id"] == "relay_coil_inductive_kick")
     assert relay["TP"] == 1
     assert relay["precision"] == 1.0
+    assert relay["multi_match_ambiguity_cases"] == 0
+    missed = next(row for row in summary if row["signature_id"] == "missed_short_pulse")
+    assert missed["multi_match_ambiguity_cases"] == 1
 
 
 def test_validate_dataset_writes_validation_summary(tmp_path: Path):

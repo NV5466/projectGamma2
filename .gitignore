@@ -2,3 +2,6 @@
 .raildiag_git_backup/
 __pycache__/
 *.pyc
+build/
+dist/
+*.spec

@@ -16,6 +16,7 @@ from .io import load_captures
 from .registry import load_available_signatures, validate_registry_families
 from .reporting import write_campaign_outputs
 from .results import result_rows
+from .runtime import default_registry_root, default_threshold_profile_path
 from .threshold_profiles import ThresholdProfile, load_threshold_profile
 from .validation_store import ValidationCase, ValidationStore
 from .waveform_sets import import_waveforms
@@ -38,15 +39,16 @@ def analyze_path(
     input_path: str | Path,
     out_dir: str | Path,
     *,
-    registry_root: str | Path = ".",
-    threshold_profile_path: str | Path | None = "configs/default_thresholds.yaml",
+    registry_root: str | Path | None = None,
+    threshold_profile_path: str | Path | None = None,
     include_status: set[str] | None = None,
     family_filter: set[str] | None = None,
     seed_filter: set[str] | None = None,
     max_cases: int | None = None,
     mode: str = "diagnostic",
 ) -> GammaRun:
-    threshold_profile = load_threshold_profile(threshold_profile_path)
+    registry_root = registry_root or default_registry_root()
+    threshold_profile = load_threshold_profile(threshold_profile_path or default_threshold_profile_path())
     signatures, registry_failures = load_available_signatures(
         registry_root,
         include_status=include_status or DEFAULT_INCLUDE_STATUS,
@@ -135,9 +137,10 @@ def validate_dataset(
     dataset: str | Path,
     out_dir: str | Path,
     *,
-    registry_root: str | Path = ".",
-    threshold_profile_path: str | Path | None = "configs/default_thresholds.yaml",
+    registry_root: str | Path | None = None,
+    threshold_profile_path: str | Path | None = None,
 ) -> GammaRun:
+    registry_root = registry_root or default_registry_root()
     store = ValidationStore(dataset)
     try:
         captures = store.list_captures()
@@ -151,7 +154,7 @@ def validate_dataset(
         all_case_results: list[CaseRunResult] = []
         all_warnings: list[str] = []
         registry_failures: list[dict[str, str]] = []
-        threshold_profile = load_threshold_profile(threshold_profile_path)
+        threshold_profile = load_threshold_profile(threshold_profile_path or default_threshold_profile_path())
         signatures, registry_failures = load_available_signatures(registry_root, include_status=DEFAULT_INCLUDE_STATUS)
         family_by_signature = {spec.seed_id: spec.family for spec in signatures}
         for row in captures:
@@ -210,8 +213,8 @@ def build_parser() -> argparse.ArgumentParser:
     analyze = sub.add_parser("analyze", help="run diagnostics on a capture file or folder")
     analyze.add_argument("--input", required=True)
     analyze.add_argument("--out", required=True)
-    analyze.add_argument("--registry-root", default=".")
-    analyze.add_argument("--threshold-profile", default="configs/default_thresholds.yaml")
+    analyze.add_argument("--registry-root")
+    analyze.add_argument("--threshold-profile")
     analyze.add_argument("--family", action="append", default=[])
     analyze.add_argument("--seed", action="append", default=[])
     analyze.add_argument("--max-cases", type=int)
@@ -232,8 +235,8 @@ def build_parser() -> argparse.ArgumentParser:
     validate = sub.add_parser("validate", help="run analyzers against a validation dataset")
     validate.add_argument("--dataset", required=True)
     validate.add_argument("--out", required=True)
-    validate.add_argument("--registry-root", default=".")
-    validate.add_argument("--threshold-profile", default="configs/default_thresholds.yaml")
+    validate.add_argument("--registry-root")
+    validate.add_argument("--threshold-profile")
 
     upload = sub.add_parser("waveform-import", help="import capture files/folders into a Gamma waveform set")
     upload.add_argument("--set-id", required=True)

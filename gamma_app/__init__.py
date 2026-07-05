@@ -6,6 +6,7 @@ __all__ = [
     "reporting",
     "results",
     "runner",
+    "runtime",
     "threshold_profiles",
     "validation_store",
     "waveform_sets",

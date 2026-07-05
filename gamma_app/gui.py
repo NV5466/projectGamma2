@@ -7,14 +7,15 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
 from gamma_app.registry import ALLOWED_FAMILIES, read_seed_registry_entries
+from gamma_app.runtime import default_threshold_profile_path, resource_path
 from gamma_app.runner import add_capture_to_dataset, analyze_path, validate_dataset
 from gamma_app.threshold_profiles import load_threshold_profile, save_threshold_profile
 from gamma_app.validation_store import ValidationStore
 from gamma_app.waveform_sets import DEFAULT_WAVEFORM_LIBRARY, import_waveforms, list_waveform_sets, read_manifest, sanitize_set_id
 
 
-LOGO_PATH = Path(__file__).resolve().parents[1] / "assets" / "gamma_logo.png"
-ICON_PATH = Path(__file__).resolve().parents[1] / "assets" / "gamma_logo.ico"
+LOGO_PATH = resource_path("assets/gamma_logo.png")
+ICON_PATH = resource_path("assets/gamma_logo.ico")
 APP_USER_MODEL_ID = "Gamma.ElectroStat.App"
 
 
@@ -64,7 +65,7 @@ class GammaApp(tk.Tk):
         title = "Batch capture folder" if batch else "Capture file or folder"
         input_var = tk.StringVar(value="validation/fixtures/three_signature_smoke") if batch else self.analyze_input_var
         out_var = tk.StringVar(value="outputs/batch_campaign" if batch else "outputs/gui_analysis")
-        profile_var = tk.StringVar(value="configs/default_thresholds.yaml")
+        profile_var = tk.StringVar(value=str(default_threshold_profile_path()))
         family_vars = {family: tk.BooleanVar(value=True) for family in sorted(ALLOWED_FAMILIES)}
         row = 0
         ttk.Label(parent, text=title).grid(row=row, column=0, sticky="w", padx=8, pady=6)
@@ -261,7 +262,7 @@ class GammaApp(tk.Tk):
 
     def _build_settings(self) -> None:
         parent = self.settings_tab
-        profile_var = tk.StringVar(value="configs/default_thresholds.yaml")
+        profile_var = tk.StringVar(value=str(default_threshold_profile_path()))
         ttk.Label(parent, text="Profile path").grid(row=0, column=0, padx=8, pady=6, sticky="w")
         ttk.Entry(parent, textvariable=profile_var, width=90).grid(row=0, column=1, padx=8, pady=6, sticky="ew")
         entries = [entry for entry in read_seed_registry_entries() if entry.get("family") in ALLOWED_FAMILIES]

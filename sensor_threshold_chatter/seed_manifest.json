@@ -1,9 +1,9 @@
-﻿{
+{
     "seed_id":  "sensor_threshold_chatter",
     "primary_modules":  [
 
                         ],
-    "family":  "discrete_input_timing",
+    "family":  "digital_timing",
     "notes":  "No files were confidently assigned during the repository sort.",
     "validation_status":  "none",
     "folder":  "sensor_threshold_chatter",

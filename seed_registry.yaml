@@ -77,28 +77,28 @@ seeds:
     validation_status: "needs_review; ensemble hankel bundle assigned by oscillatory/pole evidence"
 
   - seed_id: emi_eft_burst
-    family: emi_switching
+    family: switching_emc
     folder: emi_eft_burst
     status: implemented_synthetic
     primary_modules: [edge_counting, pulse_template, matrix_pencil_modes, burst_grouping]
     validation_status: "24/24 synthetic outcomes, 6/6 tests reported"
 
   - seed_id: current_inrush
-    family: emi_switching
+    family: switching_emc
     folder: current_inrush
     status: implemented_synthetic
     primary_modules: [cycle_RMS, envelope_template, population_summary, current_vs_command_timing]
     validation_status: "synthetic families reported; SNR deferred"
 
   - seed_id: switch_relay_contact_bounce
-    family: discrete_input_timing
+    family: digital_timing
     folder: switch_relay_contact_bounce
     status: implemented_synthetic
     primary_modules: [edge_detection, contact_state_reconstruction, pulse_width_statistics, command_contact_timing]
     validation_status: "108/108 population captures and 114 pytest cases reported"
 
   - seed_id: relay_coil_inductive_kick
-    family: emi_switching
+    family: switching_emc
     folder: relay_coil_inductive_kick
     status: implemented_synthetic
     primary_modules: [classifier, features, generator, boundary_harness]
@@ -119,57 +119,37 @@ seeds:
     validation_status: "controlled synthetic multi-spectral validation documented"
 
   - seed_id: pwm_vfd_edge_coupled_noise
-    family: emi_switching
+    family: switching_emc
     folder: pwm_vfd_edge_coupled_noise
     status: implemented_synthetic
     primary_modules: [cross_correlation, coherence, damping_estimation, edge_synchronous_analysis]
     validation_status: "needs_review; PWM/VFD damping bundle assigned by filename and README"
 
   - seed_id: sensor_threshold_chatter
-    family: discrete_input_timing
+    family: digital_timing
     folder: sensor_threshold_chatter
     status: needs_review
     primary_modules: [edge_timing, analog_vs_digital_compare, threshold_crossing_count]
-    validation_status: "sensor analyzer material kept in cross_seed/discrete_input_timing because it spans multiple sensor seeds"
+    validation_status: "sensor analyzer material kept in cross_seed/digital_timing because it spans multiple sensor seeds"
 
   - seed_id: slow_edge_late_transition
-    family: discrete_input_timing
+    family: digital_timing
     folder: slow_edge_late_transition
     status: needs_review
     primary_modules: [rise_fall_time, timing_histogram, threshold_crossing_analysis]
-    validation_status: "sensor analyzer material kept in cross_seed/discrete_input_timing because it spans multiple sensor seeds"
+    validation_status: "sensor analyzer material kept in cross_seed/digital_timing because it spans multiple sensor seeds"
 
   - seed_id: missed_short_pulse
-    family: discrete_input_timing
+    family: digital_timing
     folder: missed_short_pulse
     status: implemented_synthetic
     primary_modules: [pulse_width_histogram, propagation_compare, event_latch_review]
     validation_status: "1000/1000 randomized synthetic trials reported"
 
   - seed_id: high_speed_input_bounce
-    family: discrete_input_timing
+    family: digital_timing
     folder: high_speed_input_bounce
     status: concept_validated_elsewhere
     primary_modules: [WC2_alignment, source_victim_compare, threshold_consequence_model]
     validation_status: "HSIB chunk recovery experiment reports 100/100 recovered and 31/31 controls rejected"
 
-  - seed_id: bearing_fault_vibration_envelope
-    family: machinery
-    folder: bearing_fault_vibration_envelope
-    status: scaffolded
-    primary_modules: [envelope_FFT, PSD, wavelet, STFT]
-    validation_status: "none"
-
-  - seed_id: bearing_fault_current_signature
-    family: machinery
-    folder: bearing_fault_current_signature
-    status: scaffolded
-    primary_modules: [FFT, PSD, STFT, coherence]
-    validation_status: "none"
-
-  - seed_id: broken_rotor_bar_sidebands
-    family: machinery
-    folder: broken_rotor_bar_sidebands
-    status: scaffolded
-    primary_modules: [high_resolution_FFT, order_tracking, trend_vs_load, MCSA]
-    validation_status: "none"

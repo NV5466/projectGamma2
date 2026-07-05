@@ -2,7 +2,7 @@
   "schema": "gamma.experiment_manifest.v1",
   "experiment": "hsib_chunk_recovery",
   "seed_id": "high_speed_input_bounce",
-  "family": "discrete_input_timing",
+  "family":  "digital_timing",
   "status": "implemented_synthetic",
   "validation_status": "HSIB chunk recovery experiment reports 100/100 recovered and 31/31 controls rejected",
   "entrypoint": "high_speed_input_bounce.adapter:analyze",

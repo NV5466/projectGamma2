@@ -1,6 +1,6 @@
-﻿{
+{
     "seed_id":  "missed_short_pulse",
-    "family":  "discrete_input_timing",
+    "family":  "digital_timing",
     "folder":  "missed_short_pulse",
     "status":  "implemented_synthetic",
     "validation_status":  "1000/1000 randomized synthetic trials reported",

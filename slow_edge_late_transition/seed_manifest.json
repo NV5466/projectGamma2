@@ -1,9 +1,9 @@
-﻿{
+{
     "seed_id":  "slow_edge_late_transition",
     "primary_modules":  [
 
                         ],
-    "family":  "discrete_input_timing",
+    "family":  "digital_timing",
     "notes":  "No files were confidently assigned during the repository sort.",
     "validation_status":  "none",
     "folder":  "slow_edge_late_transition",

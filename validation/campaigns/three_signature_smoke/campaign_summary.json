@@ -12,18 +12,6 @@
   "signature_error_counts": {},
   "signatures_failed_to_load": [
     {
-      "error": "ValueError(\"bearing_fault_current_signature\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
-      "manifest": "bearing_fault_current_signature\\seed_manifest.json"
-    },
-    {
-      "error": "ValueError(\"bearing_fault_vibration_envelope\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
-      "manifest": "bearing_fault_vibration_envelope\\seed_manifest.json"
-    },
-    {
-      "error": "ValueError(\"broken_rotor_bar_sidebands\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
-      "manifest": "broken_rotor_bar_sidebands\\seed_manifest.json"
-    },
-    {
       "error": "ValueError(\"common_mode_noise\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
       "manifest": "common_mode_noise\\seed_manifest.json"
     },
@@ -32,7 +20,7 @@
       "manifest": "current_inrush\\seed_manifest.json"
     },
     {
-      "error": "ValueError(\"emi_eft_burst\\\\seed_manifest.json missing required manifest keys: ['validation_status', 'entrypoint']\")",
+      "error": "ValueError(\"emi_eft_burst\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
       "manifest": "emi_eft_burst\\seed_manifest.json"
     },
     {
@@ -84,7 +72,7 @@
       "manifest": "slow_edge_late_transition\\seed_manifest.json"
     },
     {
-      "error": "ValueError(\"switch_relay_contact_bounce\\\\seed_manifest.json missing required manifest keys: ['family', 'status', 'validation_status', 'entrypoint']\")",
+      "error": "ValueError(\"switch_relay_contact_bounce\\\\seed_manifest.json missing required manifest keys: ['entrypoint']\")",
       "manifest": "switch_relay_contact_bounce\\seed_manifest.json"
     }
   ],

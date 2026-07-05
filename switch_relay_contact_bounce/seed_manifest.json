@@ -1,6 +1,9 @@
 {
   "seed_id": "switch_relay_contact_bounce",
   "version": "0.1.0",
+  "family": "digital_timing",
+  "status": "implemented_synthetic",
+  "validation_status": "108/108 population captures and 114 pytest cases reported",
   "human_label": "Switch / relay contact bounce",
   "engine": "Gamma / ElectroStat",
   "supported_signal_types": [

@@ -1,4 +1,4 @@
-﻿# Seed Implementation Matrix
+# Seed Implementation Matrix
 
 | seed_id | README | manifest | src | tests | fixtures | expected_outputs | plots | validation_status | notes |
 |---|---:|---:|---:|---:|---:|---:|---:|---|---|
@@ -17,10 +17,7 @@
 | ground_loop_hum | True | True | 0 | 0 | 0 | 0 | 0 | none | notes.md: True |
 | common_mode_noise | True | True | 0 | 1 | 1 | 3 | 5 | controlled synthetic multi-spectral validation documented | notes.md: True |
 | pwm_vfd_edge_coupled_noise | True | True | 1 | 0 | 1 | 4 | 3 | needs_review; PWM/VFD damping bundle assigned by filename and README | notes.md: True |
-| sensor_threshold_chatter | True | True | 0 | 0 | 0 | 0 | 0 | sensor analyzer material kept in cross_seed/discrete_input_timing because it spans multiple sensor seeds | notes.md: True |
-| slow_edge_late_transition | True | True | 0 | 0 | 0 | 0 | 0 | sensor analyzer material kept in cross_seed/discrete_input_timing because it spans multiple sensor seeds | notes.md: True |
+| sensor_threshold_chatter | True | True | 0 | 0 | 0 | 0 | 0 | sensor analyzer material kept in cross_seed/digital_timing because it spans multiple sensor seeds | notes.md: True |
+| slow_edge_late_transition | True | True | 0 | 0 | 0 | 0 | 0 | sensor analyzer material kept in cross_seed/digital_timing because it spans multiple sensor seeds | notes.md: True |
 | missed_short_pulse | True | True | 2 | 0 | 14 | 5 | 11 | 1000/1000 randomized synthetic trials reported | notes.md: True |
 | high_speed_input_bounce | True | True | 0 | 1 | 0 | 0 | 0 | HSIB chunk recovery experiment reports 100/100 recovered and 31/31 controls rejected | notes.md: True |
-| bearing_fault_vibration_envelope | True | True | 0 | 0 | 0 | 0 | 0 | none | notes.md: True |
-| bearing_fault_current_signature | True | True | 0 | 0 | 0 | 0 | 0 | none | notes.md: True |
-| broken_rotor_bar_sidebands | True | True | 0 | 0 | 0 | 0 | 0 | none | notes.md: True |

@@ -1,9 +1,10 @@
 {
   "seed_id": "emi_eft_burst_v010",
-  "family": "emi_eft_burst",
+  "family":  "switching_emc",
   "role": "evidence_worker",
   "version": "0.1.0",
   "status": "synthetic_research_prototype",
+  "validation_status": "24/24 synthetic outcomes, 6/6 tests reported",
   "input_contract": {
     "detail_time_s": "1D uniformly sampled time array",
     "detail_captures_v": "2D repeated fast-pulse captures",

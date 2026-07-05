@@ -1,6 +1,6 @@
 {
   "seed_id": "relay_coil_inductive_kick",
-  "family": "emi_switching",
+  "family":  "switching_emc",
   "version": "0.2.0",
   "status": "implemented_synthetic",
   "entrypoint": "relay_coil_inductive_kick.adapter:analyze",

@@ -17,7 +17,7 @@ Applied on `main` after merging `sort/codex-seed-library-layout`.
 - `_unsorted_review/electrostat_legacy_review/electroStat` -> `legacy/electrostat/phase_prototypes/electroStat`
 - `_unsorted_review/shared_fixtures_review/FakeScopeData` -> `shared/fixtures/fake_scope/FakeScopeData`
 - `_unsorted_review/templates_review/Gamma_ElectroStat_Phase1_Template` -> `templates/gamma_phase1`
-- `_unsorted_review/sensor_signal_analyzer_multi_seed_review/*` -> `cross_seed/discrete_input_timing/sensor_signal_analyzer/`
+- `_unsorted_review/sensor_signal_analyzer_multi_seed_review/*` -> `cross_seed/digital_timing/sensor_signal_analyzer/`
 - `_unsorted_review/informal_dih_review/*` -> `_archive/informal_dih/`
 - `_unsorted_review/scratch_review/LearningPython` -> `_archive/scratch/LearningPython`
 

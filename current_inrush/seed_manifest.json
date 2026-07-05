@@ -1,6 +1,6 @@
-﻿{
+{
     "seed_id":  "current_inrush",
-    "family":  "emi_switching",
+    "family":  "switching_emc",
     "folder":  "current_inrush",
     "status":  "implemented_synthetic",
     "validation_status":  "synthetic families reported; SNR deferred",

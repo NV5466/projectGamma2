@@ -1,4 +1,4 @@
-﻿# Repo File Inventory
+# Repo File Inventory
 
 Branch: sort/codex-seed-library-layout
 
@@ -591,7 +591,7 @@ Sensor_Analyzer_Test_Signal_Pack\mode3_threshold_drift.csv
 Sensor_Analyzer_Test_Signal_Pack\mode3_wide_hysteresis.csv
 Sensor_Analyzer_Test_Signal_Pack\mode4_actuation_delay.csv
 Sensor_Analyzer_Test_Signal_Pack\mode4_healthy.csv
-Sensor_Analyzer_Test_Signal_Pack\mode4_mechanical_travel_delay.csv
+Sensor_Analyzer_Test_Signal_Pack\mode4_actuator_response_delay.csv
 Sensor_Analyzer_Test_Signal_Pack\mode4_sensor_decision_delay.csv
 Sensor_Analyzer_Test_Signal_Pack\mode4_test_signals.png
 Sensor_Analyzer_Test_Signal_Pack\README.txt
@@ -641,7 +641,7 @@ Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode3_threshold_drift.cs
 Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode3_wide_hysteresis.csv
 Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_actuation_delay.csv
 Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_healthy.csv
-Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_mechanical_travel_delay.csv
+Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_actuator_response_delay.csv
 Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_sensor_decision_delay.csv
 Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_test_signals.png
 Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\README.txt
@@ -1247,7 +1247,7 @@ WaveCompare_2_bundle(1)\wavecompare2_summary.csv
 | Sensor_Analyzer_Test_Signal_Pack/mode3_wide_hysteresis.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode3_wide_hysteresis.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode3_wide_hysteresis.csv |
 | Sensor_Analyzer_Test_Signal_Pack/mode4_actuation_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_actuation_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_actuation_delay.csv |
 | Sensor_Analyzer_Test_Signal_Pack/mode4_healthy.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_healthy.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_healthy.csv |
-| Sensor_Analyzer_Test_Signal_Pack/mode4_mechanical_travel_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_mechanical_travel_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_mechanical_travel_delay.csv |
+| Sensor_Analyzer_Test_Signal_Pack/mode4_actuator_response_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_actuator_response_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_actuator_response_delay.csv |
 | Sensor_Analyzer_Test_Signal_Pack/mode4_sensor_decision_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_sensor_decision_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_sensor_decision_delay.csv |
 | Sensor_Analyzer_Test_Signal_Pack/mode4_test_signals.png | .png | sensor_threshold_chatter / slow_edge_late_transition / needs_review | plot/output image | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_test_signals.png; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_test_signals.png |
 | Sensor_Analyzer_Test_Signal_Pack/README.txt | .txt | sensor_threshold_chatter / slow_edge_late_transition / needs_review | docs/notes | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\README.txt; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\README.txt |
@@ -1297,7 +1297,7 @@ WaveCompare_2_bundle(1)\wavecompare2_summary.csv
 | Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/mode3_wide_hysteresis.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode3_wide_hysteresis.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode3_wide_hysteresis.csv |
 | Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/mode4_actuation_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_actuation_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_actuation_delay.csv |
 | Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/mode4_healthy.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_healthy.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_healthy.csv |
-| Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/mode4_mechanical_travel_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_mechanical_travel_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_mechanical_travel_delay.csv |
+| Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/mode4_actuator_response_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_actuator_response_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_actuator_response_delay.csv |
 | Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/mode4_sensor_decision_delay.csv | .csv | sensor_threshold_chatter / slow_edge_late_transition / needs_review | fixture data or generated output | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_sensor_decision_delay.csv; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_sensor_decision_delay.csv |
 | Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/mode4_test_signals.png | .png | sensor_threshold_chatter / slow_edge_late_transition / needs_review | plot/output image | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\mode4_test_signals.png; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\mode4_test_signals.png |
 | Sensor_Signal_Analyzer_Complete_Bundle/test_signal_pack/README.txt | .txt | sensor_threshold_chatter / slow_edge_late_transition / needs_review | docs/notes | duplicate hash group: Sensor_Analyzer_Test_Signal_Pack\README.txt; Sensor_Signal_Analyzer_Complete_Bundle\test_signal_pack\README.txt |

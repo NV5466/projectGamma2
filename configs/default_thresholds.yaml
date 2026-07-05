@@ -1,0 +1,6 @@
+name: default
+default_threshold: 0.50
+signature_thresholds:
+  relay_coil_inductive_kick: 0.50
+  high_speed_input_bounce: 0.50
+  missed_short_pulse: 0.50

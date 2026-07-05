@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import ctypes
 import json
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
@@ -13,13 +14,18 @@ from gamma_app.waveform_sets import DEFAULT_WAVEFORM_LIBRARY, import_waveforms, 
 
 
 LOGO_PATH = Path(__file__).resolve().parents[1] / "assets" / "gamma_logo.png"
+ICON_PATH = Path(__file__).resolve().parents[1] / "assets" / "gamma_logo.ico"
+APP_USER_MODEL_ID = "Gamma.ElectroStat.App"
 
 
 class GammaApp(tk.Tk):
     def __init__(self) -> None:
+        _set_windows_app_id()
         super().__init__()
         self.title("Gamma")
         self.geometry("1180x760")
+        if ICON_PATH.exists():
+            self.iconbitmap(default=str(ICON_PATH))
         self.logo_image = self._load_logo()
         if self.logo_image is not None:
             self.iconphoto(False, self.logo_image)
@@ -369,6 +375,13 @@ class GammaApp(tk.Tk):
 
 def main() -> None:
     GammaApp().mainloop()
+
+
+def _set_windows_app_id() -> None:
+    try:
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APP_USER_MODEL_ID)
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":

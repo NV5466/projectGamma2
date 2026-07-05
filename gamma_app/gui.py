@@ -9,6 +9,10 @@ from gamma_app.registry import ALLOWED_FAMILIES, read_seed_registry_entries
 from gamma_app.runner import add_capture_to_dataset, analyze_path, validate_dataset
 from gamma_app.threshold_profiles import load_threshold_profile, save_threshold_profile
 from gamma_app.validation_store import ValidationStore
+from gamma_app.waveform_sets import DEFAULT_WAVEFORM_LIBRARY, import_waveforms, list_waveform_sets, read_manifest, sanitize_set_id
+
+
+LOGO_PATH = Path(__file__).resolve().parents[1] / "assets" / "gamma_logo.png"
 
 
 class GammaApp(tk.Tk):
@@ -16,21 +20,34 @@ class GammaApp(tk.Tk):
         super().__init__()
         self.title("Gamma")
         self.geometry("1180x760")
+        self.logo_image = self._load_logo()
+        if self.logo_image is not None:
+            self.iconphoto(False, self.logo_image)
+        self.analyze_input_var = tk.StringVar(value="validation/fixtures/three_signature_smoke")
         self._build()
 
     def _build(self) -> None:
+        header = ttk.Frame(self)
+        header.pack(fill="x", padx=10, pady=8)
+        if self.logo_image is not None:
+            logo = ttk.Label(header, image=self.logo_image)
+            logo.pack(side="left", padx=(0, 12))
+        ttk.Label(header, text="Gamma", font=("Segoe UI", 18, "bold")).pack(side="left")
         tabs = ttk.Notebook(self)
         tabs.pack(fill="both", expand=True)
+        self.waveform_sets_tab = ttk.Frame(tabs)
         self.analyze_tab = ttk.Frame(tabs)
         self.batch_tab = ttk.Frame(tabs)
         self.validation_tab = ttk.Frame(tabs)
         self.results_tab = ttk.Frame(tabs)
         self.settings_tab = ttk.Frame(tabs)
+        tabs.add(self.waveform_sets_tab, text="Waveform Sets")
         tabs.add(self.analyze_tab, text="Analyze Capture")
         tabs.add(self.batch_tab, text="Batch Campaign")
         tabs.add(self.validation_tab, text="Validation Dataset")
         tabs.add(self.results_tab, text="Results / Reports")
         tabs.add(self.settings_tab, text="Settings / Thresholds")
+        self._build_waveform_sets()
         self._build_analyze(self.analyze_tab, batch=False)
         self._build_analyze(self.batch_tab, batch=True)
         self._build_validation()
@@ -39,7 +56,7 @@ class GammaApp(tk.Tk):
 
     def _build_analyze(self, parent: ttk.Frame, *, batch: bool) -> None:
         title = "Batch capture folder" if batch else "Capture file or folder"
-        input_var = tk.StringVar(value="validation/fixtures/three_signature_smoke")
+        input_var = tk.StringVar(value="validation/fixtures/three_signature_smoke") if batch else self.analyze_input_var
         out_var = tk.StringVar(value="outputs/batch_campaign" if batch else "outputs/gui_analysis")
         profile_var = tk.StringVar(value="configs/default_thresholds.yaml")
         family_vars = {family: tk.BooleanVar(value=True) for family in sorted(ALLOWED_FAMILIES)}
@@ -82,6 +99,86 @@ class GammaApp(tk.Tk):
                 messagebox.showerror("Gamma analysis failed", repr(exc))
 
         ttk.Button(parent, text="Run Analysis", command=run).grid(row=row + 1, column=0, sticky="w", padx=8, pady=8)
+
+    def _build_waveform_sets(self) -> None:
+        parent = self.waveform_sets_tab
+        set_var = tk.StringVar(value="bench_run_001")
+        library_var = tk.StringVar(value=str(DEFAULT_WAVEFORM_LIBRARY))
+        selected_sources: list[str] = []
+        status = tk.StringVar(value="Create a set, select files/folders, then import.")
+
+        ttk.Label(parent, text="Waveform set name").grid(row=0, column=0, sticky="w", padx=8, pady=6)
+        ttk.Entry(parent, textvariable=set_var, width=48).grid(row=0, column=1, sticky="ew", padx=8, pady=6)
+        ttk.Label(parent, text="Library root").grid(row=1, column=0, sticky="w", padx=8, pady=6)
+        ttk.Entry(parent, textvariable=library_var, width=90).grid(row=1, column=1, sticky="ew", padx=8, pady=6)
+        ttk.Button(parent, text="Browse", command=lambda: self._browse_dir(library_var)).grid(row=1, column=2, padx=8)
+
+        source_box = tk.Listbox(parent, height=7)
+        source_box.grid(row=3, column=0, columnspan=3, sticky="nsew", padx=8, pady=6)
+
+        def refresh_sources() -> None:
+            source_box.delete(0, "end")
+            for source in selected_sources:
+                source_box.insert("end", source)
+
+        def add_files() -> None:
+            files = filedialog.askopenfilenames(filetypes=[("Gamma NPZ captures", "*.npz"), ("All files", "*.*")])
+            selected_sources.extend(files)
+            refresh_sources()
+
+        def add_folder() -> None:
+            folder = filedialog.askdirectory()
+            if folder:
+                selected_sources.append(folder)
+                refresh_sources()
+
+        def clear_sources() -> None:
+            selected_sources.clear()
+            refresh_sources()
+
+        button_row = ttk.Frame(parent)
+        button_row.grid(row=2, column=0, columnspan=3, sticky="w", padx=8, pady=6)
+        ttk.Button(button_row, text="Select Capture Files", command=add_files).pack(side="left", padx=(0, 8))
+        ttk.Button(button_row, text="Select Folder", command=add_folder).pack(side="left", padx=(0, 8))
+        ttk.Button(button_row, text="Clear", command=clear_sources).pack(side="left")
+
+        table = self._result_table(parent, 6)
+
+        def import_set() -> None:
+            try:
+                waveform_set, imported, warnings = import_waveforms(
+                    selected_sources,
+                    set_var.get(),
+                    library_root=library_var.get(),
+                    notes=f"# {set_var.get()}\n",
+                )
+                status.set(f"Imported {len(imported)} capture(s) into {waveform_set.root}")
+                self._load_waveform_manifest_table(table, waveform_set.manifest_path)
+                if warnings:
+                    messagebox.showwarning("Waveform import warnings", "\n".join(warnings[:20]))
+            except Exception as exc:
+                messagebox.showerror("Waveform import failed", repr(exc))
+
+        def use_in_analyze() -> None:
+            path = Path(library_var.get()) / sanitize_set_id(set_var.get()) / "captures"
+            self.analyze_input_var.set(str(path))
+            status.set(f"Analyze tab input set to {path}")
+
+        def load_existing() -> None:
+            sets = list_waveform_sets(library_var.get())
+            if not sets:
+                messagebox.showinfo("Waveform sets", "No waveform sets found in this library root.")
+                return
+            set_var.set(sets[-1].set_id)
+            self._load_waveform_manifest_table(table, sets[-1].manifest_path)
+            status.set(f"Loaded {sets[-1].root}")
+
+        ttk.Button(parent, text="Import Into Set", command=import_set).grid(row=4, column=0, sticky="w", padx=8, pady=8)
+        ttk.Button(parent, text="Use Set In Analyze Tab", command=use_in_analyze).grid(row=4, column=1, sticky="w", padx=8, pady=8)
+        ttk.Button(parent, text="Load Latest Existing Set", command=load_existing).grid(row=4, column=2, sticky="w", padx=8, pady=8)
+        ttk.Label(parent, textvariable=status).grid(row=5, column=0, columnspan=3, sticky="w", padx=8, pady=4)
+        parent.columnconfigure(1, weight=1)
+        parent.rowconfigure(3, weight=1)
 
     def _build_validation(self) -> None:
         parent = self.validation_tab
@@ -225,6 +322,32 @@ class GammaApp(tk.Tk):
         table.delete(*table.get_children())
         for row in rows:
             table.insert("", "end", values=(row["capture_id"], row.get("seed_label", ""), "dataset", "", "", row.get("notes", "")))
+
+    def _load_waveform_manifest_table(self, table: ttk.Treeview, manifest_path: Path) -> None:
+        manifest = read_manifest(manifest_path)
+        table.delete(*table.get_children())
+        for row in manifest.get("captures", []):
+            table.insert(
+                "",
+                "end",
+                values=(
+                    row.get("capture_id", ""),
+                    row.get("stored_path", ""),
+                    "waveform_set",
+                    row.get("bytes", ""),
+                    "imported",
+                    row.get("original_path", ""),
+                ),
+            )
+
+    def _load_logo(self) -> tk.PhotoImage | None:
+        if not LOGO_PATH.exists():
+            return None
+        try:
+            image = tk.PhotoImage(file=str(LOGO_PATH))
+            return image.subsample(4, 4)
+        except Exception:
+            return None
 
     def _browse_input(self, var: tk.StringVar) -> None:
         path = filedialog.askopenfilename()

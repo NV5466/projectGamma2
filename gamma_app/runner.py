@@ -18,6 +18,7 @@ from .reporting import write_campaign_outputs
 from .results import result_rows
 from .threshold_profiles import ThresholdProfile, load_threshold_profile
 from .validation_store import ValidationCase, ValidationStore
+from .waveform_sets import import_waveforms
 
 
 DEFAULT_INCLUDE_STATUS = {"implemented", "implemented_synthetic", "validated", "synthetic_research_prototype"}
@@ -234,7 +235,13 @@ def build_parser() -> argparse.ArgumentParser:
     validate.add_argument("--registry-root", default=".")
     validate.add_argument("--threshold-profile", default="configs/default_thresholds.yaml")
 
-    sub.add_parser("gui", help="launch the Streamlit GUI")
+    upload = sub.add_parser("waveform-import", help="import capture files/folders into a Gamma waveform set")
+    upload.add_argument("--set-id", required=True)
+    upload.add_argument("--source", action="append", required=True)
+    upload.add_argument("--library-root", default="waveform_sets")
+    upload.add_argument("--notes", default="")
+
+    sub.add_parser("gui", help="launch the Tkinter GUI")
     sub.add_parser("check-registry", help="validate seed registry families and mechanical exclusions")
     return parser
 
@@ -277,6 +284,27 @@ def main(argv: list[str] | None = None) -> int:
             threshold_profile_path=args.threshold_profile,
         )
         print(json.dumps({k: str(v) for k, v in run.output_files.items()}, indent=2, sort_keys=True))
+        return 0
+    if args.command == "waveform-import":
+        waveform_set, imported, warnings = import_waveforms(
+            args.source,
+            args.set_id,
+            library_root=args.library_root,
+            notes=args.notes,
+        )
+        print(
+            json.dumps(
+                {
+                    "waveform_set": str(waveform_set.root),
+                    "captures_dir": str(waveform_set.captures_dir),
+                    "manifest": str(waveform_set.manifest_path),
+                    "imported_count": len(imported),
+                    "warnings": warnings,
+                },
+                indent=2,
+                sort_keys=True,
+            )
+        )
         return 0
     if args.command == "gui":
         return launch_gui()

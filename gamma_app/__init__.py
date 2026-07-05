@@ -8,4 +8,5 @@ __all__ = [
     "runner",
     "threshold_profiles",
     "validation_store",
+    "waveform_sets",
 ]

@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 import argparse
+import csv
 import json
 import subprocess
 import sys
@@ -202,6 +203,238 @@ def validate_dataset(
         store.close()
 
 
+def validate_manifest(
+    manifest: str | Path,
+    out_dir: str | Path,
+    *,
+    registry_root: str | Path | None = None,
+    threshold_profile_path: str | Path | None = None,
+) -> GammaRun:
+    registry_root = registry_root or default_registry_root()
+    manifest_path = Path(manifest)
+    manifest_rows = _read_csv_dicts(manifest_path)
+    if not manifest_rows:
+        raise RuntimeError(f"manifest has no rows: {manifest_path}")
+    threshold_profile = load_threshold_profile(threshold_profile_path or default_threshold_profile_path())
+    signatures, registry_failures = load_available_signatures(registry_root, include_status=DEFAULT_INCLUDE_STATUS)
+    family_by_signature = {spec.seed_id: spec.family for spec in signatures}
+    captures = []
+    warnings: list[str] = []
+    manifest_root = manifest_path.parent
+    manifest_by_capture: dict[str, dict[str, Any]] = {}
+    for row in manifest_rows:
+        file_path = manifest_root / str(row["relative_path"])
+        loaded, load_warnings = load_captures(file_path, max_cases=1)
+        warnings.extend(load_warnings)
+        if not loaded:
+            continue
+        capture = loaded[0]
+        capture.capture_id = str(row["capture_id"])
+        expected = _to_bool(row.get("expected_fault_present"))
+        capture.truth_label = str(row["signature_id"]) if expected else None
+        captures.append(capture)
+        manifest_by_capture[capture.capture_id or ""] = row
+    if not captures:
+        raise RuntimeError("no captures from manifest could be loaded")
+
+    case_results = run_campaign(captures, signatures)
+    session_id = str(uuid.uuid4())
+    output_files = write_campaign_outputs(
+        case_results,
+        out_dir,
+        family_by_signature=family_by_signature,
+        threshold_profile=threshold_profile,
+        warnings=warnings,
+        registry_failures=registry_failures,
+        run_config={
+            "mode": "manifest_validation",
+            "manifest": str(manifest_path),
+            "registry_root": str(registry_root),
+            "threshold_profile": threshold_profile.to_dict(),
+            "session_id": session_id,
+        },
+    )
+    rows = result_rows(case_results, family_by_signature=family_by_signature, threshold_profile=threshold_profile)
+    metric_outputs = write_manifest_validation_outputs(
+        rows,
+        manifest_by_capture,
+        Path(out_dir),
+    )
+    output_files.update(metric_outputs)
+    return GammaRun(
+        case_results=case_results,
+        output_files=output_files,
+        warnings=warnings,
+        registry_failures=registry_failures,
+        threshold_profile=threshold_profile,
+        session_id=session_id,
+    )
+
+
+def write_manifest_validation_outputs(
+    result_rows_: list[dict[str, Any]],
+    manifest_by_capture: dict[str, dict[str, Any]],
+    out_dir: Path,
+) -> dict[str, Path]:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    primary_by_capture = {
+        str(row["capture_id"]): str(row["signature_id"])
+        for row in result_rows_
+        if row.get("is_primary_diagnosis")
+    }
+    capture_rows = []
+    for capture_id, meta in sorted(manifest_by_capture.items()):
+        capture_rows.append(
+            {
+                "capture_id": capture_id,
+                "signature_id": meta.get("signature_id", ""),
+                "family": meta.get("family", ""),
+                "expected_fault_present": _to_bool(meta.get("expected_fault_present")),
+                "noise_tier": meta.get("noise_tier", ""),
+                "predicted_signature_id": primary_by_capture.get(capture_id, ""),
+            }
+        )
+    for row in result_rows_:
+        meta = manifest_by_capture.get(str(row["capture_id"]), {})
+        row["manifest_signature_id"] = meta.get("signature_id", "")
+        row["manifest_family"] = meta.get("family", "")
+        row["expected_fault_present"] = _to_bool(meta.get("expected_fault_present"))
+        row["noise_tier"] = meta.get("noise_tier", "")
+
+    per_signature = _capture_metric_rows(capture_rows, group_key="signature_id")
+    validation_summary = _capture_metric_rows(capture_rows, group_key=None)
+    high_noise = _capture_metric_rows([row for row in capture_rows if row.get("noise_tier") == "high"], group_key="signature_id")
+    normal_noise = _capture_metric_rows([row for row in capture_rows if row.get("noise_tier") == "normal"], group_key="signature_id")
+    family_rows = _capture_family_accuracy_rows(capture_rows)
+    confusion_rows = _capture_confusion_rows(capture_rows)
+
+    paths = {
+        "validation_summary_csv": out_dir / "validation_summary.csv",
+        "validation_summary_json": out_dir / "validation_summary.json",
+        "per_signature_metrics_csv": out_dir / "per_signature_metrics.csv",
+        "confusion_summary_csv": out_dir / "confusion_summary.csv",
+        "high_noise_performance_csv": out_dir / "high_noise_performance.csv",
+        "normal_noise_performance_csv": out_dir / "normal_noise_performance.csv",
+        "family_performance_csv": out_dir / "family_performance.csv",
+        "validation_report_md": out_dir / "README.md",
+    }
+    _write_csv(paths["validation_summary_csv"], validation_summary)
+    paths["validation_summary_json"].write_text(json.dumps(validation_summary, indent=2, sort_keys=True), encoding="utf-8")
+    _write_csv(paths["per_signature_metrics_csv"], per_signature)
+    _write_csv(paths["confusion_summary_csv"], confusion_rows)
+    _write_csv(paths["high_noise_performance_csv"], high_noise)
+    _write_csv(paths["normal_noise_performance_csv"], normal_noise)
+    _write_csv(paths["family_performance_csv"], family_rows)
+    paths["validation_report_md"].write_text(_validation_report(validation_summary, per_signature), encoding="utf-8")
+    return paths
+
+
+def _capture_metric_rows(rows: list[dict[str, Any]], *, group_key: str | None) -> list[dict[str, Any]]:
+    groups: dict[str, list[dict[str, Any]]] = {"overall": rows} if group_key is None else {}
+    if group_key is not None:
+        for row in rows:
+            groups.setdefault(str(row.get(group_key, "")), []).append(row)
+    output = []
+    for group, group_rows in sorted(groups.items()):
+        tp = fp = tn = fn = 0
+        positives = negatives = 0
+        for row in group_rows:
+            expected = bool(row.get("expected_fault_present"))
+            predicted = row.get("predicted_signature_id") == row.get("signature_id")
+            if expected:
+                positives += 1
+            else:
+                negatives += 1
+            if predicted and expected:
+                tp += 1
+            elif predicted and not expected:
+                fp += 1
+            elif (not predicted) and expected:
+                fn += 1
+            else:
+                tn += 1
+        recall = _safe_div(tp, tp + fn)
+        specificity = _safe_div(tn, tn + fp)
+        output.append(
+            {
+                "group": group,
+                "total_cases": len(group_rows),
+                "positives": positives,
+                "negatives": negatives,
+                "true_positives": tp,
+                "false_positives": fp,
+                "true_negatives": tn,
+                "false_negatives": fn,
+                "precision": _safe_div(tp, tp + fp),
+                "recall": recall,
+                "sensitivity": recall,
+                "specificity": specificity,
+                "balanced_accuracy": (recall + specificity) / 2.0,
+                "accuracy": _safe_div(tp + tn, tp + fp + tn + fn),
+            }
+        )
+    return output
+
+
+def _capture_family_accuracy_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    output = []
+    for family in sorted({str(row.get("family", "")) for row in rows}):
+        family_rows = [row for row in rows if row.get("family") == family]
+        metrics = _capture_metric_rows(family_rows, group_key=None)[0]
+        metrics["group"] = family
+        output.append(metrics)
+    return output
+
+
+def _capture_confusion_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    counts: dict[tuple[str, str], int] = {}
+    for meta in rows:
+        expected = meta.get("signature_id") if meta.get("expected_fault_present") else f"{meta.get('signature_id')}:negative_control"
+        predicted = meta.get("predicted_signature_id") or "no_primary"
+        counts[(str(expected), str(predicted))] = counts.get((str(expected), str(predicted)), 0) + 1
+    return [{"expected": key[0], "predicted": key[1], "count": value} for key, value in sorted(counts.items())]
+
+
+def _validation_report(validation_summary: list[dict[str, Any]], per_signature: list[dict[str, Any]]) -> str:
+    overall = validation_summary[0] if validation_summary else {}
+    return "\n".join(
+        [
+            "# Gamma Manifest Validation Report",
+            "",
+            f"- Total result rows: {overall.get('total_cases', 0)}",
+            f"- Precision: {overall.get('precision', 0):.4f}",
+            f"- Recall/sensitivity: {overall.get('recall', 0):.4f}",
+            f"- Specificity: {overall.get('specificity', 0):.4f}",
+            f"- Balanced accuracy: {overall.get('balanced_accuracy', 0):.4f}",
+            "",
+            "Per-signature details are in `per_signature_metrics.csv`.",
+        ]
+    )
+
+
+def _read_csv_dicts(path: Path) -> list[dict[str, Any]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def _write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    fieldnames = sorted({key for row in rows for key in row.keys()}) if rows else ["group"]
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def _to_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "y"}
+
+
+def _safe_div(numerator: int | float, denominator: int | float) -> float:
+    return float(numerator) / float(denominator) if denominator else 0.0
+
+
 def launch_gui() -> int:
     return subprocess.call([sys.executable, "-m", "gamma_app.gui"])
 
@@ -232,8 +465,9 @@ def build_parser() -> argparse.ArgumentParser:
     add.add_argument("--operator-tags")
     add.add_argument("--environment-notes")
 
-    validate = sub.add_parser("validate", help="run analyzers against a validation dataset")
-    validate.add_argument("--dataset", required=True)
+    validate = sub.add_parser("validate", help="run analyzers against a validation dataset or manifest")
+    validate.add_argument("--dataset")
+    validate.add_argument("--manifest")
     validate.add_argument("--out", required=True)
     validate.add_argument("--registry-root")
     validate.add_argument("--threshold-profile")
@@ -280,12 +514,22 @@ def main(argv: list[str] | None = None) -> int:
         print(f"added capture to {args.dataset}")
         return 0
     if args.command == "validate":
-        run = validate_dataset(
-            args.dataset,
-            args.out,
-            registry_root=args.registry_root,
-            threshold_profile_path=args.threshold_profile,
-        )
+        if args.manifest:
+            run = validate_manifest(
+                args.manifest,
+                args.out,
+                registry_root=args.registry_root,
+                threshold_profile_path=args.threshold_profile,
+            )
+        elif args.dataset:
+            run = validate_dataset(
+                args.dataset,
+                args.out,
+                registry_root=args.registry_root,
+                threshold_profile_path=args.threshold_profile,
+            )
+        else:
+            raise SystemExit("validate requires --dataset or --manifest")
         print(json.dumps({k: str(v) for k, v in run.output_files.items()}, indent=2, sort_keys=True))
         return 0
     if args.command == "waveform-import":

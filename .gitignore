@@ -5,3 +5,5 @@ __pycache__/
 build/
 dist/
 *.spec
+validation/generated/massive_1900/
+validation/generated/massive_1900_smoke/

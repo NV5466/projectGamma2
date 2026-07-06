@@ -1,0 +1,20 @@
+name: fault_finding_sensitive
+mode: balanced_validation_distribution
+description: Sensitive objective that leans toward recall while retaining acceptable precision.
+notes:
+  - Prioritizes catching useful faults over absolute conservatism.
+  - Use when missed detections are more costly than moderate false positives.
+weights:
+  posterior_mean_success: 0.18
+  posterior_lower_success: 0.22
+  precision: 0.08
+  recall: 0.20
+  specificity: 0.10
+  worst_bucket_success: 0.08
+  high_noise_success: 0.06
+  conflict_resistance: 0.04
+  one_minus_false_positive_rate: 0.02
+  one_minus_false_negative_rate: 0.04
+  one_minus_fp_concentration_share: 0.02
+  one_minus_high_noise_gap: 0.04
+  one_minus_primary_stolen_rate: 0.02

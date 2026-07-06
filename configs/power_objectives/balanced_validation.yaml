@@ -1,0 +1,20 @@
+name: balanced_default
+mode: balanced_validation_distribution
+description: Balanced validation objective that prefers posterior success, precision, recall, and specificity.
+notes:
+  - Balanced across the deliberate synthetic validation strata.
+  - Treat as development-corpus methodology, not field calibration.
+weights:
+  posterior_mean_success: 0.25
+  posterior_lower_success: 0.20
+  precision: 0.12
+  recall: 0.12
+  specificity: 0.10
+  worst_bucket_success: 0.08
+  high_noise_success: 0.06
+  conflict_resistance: 0.05
+  one_minus_false_positive_rate: 0.02
+  one_minus_false_negative_rate: 0.02
+  one_minus_fp_concentration_share: 0.02
+  one_minus_high_noise_gap: 0.01
+  one_minus_primary_stolen_rate: 0.01

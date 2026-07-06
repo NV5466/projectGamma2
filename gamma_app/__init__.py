@@ -1,6 +1,7 @@
 """Gamma application wrapper for diagnostics, validation, and reports."""
 
 __all__ = [
+    "analyzer_power",
     "io",
     "registry",
     "reporting",

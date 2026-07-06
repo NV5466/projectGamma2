@@ -14,7 +14,15 @@ LOG = logging.getLogger("gamma")
 
 def _parse_statuses(value: str | None) -> set[str]:
     if not value:
-        return {"implemented", "implemented_synthetic", "validated"}
+        return {
+            "implemented",
+            "implemented_synthetic",
+            "validated",
+            "synthetic_research_prototype",
+            "concept_validated_elsewhere",
+            "needs_review",
+            "scaffolded",
+        }
     return {item.strip() for item in value.split(",") if item.strip()}
 
 

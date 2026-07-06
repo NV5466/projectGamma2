@@ -23,7 +23,7 @@ from .validation_store import ValidationCase, ValidationStore
 from .waveform_sets import import_waveforms
 
 
-DEFAULT_INCLUDE_STATUS = {"implemented", "implemented_synthetic", "validated", "synthetic_research_prototype"}
+DEFAULT_INCLUDE_STATUS: set[str] | None = None
 
 
 @dataclass
@@ -50,10 +50,7 @@ def analyze_path(
 ) -> GammaRun:
     registry_root = registry_root or default_registry_root()
     threshold_profile = load_threshold_profile(threshold_profile_path or default_threshold_profile_path())
-    signatures, registry_failures = load_available_signatures(
-        registry_root,
-        include_status=include_status or DEFAULT_INCLUDE_STATUS,
-    )
+    signatures, registry_failures = load_available_signatures(registry_root, include_status=include_status)
     if family_filter:
         signatures = [spec for spec in signatures if spec.family in family_filter]
     if seed_filter:
@@ -73,7 +70,7 @@ def analyze_path(
         "input_path": str(input_path),
         "registry_root": str(registry_root),
         "threshold_profile": threshold_profile.to_dict(),
-        "include_status": sorted(include_status or DEFAULT_INCLUDE_STATUS),
+        "include_status": sorted(include_status) if include_status else None,
         "family_filter": sorted(family_filter or []),
         "seed_filter": sorted(seed_filter or []),
         "max_cases": max_cases,
@@ -156,7 +153,7 @@ def validate_dataset(
         all_warnings: list[str] = []
         registry_failures: list[dict[str, str]] = []
         threshold_profile = load_threshold_profile(threshold_profile_path or default_threshold_profile_path())
-        signatures, registry_failures = load_available_signatures(registry_root, include_status=DEFAULT_INCLUDE_STATUS)
+        signatures, registry_failures = load_available_signatures(registry_root)
         family_by_signature = {spec.seed_id: spec.family for spec in signatures}
         for row in captures:
             loaded, warnings = load_captures(row["source_file_path"], max_cases=1)
@@ -216,7 +213,7 @@ def validate_manifest(
     if not manifest_rows:
         raise RuntimeError(f"manifest has no rows: {manifest_path}")
     threshold_profile = load_threshold_profile(threshold_profile_path or default_threshold_profile_path())
-    signatures, registry_failures = load_available_signatures(registry_root, include_status=DEFAULT_INCLUDE_STATUS)
+    signatures, registry_failures = load_available_signatures(registry_root)
     family_by_signature = {spec.seed_id: spec.family for spec in signatures}
     captures = []
     warnings: list[str] = []

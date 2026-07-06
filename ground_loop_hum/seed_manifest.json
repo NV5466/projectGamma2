@@ -1,11 +1,10 @@
-﻿{
-    "seed_id":  "ground_loop_hum",
-    "primary_modules":  [
-
-                        ],
-    "family":  "measurement_artifact",
-    "notes":  "No files were confidently assigned during the repository sort.",
-    "validation_status":  "none",
-    "folder":  "ground_loop_hum",
-    "status":  "scaffolded"
+{
+  "seed_id": "ground_loop_hum",
+  "primary_modules": [],
+  "family": "measurement_artifact",
+  "notes": "No files were confidently assigned during the repository sort.",
+  "validation_status": "none",
+  "folder": "ground_loop_hum",
+  "status": "scaffolded",
+  "entrypoint": "seed_adapters:ground_loop_hum"
 }

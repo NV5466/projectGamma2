@@ -17,6 +17,7 @@ seeds:
     family: power_quality
     folder: pq_voltage_sag
     status: implemented_synthetic
+    entrypoint: seed_adapters:pq_voltage_sag
     primary_modules: [WC2_alignment, sliding_RMS, affine_gain, residual_analysis]
     validation_status: "900 synthetic validation runs reported in README"
 
@@ -24,6 +25,7 @@ seeds:
     family: power_quality
     folder: pq_voltage_swell
     status: implemented_synthetic
+    entrypoint: seed_adapters:pq_voltage_swell
     primary_modules: [sliding_RMS, FFT, THD, STFT, duration_check]
     validation_status: "900 cases; sensitivity 0.996667; specificity 1.000000; precision 1.000000; balanced accuracy 0.998333; runtime 50.80 s; synthetic research prototype only"
     validation_cases: 900
@@ -38,6 +40,7 @@ seeds:
     family: power_quality
     folder: pq_short_interruption
     status: implemented_synthetic
+    entrypoint: seed_adapters:pq_short_interruption
     primary_modules: [sliding_RMS, duration_measurement, sag_core_reuse]
     validation_status: "330 synthetic cases; sensitivity/specificity/precision/balanced accuracy 1.000000"
 
@@ -45,6 +48,7 @@ seeds:
     family: power_quality
     folder: pq_harmonic_distortion
     status: implemented_synthetic
+    entrypoint: seed_adapters:pq_harmonic_distortion
     primary_modules: [WC2_reference, harmonic_bins, THD, FFT, sinusoidal_regression]
     validation_status: "270 synthetic cases; sensitivity/specificity/precision/balanced accuracy 1.000000"
 
@@ -52,6 +56,7 @@ seeds:
     family: power_quality
     folder: pq_flicker_am_mod
     status: scaffolded
+    entrypoint: seed_adapters:pq_flicker_am_mod
     primary_modules: [RMS_trend, sideband_detection, STFT, envelope_analysis]
     validation_status: "none"
 
@@ -59,6 +64,7 @@ seeds:
     family: power_quality
     folder: pq_commutation_notch
     status: implemented_synthetic
+    entrypoint: seed_adapters:pq_commutation_notch
     primary_modules: [edge_detection, sharp_event_detector, phase_locked_event_timing]
     validation_status: "needs_review; sharp-event bundle assigned by commutation notch evidence"
 
@@ -66,6 +72,7 @@ seeds:
     family: power_quality
     folder: pq_impulsive_transient
     status: scaffolded
+    entrypoint: seed_adapters:pq_impulsive_transient
     primary_modules: [peak_detection, wavelet, STFT]
     validation_status: "none"
 
@@ -73,6 +80,7 @@ seeds:
     family: power_quality
     folder: pq_oscillatory_transient
     status: implemented_synthetic
+    entrypoint: seed_adapters:pq_oscillatory_transient
     primary_modules: [matrix_pencil, pole_clustering, WC2_reference, STFT]
     validation_status: "needs_review; ensemble hankel bundle assigned by oscillatory/pole evidence"
 
@@ -80,6 +88,7 @@ seeds:
     family: switching_emc
     folder: emi_eft_burst
     status: implemented_synthetic
+    entrypoint: seed_adapters:emi_eft_burst
     primary_modules: [edge_counting, pulse_template, matrix_pencil_modes, burst_grouping]
     validation_status: "24/24 synthetic outcomes, 6/6 tests reported"
 
@@ -87,6 +96,7 @@ seeds:
     family: switching_emc
     folder: current_inrush
     status: implemented_synthetic
+    entrypoint: seed_adapters:current_inrush
     primary_modules: [cycle_RMS, envelope_template, population_summary, current_vs_command_timing]
     validation_status: "synthetic families reported; SNR deferred"
 
@@ -94,6 +104,7 @@ seeds:
     family: digital_timing
     folder: switch_relay_contact_bounce
     status: implemented_synthetic
+    entrypoint: seed_adapters:switch_relay_contact_bounce
     primary_modules: [edge_detection, contact_state_reconstruction, pulse_width_statistics, command_contact_timing]
     validation_status: "108/108 population captures and 114 pytest cases reported"
 
@@ -101,6 +112,7 @@ seeds:
     family: switching_emc
     folder: relay_coil_inductive_kick
     status: implemented_synthetic
+    entrypoint: seed_adapters:relay_coil_inductive_kick
     primary_modules: [classifier, features, generator, boundary_harness]
     validation_status: "v0.2.0 synthetic boundary harness; direct test-function execution passed locally because pytest is not installed"
 
@@ -108,6 +120,7 @@ seeds:
     family: measurement_artifact
     folder: ground_loop_hum
     status: scaffolded
+    entrypoint: seed_adapters:ground_loop_hum
     primary_modules: [FFT, coherence, differential_compare, RMS]
     validation_status: "none"
 
@@ -115,6 +128,7 @@ seeds:
     family: measurement_artifact
     folder: common_mode_noise
     status: implemented_synthetic
+    entrypoint: seed_adapters:common_mode_noise
     primary_modules: [WC2_residuals, differential_subtraction, CSD, coherence, cross_spectrum_phase]
     validation_status: "controlled synthetic multi-spectral validation documented"
 
@@ -122,6 +136,7 @@ seeds:
     family: switching_emc
     folder: pwm_vfd_edge_coupled_noise
     status: implemented_synthetic
+    entrypoint: seed_adapters:pwm_vfd_edge_coupled_noise
     primary_modules: [cross_correlation, coherence, damping_estimation, edge_synchronous_analysis]
     validation_status: "needs_review; PWM/VFD damping bundle assigned by filename and README"
 
@@ -129,6 +144,7 @@ seeds:
     family: digital_timing
     folder: sensor_threshold_chatter
     status: needs_review
+    entrypoint: seed_adapters:sensor_threshold_chatter
     primary_modules: [edge_timing, analog_vs_digital_compare, threshold_crossing_count]
     validation_status: "sensor analyzer material kept in cross_seed/digital_timing because it spans multiple sensor seeds"
 
@@ -136,6 +152,7 @@ seeds:
     family: digital_timing
     folder: slow_edge_late_transition
     status: needs_review
+    entrypoint: seed_adapters:slow_edge_late_transition
     primary_modules: [rise_fall_time, timing_histogram, threshold_crossing_analysis]
     validation_status: "sensor analyzer material kept in cross_seed/digital_timing because it spans multiple sensor seeds"
 
@@ -143,6 +160,7 @@ seeds:
     family: digital_timing
     folder: missed_short_pulse
     status: implemented_synthetic
+    entrypoint: seed_adapters:missed_short_pulse
     primary_modules: [pulse_width_histogram, propagation_compare, event_latch_review]
     validation_status: "1000/1000 randomized synthetic trials reported"
 
@@ -150,6 +168,7 @@ seeds:
     family: digital_timing
     folder: high_speed_input_bounce
     status: concept_validated_elsewhere
+    entrypoint: seed_adapters:high_speed_input_bounce
     primary_modules: [WC2_alignment, source_victim_compare, threshold_consequence_model]
     validation_status: "HSIB chunk recovery experiment reports 100/100 recovered and 31/31 controls rejected"
 

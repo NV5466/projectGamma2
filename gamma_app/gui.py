@@ -149,7 +149,7 @@ class GammaApp(tk.Tk):
         ttk.Button(button_row, text="Select Folder", command=add_folder).pack(side="left", padx=(0, 8))
         ttk.Button(button_row, text="Clear", command=clear_sources).pack(side="left")
 
-        table = self._result_table(parent, 6)
+        table = self._manifest_table(parent, 6)
 
         def import_set() -> None:
             try:
@@ -209,7 +209,7 @@ class GammaApp(tk.Tk):
         ttk.Checkbutton(parent, text="No-fault/control label", variable=no_fault_var).grid(row=4, column=1, sticky="w", padx=8)
         ttk.Label(parent, text="Notes").grid(row=5, column=0, sticky="nw", padx=8, pady=6)
         notes.grid(row=5, column=1, sticky="ew", padx=8, pady=6)
-        table = self._result_table(parent, 8)
+        table = self._dataset_table(parent, 8)
 
         def add_case() -> None:
             try:
@@ -298,6 +298,28 @@ class GammaApp(tk.Tk):
         parent.rowconfigure(row, weight=1)
         return table
 
+    def _manifest_table(self, parent: ttk.Frame, row: int) -> ttk.Treeview:
+        columns = ("capture_id", "stored_path", "bytes", "original_path", "suffix")
+        table = ttk.Treeview(parent, columns=columns, show="headings", height=12)
+        for column in columns:
+            width = 180 if column != "original_path" else 360
+            table.heading(column, text=column)
+            table.column(column, width=width)
+        table.grid(row=row, column=0, columnspan=3, sticky="nsew", padx=8, pady=8)
+        parent.rowconfigure(row, weight=1)
+        return table
+
+    def _dataset_table(self, parent: ttk.Frame, row: int) -> ttk.Treeview:
+        columns = ("capture_id", "seed_label", "no_fault_control", "source_file_path", "notes")
+        table = ttk.Treeview(parent, columns=columns, show="headings", height=12)
+        for column in columns:
+            width = 180 if column not in {"source_file_path", "notes"} else 320
+            table.heading(column, text=column)
+            table.column(column, width=width)
+        table.grid(row=row, column=0, columnspan=3, sticky="nsew", padx=8, pady=8)
+        parent.rowconfigure(row, weight=1)
+        return table
+
     def _load_table(self, table: ttk.Treeview, csv_path: Path) -> None:
         import csv
 
@@ -328,7 +350,17 @@ class GammaApp(tk.Tk):
             store.close()
         table.delete(*table.get_children())
         for row in rows:
-            table.insert("", "end", values=(row["capture_id"], row.get("seed_label", ""), "dataset", "", "", row.get("notes", "")))
+            table.insert(
+                "",
+                "end",
+                values=(
+                    row["capture_id"],
+                    row.get("seed_label", ""),
+                    row.get("no_fault_control", ""),
+                    row.get("source_file_path", ""),
+                    row.get("notes", ""),
+                ),
+            )
 
     def _load_waveform_manifest_table(self, table: ttk.Treeview, manifest_path: Path) -> None:
         manifest = read_manifest(manifest_path)
@@ -340,10 +372,9 @@ class GammaApp(tk.Tk):
                 values=(
                     row.get("capture_id", ""),
                     row.get("stored_path", ""),
-                    "waveform_set",
                     row.get("bytes", ""),
-                    "imported",
                     row.get("original_path", ""),
+                    row.get("suffix", ""),
                 ),
             )
 

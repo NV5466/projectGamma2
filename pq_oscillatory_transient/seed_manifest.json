@@ -1,14 +1,15 @@
-﻿{
-    "seed_id":  "pq_oscillatory_transient",
-    "family":  "power_quality",
-    "folder":  "pq_oscillatory_transient",
-    "status":  "implemented_synthetic",
-    "validation_status":  "needs_review; ensemble hankel bundle assigned by oscillatory/pole evidence",
-    "primary_modules":  [
-                            "matrix_pencil",
-                            "pole_clustering",
-                            "WC2_reference",
-                            "STFT"
-                        ],
-    "field_calibration_claim":  false
+{
+  "seed_id": "pq_oscillatory_transient",
+  "family": "power_quality",
+  "folder": "pq_oscillatory_transient",
+  "status": "implemented_synthetic",
+  "validation_status": "needs_review; ensemble hankel bundle assigned by oscillatory/pole evidence",
+  "primary_modules": [
+    "matrix_pencil",
+    "pole_clustering",
+    "WC2_reference",
+    "STFT"
+  ],
+  "field_calibration_claim": false,
+  "entrypoint": "seed_adapters:pq_oscillatory_transient"
 }

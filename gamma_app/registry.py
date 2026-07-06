@@ -6,6 +6,8 @@ import re
 
 from gamma_core.registry import SignatureSpec, load_registry
 
+from .runtime import resource_path
+
 
 ALLOWED_FAMILIES = {"power_quality", "switching_emc", "digital_timing", "measurement_artifact"}
 MECHANICAL_ONLY_PATTERNS = [
@@ -25,7 +27,13 @@ def load_available_signatures(
     include_status: set[str] | None = None,
 ) -> tuple[list[SignatureSpec], list[dict[str, str]]]:
     specs, failures = load_registry(root, include_status=include_status)
-    electrical_specs = [spec for spec in specs if spec.family in ALLOWED_FAMILIES and not is_mechanical_only_id(spec.seed_id)]
+    electrical_specs = [
+        spec
+        for spec in specs
+        if spec.family in ALLOWED_FAMILIES
+        and not is_mechanical_only_id(spec.seed_id)
+        and not _is_generated_manifest(spec.manifest_path)
+    ]
     skipped = [
         {
             "manifest": str(spec.manifest_path),
@@ -42,6 +50,11 @@ def is_mechanical_only_id(value: str) -> bool:
     return any(pattern in normalized for pattern in MECHANICAL_ONLY_PATTERNS)
 
 
+def _is_generated_manifest(path: Path) -> bool:
+    parts = {part.lower() for part in Path(path).parts}
+    return bool(parts & {"dist", "build", "__pycache__", ".pytest_cache"})
+
+
 def read_seed_registry_entries(path: str | Path = "seed_registry.yaml") -> list[dict[str, Any]]:
     """Read the simple seed_registry.yaml shape used by this repo.
 
@@ -49,6 +62,10 @@ def read_seed_registry_entries(path: str | Path = "seed_registry.yaml") -> list[
     the top-level `seeds:` list and the fields needed by the app/tests.
     """
     path = Path(path)
+    if not path.exists():
+        bundled = resource_path("seed_registry.yaml")
+        if bundled.exists():
+            path = bundled
     text = path.read_text(encoding="utf-8-sig")
     try:
         import yaml  # type: ignore

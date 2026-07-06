@@ -1,9 +1,9 @@
 {
   "seed_id": "relay_coil_inductive_kick",
-  "family":  "switching_emc",
+  "family": "switching_emc",
   "version": "0.2.0",
   "status": "implemented_synthetic",
-  "entrypoint": "relay_coil_inductive_kick.adapter:analyze",
+  "entrypoint": "seed_adapters:relay_coil_inductive_kick",
   "validation_status": "v0.2.0 synthetic boundary harness; Gamma Core v0.1 adapter added",
   "supports_multi_reference": true,
   "supports_tertiary": false,

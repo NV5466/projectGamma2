@@ -1,6 +1,6 @@
 {
   "seed_id": "emi_eft_burst_v010",
-  "family":  "switching_emc",
+  "family": "switching_emc",
   "role": "evidence_worker",
   "version": "0.1.0",
   "status": "synthetic_research_prototype",
@@ -50,5 +50,6 @@
     "No component-causality claim",
     "No calibrated probability",
     "SNR deferred"
-  ]
+  ],
+  "entrypoint": "seed_adapters:emi_eft_burst_v010"
 }

@@ -49,5 +49,6 @@
     ],
     "snr_evaluated": false,
     "scope": "synthetic implementation validation only"
-  }
+  },
+  "entrypoint": "seed_adapters:switch_relay_contact_bounce"
 }

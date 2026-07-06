@@ -1,16 +1,16 @@
 {
-    "seed_id":  "missed_short_pulse",
-    "family":  "digital_timing",
-    "folder":  "missed_short_pulse",
-    "status":  "implemented_synthetic",
-    "validation_status":  "1000/1000 randomized synthetic trials reported",
-    "entrypoint":  "missed_short_pulse.adapter:analyze",
-    "supports_multi_reference":  true,
-    "supports_tertiary":  false,
-    "primary_modules":  [
-                            "pulse_width_histogram",
-                            "propagation_compare",
-                            "event_latch_review"
-                        ],
-    "field_calibration_claim":  false
+  "seed_id": "missed_short_pulse",
+  "family": "digital_timing",
+  "folder": "missed_short_pulse",
+  "status": "implemented_synthetic",
+  "validation_status": "1000/1000 randomized synthetic trials reported",
+  "entrypoint": "seed_adapters:missed_short_pulse",
+  "supports_multi_reference": true,
+  "supports_tertiary": false,
+  "primary_modules": [
+    "pulse_width_histogram",
+    "propagation_compare",
+    "event_latch_review"
+  ],
+  "field_calibration_claim": false
 }

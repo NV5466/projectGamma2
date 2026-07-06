@@ -1,14 +1,15 @@
 {
-    "seed_id":  "pwm_vfd_edge_coupled_noise",
-    "family":  "switching_emc",
-    "folder":  "pwm_vfd_edge_coupled_noise",
-    "status":  "implemented_synthetic",
-    "validation_status":  "needs_review; PWM/VFD damping bundle assigned by filename and README",
-    "primary_modules":  [
-                            "cross_correlation",
-                            "coherence",
-                            "damping_estimation",
-                            "edge_synchronous_analysis"
-                        ],
-    "field_calibration_claim":  false
+  "seed_id": "pwm_vfd_edge_coupled_noise",
+  "family": "switching_emc",
+  "folder": "pwm_vfd_edge_coupled_noise",
+  "status": "implemented_synthetic",
+  "validation_status": "needs_review; PWM/VFD damping bundle assigned by filename and README",
+  "primary_modules": [
+    "cross_correlation",
+    "coherence",
+    "damping_estimation",
+    "edge_synchronous_analysis"
+  ],
+  "field_calibration_claim": false,
+  "entrypoint": "seed_adapters:pwm_vfd_edge_coupled_noise"
 }

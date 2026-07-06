@@ -34,7 +34,14 @@ def import_entrypoint(entrypoint: str) -> Callable[[CaptureRecord], SignatureRes
 
 def discover_manifests(root: str | Path) -> list[Path]:
     root = Path(root)
-    return sorted(root.rglob("seed_manifest.json"))
+    excluded = {"dist", "build", "__pycache__", ".pytest_cache"}
+    manifests: list[Path] = []
+    for manifest in root.rglob("seed_manifest.json"):
+        parts = {part.lower() for part in manifest.parts}
+        if parts & excluded:
+            continue
+        manifests.append(manifest)
+    return sorted(manifests)
 
 
 def load_signature_spec(manifest_path: str | Path) -> SignatureSpec:

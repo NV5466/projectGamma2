@@ -1,0 +1,37 @@
+name: gamma_1900_tuned_v1
+based_on: default
+created_for: massive_1900 analyzer-validation corpus
+default_threshold: 0.5
+signature_thresholds:
+  common_mode_noise: 0.9
+  emi_eft_burst: 0.05
+  ground_loop_hum: 0.05
+  missed_short_pulse: 0.8
+  pq_oscillatory_transient: 0.95
+  switch_relay_contact_bounce: 0.9
+notes:
+- Synthetic corpus tuning only; not field calibration.
+- Thresholds were chosen by coordinate sweep over the cached 1900-case validation
+  corpus.
+- 'Precision gate: 0.88; recall target: 0.92.'
+baseline_metrics:
+  tp: 855
+  fp: 99
+  tn: 851
+  fn: 95
+  precision: 0.8962264150943396
+  recall: 0.9
+  specificity: 0.8957894736842106
+  balanced_accuracy: 0.8978947368421053
+  accuracy: 0.8978947368421053
+tuned_metrics:
+  tp: 905
+  fp: 68
+  tn: 882
+  fn: 45
+  precision: 0.9301130524152107
+  recall: 0.9526315789473684
+  specificity: 0.9284210526315789
+  balanced_accuracy: 0.9405263157894737
+  accuracy: 0.9405263157894737
+source_path: configs\threshold_profiles\gamma_1900_tuned_v1.yaml

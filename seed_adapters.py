@@ -242,13 +242,13 @@ def _score_seed(
         reason = "oscillatory_tail_energy" if matched else "no_oscillatory_tail"
     elif seed_id == "emi_eft_burst":
         score = _mix_score(
-            (0.30, _band_score(rms_ratio, 0.08, 0.14)),
-            (0.26, _band_score(high_freq_ratio, 0.82, 0.96)),
-            (0.20, _band_score(zero_crossings, 100.0, 2000.0)),
-            (0.12, _band_score(peak_ratio, 0.45, 0.80)),
-            (0.12, _band_score(derivative_rms, 0.015, 0.08)),
+            (0.26, _band_score(rms_ratio, 0.08, 0.14)),
+            (0.24, _band_score(high_freq_ratio, 0.82, 0.95)),
+            (0.20, _band_score(initial_vs_final, 0.95, 1.15)),
+            (0.16, _band_score(peak_ratio, 0.40, 0.60)),
+            (0.14, _band_score(zero_crossings, 100.0, 2000.0)),
         )
-        matched = rms_ratio < 0.16 and high_freq_ratio > 0.80 and zero_crossings > 80
+        matched = rms_ratio < 0.16 and high_freq_ratio > 0.80 and 0.92 < initial_vs_final < 1.20
         reason = "burst_like_edge_cluster" if matched else "no_eft_burst_pattern"
     elif seed_id == "current_inrush":
         score = _mix_score(
@@ -272,13 +272,13 @@ def _score_seed(
         reason = "clustered_digital_toggles" if matched else "no_relay_bounce_cluster"
     elif seed_id == "relay_coil_inductive_kick":
         score = _mix_score(
-            (0.26, _band_score(rms_ratio, 0.10, 0.13)),
+            (0.26, _band_score(rms_ratio, 0.09, 0.14)),
             (0.24, _band_score(high_freq_ratio, 0.58, 0.80)),
             (0.20, _band_score(zero_crossings, 250.0, 1500.0)),
-            (0.16, _band_score(peak_ratio, 0.90, 1.05)),
-            (0.14, _band_score(derivative_rms, 0.02, 0.08)),
+            (0.18, _band_score(peak_ratio, 0.88, 1.04)),
+            (0.12, _band_score(initial_vs_final, 0.95, 1.10)),
         )
-        matched = rms_ratio < 0.14 and high_freq_ratio > 0.55 and zero_crossings > 180
+        matched = rms_ratio < 0.14 and high_freq_ratio > 0.55 and 0.88 < peak_ratio < 1.06
         reason = "kickback_like_transient" if matched else "no_inductive_kick_like_transient"
     elif seed_id == "ground_loop_hum":
         score = _mix_score(
@@ -292,23 +292,23 @@ def _score_seed(
         reason = "mains_frequency_dominance" if matched else "no_ground_loop_hum_signature"
     elif seed_id == "common_mode_noise":
         score = _mix_score(
-            (0.30, _band_score(rms_ratio, 0.15, 0.25)),
-            (0.28, _band_score(high_freq_ratio, 0.85, 1.0)),
-            (0.18, _band_score(peak_ratio, 0.35, 0.55)),
-            (0.14, _band_score(low_freq_ratio, 0.02, 0.15)),
-            (0.10, _band_score(abs(gain), 0.0, 0.05)),
+            (0.30, _band_score(rms_ratio, 0.12, 0.22)),
+            (0.24, _band_score(high_freq_ratio, 0.85, 1.0)),
+            (0.20, _band_score(peak_ratio, 0.28, 0.45)),
+            (0.16, _band_score(low_freq_ratio, 0.03, 0.12)),
+            (0.10, _band_score(initial_vs_final, 0.75, 0.98)),
         )
-        matched = rms_ratio < 0.30 and high_freq_ratio > 0.82 and peak_ratio < 0.60 and low_freq_ratio < 0.20
+        matched = rms_ratio < 0.28 and high_freq_ratio > 0.82 and peak_ratio < 0.50 and initial_vs_final < 1.05
         reason = "shared_residual_energy_detected" if matched else "no_common_mode_excess"
     elif seed_id == "pwm_vfd_edge_coupled_noise":
         score = _mix_score(
-            (0.28, _band_score(high_freq_ratio, 0.84, 0.96)),
-            (0.24, _band_score(segments, 8.0, 20.0)),
-            (0.20, _band_score(peak_ratio, 0.74, 0.86)),
-            (0.18, _band_score(derivative_rms, 0.025, 0.08)),
-            (0.10, _band_score(zero_crossings, 120.0, 2000.0)),
+            (0.30, _band_score(initial_vs_final, 1.25, 1.85)),
+            (0.24, _band_score(high_freq_ratio, 0.82, 0.95)),
+            (0.18, _band_score(rms_ratio, 0.15, 0.30)),
+            (0.16, _band_score(peak_ratio, 0.40, 0.60)),
+            (0.12, _band_score(zero_crossings, 120.0, 2000.0)),
         )
-        matched = high_freq_ratio > 0.82 and segments >= 6 and peak_ratio > 0.70
+        matched = initial_vs_final > 1.20 and high_freq_ratio > 0.80 and peak_ratio < 0.65
         reason = "edge_coupled_high_frequency_activity" if matched else "no_pwm_vfd_like_coupling"
     elif seed_id == "sensor_threshold_chatter":
         score = _mix_score(
@@ -409,7 +409,6 @@ SEED_FAMILIES: dict[str, str] = {
     "pq_impulsive_transient": "power_quality",
     "pq_oscillatory_transient": "power_quality",
     "emi_eft_burst": "switching_emc",
-    "emi_eft_burst_v010": "switching_emc",
     "current_inrush": "switching_emc",
     "switch_relay_contact_bounce": "digital_timing",
     "relay_coil_inductive_kick": "switching_emc",
